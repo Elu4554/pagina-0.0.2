@@ -106,3 +106,16 @@ ul li:last-child {
     margin-top: 50px;
 
 }
+
+#link {
+    display: flex;
+    margin: 0 auto;
+
+}
+
+@media (max-width: 1000px) {
+    #link {
+        max-width: 90%;
+    }
+
+}
