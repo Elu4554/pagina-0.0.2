@@ -1,10 +1,10 @@
 /* General Styles */
 .imgDPCL {
-    min-width: 100px;
-    max-width: 200px;
+    min-width: 20px;
+    max-width: 60px;
     width: 100%;
     height: auto;
-    margin-right: 10px;
+    margin-right: 5px;
 
 }
 
@@ -20,7 +20,8 @@ nav {
     justify-content: space-between;
     background-color: rgb(176, 129, 219);
     padding: 10px;
-    
+    overflow-x: hidden;
+
 }
 
 ul {
@@ -28,32 +29,37 @@ ul {
     padding: 0;
     margin: 0;
     display: flex;
-    
+    padding: 0;
     
 }
 
 ul li {
-    margin: clamp(5px, 2vw, 20px);
+    margin: clamp(5px, 10px, 20px);
+    padding: 0;
 }
 
 ul li a {
     text-decoration: none;
     color: white;
-    font-size: clamp(12px, 2vw, 18px);
+    font-size: clamp(12px, 14px, 18px);
+    padding: 0;
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 800px) {
     .imgDPCL {
-        width: 70px;
+        width: 40px;
         height: auto;
+        padding: 0;
     }
 
     ul li {
-        margin: 5px; /* Reduce los márgenes en pantallas pequeñas */
+        margin: 4px; /* Reduce los márgenes en pantallas pequeñas */
+        padding: 0;
     }
 
     ul li a {
         font-size: 12px; /* Reduce el tamaño del texto en pantallas pequeñas */
+        padding: 0;
     }
 }
 
