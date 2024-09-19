@@ -42,7 +42,7 @@ ul li a {
     font-size: clamp(12px, 2vw, 18px);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 2000px) {
     .imgDPCL {
         width: 70px;
         height: auto;
