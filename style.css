@@ -1,7 +1,11 @@
 /* General Styles */
 .imgDPCL {
-    width: 200px;
+    min-width: 100px;
+    max-width: 200px;
+    width: 100%;
     height: auto;
+    margin-right: 10px;
+
 }
 
 body {
@@ -16,6 +20,7 @@ nav {
     justify-content: space-between;
     background-color: rgb(176, 129, 219);
     padding: 10px;
+    
 }
 
 ul {
@@ -23,15 +28,33 @@ ul {
     padding: 0;
     margin: 0;
     display: flex;
+    
+    
 }
 
 ul li {
-    margin-right: 20px;
+    margin: clamp(5px, 2vw, 20px);
 }
 
 ul li a {
     text-decoration: none;
     color: white;
+    font-size: clamp(12px, 2vw, 18px);
+}
+
+@media (max-width: 700px) {
+    .imgDPCL {
+        width: 70px;
+        height: auto;
+    }
+
+    ul li {
+        margin: 5px; /* Reduce los márgenes en pantallas pequeñas */
+    }
+
+    ul li a {
+        font-size: 12px; /* Reduce el tamaño del texto en pantallas pequeñas */
+    }
 }
 
 /* Container Styles */
