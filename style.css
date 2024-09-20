@@ -113,11 +113,13 @@ ul li:last-child {
     }
 }
 
-.imagen1 {
+.imagen {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
-
+    
+    width: 50%;
+    height: auto;
+    margin: 50px auto 0;
 }
 
 #link {
