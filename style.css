@@ -105,6 +105,7 @@ ul li:last-child {
     }
 
     .Text {
+        text-align: justify;
         font-size: 16px;
         margin: 0 auto;
         height: auto;
