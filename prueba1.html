@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Matemático</title>
+    <style>
+        .resultado {
+            font-size: 1.2em;
+            color: green;
+        }
+        .incorrecto {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coloca el símbolo correcto</h1>
+    
+    <p>Completa la operación: 4 <input type="text" id="simbolo" size="1"> 3 = 12</p>
+    
+    <button onclick="validar()">Comprobar</button>
+    
+    <p id="mensaje" class="resultado"></p>
+
+    <script>
+        function validar() {
+            // Obtener el valor ingresado por el usuario
+            const simbolo = document.getElementById("simbolo").value;
+            const mensaje = document.getElementById("mensaje");
+
+            // Comprobar si el símbolo es el correcto
+            if (simbolo === "*") {
+                mensaje.textContent = "¡Correcto! 4 * 3 = 12";
+                mensaje.classList.remove("incorrecto");
+            } else {
+                mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                mensaje.classList.add("incorrecto");
+            }
+        }
+    </script>
+</body>
+</html>
