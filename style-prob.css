@@ -1,0 +1,224 @@
+/* General Styles */
+.imgDPCL {
+    min-width: 20px;
+    max-width: 60px;
+    width: 100%;
+    height: auto;
+    margin-right: 5px;
+
+}
+
+body {
+    font-family: "Heebo", sans-serif;
+    background-color: #ebccee;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(176, 129, 219);
+    padding: 10px;
+    overflow-x: hidden;
+
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    
+}
+
+ul li {
+    margin: clamp(5px, 10px, 20px);
+    padding: 0;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(12px, 14px, 18px);
+    padding: 0;
+}
+
+ul li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+@media (max-width: 800px) {
+    .imgDPCL {
+        width: 40px;
+        height: auto;
+        padding: 0;
+    }
+
+    ul li {
+        margin: 4px; /* Reduce los márgenes en pantallas pequeñas */
+        padding: 0;
+    }
+
+    ul li a {
+        font-size: 12px; /* Reduce el tamaño del texto en pantallas pequeñas */
+        padding: 0;
+    }
+}
+
+/* Container Styles */
+
+.Titulo {
+    margin-top: 100px;
+    display: flex;
+    font-weight: bold;
+    font-size: 22px;
+    justify-content: center;
+}
+
+.Text {
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    
+}
+
+.Cont {
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 250px;
+    height: auto;
+    display: flex;
+    justify-items: center;
+    
+}
+
+@media (max-width: 800px) {
+    .cont {
+        max-width: 700px;
+    }
+
+    .Titulo {
+        font-size: 20px;
+    }
+
+    .Text {
+        text-align: justify;
+        font-size: 16px;
+        margin: 0 auto;
+        height: auto;
+        max-width: 400px;
+    }
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    
+    width: 50%;
+    height: auto;
+    margin: 50px auto 0;
+}
+
+#link {
+    display: flex;
+    margin: 0 auto;
+
+}
+
+@media (max-width: 1000px) {
+    #link {
+        max-width: 95%;
+    }
+
+}
+
+#problema {
+    font-size: 24px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+
+}
+
+#resolucion {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#contBoton {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#boton {
+    background-color: rgb(214, 181, 245);
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    border-color: rgb(196, 155, 235);
+    border-radius: 5%;
+}
+
+#boton:active{
+    background-color: rgb(196, 155, 235);
+    border-color: rgb(178, 127, 226);
+}
+
+#botonExtra {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; /* Centra el botón */
+    align-items: center;     /* Asegura que el contenido esté centrado verticalmente */
+}
+
+.boton-extra-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Aseguramos que el contenedor ocupe todo el ancho disponible */
+    margin-top: 30px;
+}
+
+#nextButton {
+    background-color: rgb(214, 181, 245);
+    width: 120px;
+    border-color: rgb(196, 155, 235);
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Asegura que el texto esté centrado dentro del botón */
+}
+
+#nextButton:disabled {
+    background-color: rgb(169, 155, 182);
+    border-color: rgb(119, 110, 128);
+    cursor: not-allowed;
+}
+
+#nextButton:active{
+    background-color: rgb(196, 155, 235);
+    border-color: rgb(178, 127, 226);
+}
+
+#nextButton a {
+    pointer-events: none; /* Asegura que el enlace no sea clickeable si el botón está deshabilitado */
+}
+
+.resultado {
+    font-size: 1.2em;
+    color: green;
+}
+.incorrecto {
+    color: red;
+}
+
+#mensaje {
+    display: flex;
+    justify-content: center;
+}
