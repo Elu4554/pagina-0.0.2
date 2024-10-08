@@ -4,24 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio Matemático</title>
-    <style>
-        .resultado {
-            font-size: 1.2em;
-            color: green;
-        }
-        .incorrecto {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="prueba1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <nav> 
+        <h1 class = "logo"><a href="nav"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <ul>
+            <li id = "0"><a href="index.html">INICIO</a></li>
+            <li id = "1"><a href="actividades.html">ACTIVIDADES</a></li>
+            <li id = "2"><a href="info.html">INFORMACION</a></li>
+            <li class = "excepcion"><a href="comentarios.html">COMENTARIOS</a></li>
+        </ul>
+    </nav>
 </head>
 <body>
-    <h1>Coloca el símbolo correcto</h1>
+
+    <ul id="botones">
+
+        <li><a href="problema1-1-1.html"><button id = "niveles"></button></a></li>
+        <li><button id = "niveles"></button></li>
+        <li><button id = "niveles"></button></li>
+        <li><button id = "niveles"></button></li>
+        <li><button id = "niveles"></button></li>
+        <li><button id = "niveles"></button></li>
+
+
+    </ul>
+
+    <div>
+
+    </div>
     
-    <p>Completa la operación: 4 <input type="text" id="simbolo" size="1"> 3 = 12</p>
-    
-    <button onclick="validar()">Comprobar</button>
-    
-    <p id="mensaje" class="resultado"></p>
 
     <script>
         function validar() {
