@@ -21,12 +21,12 @@
 
 <body>
     <div class = "Cont" >
-        <p id = "problema">Intercale dos signos aritméticos entre los números 4, 5 y 6 para que el resultado sea, realmente, 26 
+        <p id = "problema">Intercala signos aritméticos entre los números 8, 3 y 4 para obtener 28.
             
         </p>
 
         <p id = "resolucion">
-            4 <input type="text" id="simbolo1" size="1">  5 <input type="text" id="simbolo2" size="1"> 6 = 26
+            8 <input type="text" id="simbolo1" size="1">  3 <input type="text" id="simbolo2" size="1"> 4 = 28
         </p>
 
         <div id= "contBoton">
@@ -39,7 +39,7 @@
 
         <div id="botonExtra" class="boton-extra-container">
             <button id="nextButton" disabled>
-                <a id="nextLink" href="actividades.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+                <a id="nextLink" href="felicitaciones.html" style="text-decoration: none; color: black;"> Completar </a>
             </button>
         </div>
         
@@ -57,8 +57,8 @@
             const nextLink = document.getElementById("nextLink");
     
             // Comprobar si el símbolo es el correcto
-            if ((simbolo1 === "*" || simbolo1 === "x") && simbolo2 === "+") {
-                mensaje.textContent = "¡Correcto! 4 * 5 + 6 = 26";
+            if ((simbolo1 === "*" || simbolo1 === "x" || simbolo1 === "X") && (simbolo2 === "+" )) {
+                mensaje.textContent = "¡Correcto! 8 * 3 + 4 = 28";
                 mensaje.classList.remove("incorrecto");
     
                 botonExtra.style.display = "flex";

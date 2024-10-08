@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCL</title>
+    <link rel="stylesheet" href="style-prob.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <nav> 
+        <h1 class = "logo"><a href="nav"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <ul>
+            <li id = "0"><a href="index.html">INICIO</a></li>
+            <li id = "1"><a href="actividades.html">ACTIVIDADES</a></li>
+            <li id = "2"><a href="info.html">INFORMACION</a></li>
+            <li class = "excepcion"><a href="comentarios.html">COMENTARIOS</a></li>
+        </ul>
+    </nav>
+</head>
+
+<body>
+    <div class = "Cont" >
+        <p id = "problema">Intercale dos signos aritméticos entre los números 4, 5 y 6 para que el resultado sea, realmente, 26 
+            
+        </p>
+
+        <p id = "resolucion">
+            4 <input type="text" id="simbolo1" size="1">  5 <input type="text" id="simbolo2" size="1"> 6 = 26
+        </p>
+
+        <div id= "contBoton">
+
+            <button onclick="validar()" id= "boton" >Comprobar</button>
+
+        </div>
+
+        <p id="mensaje" class="resultado"></p>
+
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="problema1-1-2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
+        
+
+    </div>
+    
+    <script>
+        function validar() {
+            // Obtener el valor ingresado por el usuario
+            const simbolo1 = document.getElementById("simbolo1").value;
+            const simbolo2 = document.getElementById("simbolo2").value;
+            const mensaje = document.getElementById("mensaje");
+            const botonExtra = document.getElementById("botonExtra");
+            const nextButton = document.getElementById("nextButton");
+            const nextLink = document.getElementById("nextLink");
+    
+            // Comprobar si el símbolo es el correcto
+            if ((simbolo1 === "*" || simbolo1 === "x") && simbolo2 === "+") {
+                mensaje.textContent = "¡Correcto! 4 * 5 + 6 = 26";
+                mensaje.classList.remove("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = false;
+                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
+            } else {
+                mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                mensaje.classList.add("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = true;
+                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
+            }
+        }
+    </script>
+
+</body>
+</html>
