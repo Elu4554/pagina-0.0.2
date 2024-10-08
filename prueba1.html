@@ -27,7 +27,7 @@
         <li><button class = "niveles" disabled></button></li>
         <li><button class = "niveles" disabled></button></li>
         <li><button class = "niveles" disabled></button></li>
-        <li><button class = "niveles" disabled></button></li>
+        <li><button class = "niveles" id="borrarStorage"></button></li>
 
 
     </ul>
@@ -38,7 +38,14 @@
     
 
     <script>
+        // Selecciona el botón por su id
+        document.getElementById('borrarStorage').addEventListener('click', function() {
+        // Limpia el localStorage
+        localStorage.clear();
         
+        // Opcional: Mostrar un mensaje de confirmación
+        alert('El localStorage ha sido borrado.');
+        });
             
 
         if (localStorage.getItem("nivel1Completado")) {
