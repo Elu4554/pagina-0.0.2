@@ -176,23 +176,14 @@ ul li:last-child {
     justify-content: center;
 }
 
-@media (max-width: 1000px) {
-    #feliz {
-        font-size: 20px;
-    }
-}
+
 
 #link-act {
     color: black;
     text-decoration: none;
 }
 
-#feliz {
-    font-size: 38px;
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-}
+
 
 #regreso {
     background-color: rgb(214, 181, 245);
@@ -208,4 +199,26 @@ ul li:last-child {
     margin-top: 50px;
     display: flex;
     justify-content: center;
+}
+
+#contenedor {
+    font-size: 38px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    max-width: 600px;
+}
+
+@media (max-width: 1000px) {
+    #contenedor {
+        font-size: 20px;
+        max-width: 400px;
+    }
+}
+
+#con {
+    
+    display: grid;
+    place-items: center;
 }
