@@ -22,12 +22,12 @@
 
     <ul id="botones">
 
-        <li><a href="problema1-1-1.html"><button id = "niveles"></button></a></li>
-        <li><button id = "niveles"></button></li>
-        <li><button id = "niveles"></button></li>
-        <li><button id = "niveles"></button></li>
-        <li><button id = "niveles"></button></li>
-        <li><button id = "niveles"></button></li>
+        <li><a href="problema1-1-1.html"><button class = "niveles"></button></a></li>
+        <li><a href="index.html"><button class = "niveles" id = "nivel2" disabled></button></a></li>
+        <li><button class = "niveles" disabled></button></li>
+        <li><button class = "niveles" disabled></button></li>
+        <li><button class = "niveles" disabled></button></li>
+        <li><button class = "niveles" disabled></button></li>
 
 
     </ul>
@@ -38,19 +38,11 @@
     
 
     <script>
-        function validar() {
-            // Obtener el valor ingresado por el usuario
-            const simbolo = document.getElementById("simbolo").value;
-            const mensaje = document.getElementById("mensaje");
+        
+            
 
-            // Comprobar si el símbolo es el correcto
-            if (simbolo === "*") {
-                mensaje.textContent = "¡Correcto! 4 * 3 = 12";
-                mensaje.classList.remove("incorrecto");
-            } else {
-                mensaje.textContent = "Incorrecto, intenta de nuevo.";
-                mensaje.classList.add("incorrecto");
-            }
+        if (localStorage.getItem("nivel1Completado")) {
+            document.getElementById("nivel2").disabled = false; // Habilita el botón del nivel 1
         }
     </script>
 </body>

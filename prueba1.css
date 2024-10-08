@@ -63,7 +63,8 @@ ul li:last-child {
 
 }
 
-#niveles {
+.niveles {
+    margin-top: 50px;
     width: 90px;
     height: 90px;
     border-radius: 45px;
@@ -71,13 +72,24 @@ ul li:last-child {
     border-color: rgb(196, 155, 235);
 }
 
-#niveles:active{
+.niveles:disabled:active {
+    background-color: rgb(128, 121, 136);
+    border-color: rgb(86, 80, 92);
+    cursor: not-allowed;
+}
+
+.niveles:disabled {
+    background-color: rgb(169, 155, 182);
+    border-color: rgb(119, 110, 128);
+    cursor: not-allowed;
+}
+
+.niveles:active{
     background-color: rgb(196, 155, 235);
     border-color: rgb(178, 127, 226);
 }
 
 #botones {
-    gap: 50px;
     display: flex;
     justify-content: center;
     text-align: center;

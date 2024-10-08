@@ -31,10 +31,17 @@
         <div id= "cont-boton">
             <button id= "regreso">
                 <a href="prueba1.html" id= "link-act">Regresar</a>
+            </button>
         </div>
 
     </div>
-    
+
+    <script>
+        document.getElementById("regreso").addEventListener("click", function() {
+            localStorage.setItem("nivel1Completado", "true"); // Marca el nivel como completado
+            alert("¡Nivel completado!");
+        });
+    </script>
     
 
 </body>
