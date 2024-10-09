@@ -8,6 +8,7 @@ body {
     width: 100%;
 }
 
+
 hr {
     width: 100%; /* Asegura que se mantenga dentro de los márgenes de la página */
     max-width: 500px; /* Limita su tamaño máximo */
@@ -44,6 +45,10 @@ hr {
 }
 
 /* Ajustes de las celdas de los números */
+.number-selected {
+    background-color: rgb(168, 148, 170);
+}
+
 .number {
     width: 44px; 
     height: 44px;
@@ -53,6 +58,14 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.horizontal-line {
+    border-bottom: 1px solid black;
+}
+
+.vertical-line {
+    border-right: 1px solid black;
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -66,12 +79,14 @@ hr {
         place-items: center;
         width: 70vw;
         height: 40px;
+       
     }
 
     .number {
-        width: 26px;
-        height: 26px;
-        font-size: 12px; /* Ajustar el tamaño de los números en pantallas pequeñas */
+        margin: 1px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px; /* Ajustar el tamaño de los números en pantallas pequeñas */
     }
 
     #check {
