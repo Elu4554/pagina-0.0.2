@@ -101,3 +101,47 @@ hr {
     background-color: #ff2020;
     color: white;
 }
+
+footer {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Heebo", sans-serif;
+    background-color: #d2a5d6;
+    height: 110px;
+    width: 100%;
+    
+    padding: 0;
+}
+
+.Enlace {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.IG{
+    margin-top: 50px;
+    margin-left: 5px;
+    max-width: 21px;
+    margin-right: 50px;
+    height: auto;
+}
+
+.imgEmail {
+    margin-top: 50px;
+    max-width: 28px;
+    height: auto;
+}
+
+.info {
+    color: rgb(40, 42, 43);
+    margin-left: 50px;
+}
+
+.contactos {
+    display: flex;
+    justify-content: end;
+    margin-right: 55px;
+}
