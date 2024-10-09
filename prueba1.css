@@ -2,6 +2,9 @@ body {
     font-family: "Heebo", sans-serif;
     background-color: #ebccee;
     text-align: justify;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 nav {

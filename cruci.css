@@ -2,6 +2,9 @@ body {
     background-color: #ebccee;
     font-family: "Heebo", sans-serif;
     text-align: justify;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 h2 {
     text-align: center;

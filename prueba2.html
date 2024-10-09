@@ -4,37 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio Matemático</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        input[type="number"] {
-            padding: 10px;
-            width: 50px;
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-        }
-        #nextButton {
-            display: none; /* Ocultar el botón inicialmente */
-        }
-    </style>
+    <link rel="stylesheet" href="prueba2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="nav"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <ul>
+            <li id = "0"><a href="index.html">INICIO</a></li>
+            <li id = "1"><a href="actividades.html">ACTIVIDADES</a></li>
+            <li id = "2"><a href="info.html">INFORMACION</a></li>
+            <li class = "excepcion"><a href="comentarios.html">COMENTARIOS</a></li>
+        </ul>
+    </nav>
 </head>
 <body>
 
     <h1>Ejercicio Matemático</h1>
+    <div id="timeSelection">
+        <h2>Selecciona el tiempo:</h2>
+        <button onclick="startGame(60)">1 Minuto</button>
+        <button onclick="startGame(120)">2 Minutos</button>
+        <button onclick="startGame(180)">3 Minutos</button>
+    </div>
     <p id="operation"></p>
-    <input type="number" id="userAnswer" placeholder="Respuesta" />
-    <button onclick="checkAnswer()">Comprobar</button>
+    <input type="number" id="userAnswer" placeholder="Respuesta" min="0" />
+    <button id="checkButton" onclick="checkAnswer()" style="display: none;">Comprobar</button> <!-- Botón oculto -->
     <p id="resultMessage"></p>
     <button id="nextButton" onclick="generateOperation()">Siguiente Ejercicio</button>
+    <p id="timer"></p>
+    <div id="results">
+        <h3>Resultados</h3>
+        <p id="totalSolved"></p>
+        <button onclick="resetGame()">Jugar de nuevo</button> <!-- Botón para reiniciar el juego -->
+    </div>
 
     <script>
         let num1, num2, operator, correctAnswer;
+        let totalSolved = 0;
+        let timeLimit;
+        let timerInterval;
+
+        // Mostrar el selector de tiempo al cargar la página
+        window.onload = function() {
+            document.getElementById('timeSelection').style.display = 'block';
+        };
+
+        function startGame(time) {
+            timeLimit = time;
+            totalSolved = 0; // Reiniciar el contador de respuestas correctas
+            document.getElementById('timeSelection').style.display = 'none'; // Ocultar el selector de tiempo
+            document.getElementById('userAnswer').style.display = 'inline'; // Mostrar el input para respuestas
+            document.getElementById('checkButton').style.display = 'inline'; // Mostrar el botón de comprobar
+            generateOperation(); // Generar la primera operación
+            startTimer(); // Iniciar el temporizador
+        }
+
+        function startTimer() {
+            let timeLeft = timeLimit;
+            document.getElementById('timer').innerText = `Tiempo restante: ${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')}`;
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').innerText = `Tiempo restante: ${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    endGame(); // Llamar a la función de fin de juego
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            clearInterval(timerInterval); // Detener el temporizador
+            document.getElementById('operation').innerText = '';
+            document.getElementById('userAnswer').style.display = 'none'; // Ocultar el input de respuesta
+            document.getElementById('checkButton').style.display = 'none'; // Ocultar el botón de comprobar
+            document.getElementById('nextButton').style.display = 'none'; // Ocultar el botón de siguiente
+            document.getElementById('resultMessage').innerText = '';
+            document.getElementById('timer').innerText = '';
+            document.getElementById('results').style.display = 'block'; // Mostrar resultados
+            document.getElementById('totalSolved').innerText = `Total resueltos: ${totalSolved}`;
+        }
 
         function generateOperation() {
             const operators = ['+', '-', '*', '/'];
@@ -82,6 +132,7 @@
             const userAnswer = parseFloat(document.getElementById('userAnswer').value).toFixed(2);
             if (userAnswer == correctAnswer) { // Usar == para comparación
                 document.getElementById('resultMessage').innerText = '¡Correcto! Bien hecho.';
+                totalSolved++; // Incrementar el total de respuestas correctas
                 document.getElementById('nextButton').style.display = 'inline'; // Mostrar el botón de siguiente
             } else {
                 document.getElementById('resultMessage').innerText = `Incorrecto. La respuesta correcta es ${correctAnswer}.`;
@@ -89,8 +140,15 @@
             }
         }
 
-        // Generar la primera operación al cargar la página
-        window.onload = generateOperation;
+        function resetGame() {
+            totalSolved = 0; // Reiniciar el contador
+            document.getElementById('results').style.display = 'none'; // Ocultar resultados
+            document.getElementById('timeSelection').style.display = 'block'; // Mostrar el selector de tiempo
+            document.getElementById('userAnswer').style.display = 'none'; // Ocultar el input de respuesta
+            document.getElementById('checkButton').style.display = 'none'; // Ocultar el botón de comprobar
+            document.getElementById('nextButton').style.display = 'none'; // Ocultar el botón de siguiente
+            document.getElementById('resultMessage').innerText = ''; // Limpiar mensaje de resultado
+        }
     </script>
 
 </body>
