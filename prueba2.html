@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Matemático</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        #nextButton {
+            display: none; /* Ocultar el botón inicialmente */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ejercicio Matemático</h1>
+    <p id="operation"></p>
+    <input type="number" id="userAnswer" placeholder="Respuesta" />
+    <button onclick="checkAnswer()">Comprobar</button>
+    <p id="resultMessage"></p>
+    <button id="nextButton" onclick="generateOperation()">Siguiente Ejercicio</button>
+
+    <script>
+        let num1, num2, operator, correctAnswer;
+
+        function generateOperation() {
+            const operators = ['+', '-', '*', '/'];
+            operator = operators[Math.floor(Math.random() * operators.length)];
+
+            // Generar números dependiendo del operador
+            if (operator === '+') {
+                num1 = Math.floor(Math.random() * 100) + 1; // Número aleatorio entre 1 y 100
+                num2 = Math.floor(Math.random() * 100) + 1; // Número aleatorio entre 1 y 100
+            } else if (operator === '-') {
+                num1 = Math.floor(Math.random() * 100) + 1; // Número aleatorio entre 1 y 100
+                num2 = Math.floor(Math.random() * num1) + 1; // Asegurar que num2 sea menor que num1
+            } else if (operator === '*') {
+                num1 = Math.floor(Math.random() * 10) + 1; // Limitar a números más pequeños para evitar grandes resultados
+                num2 = Math.floor(Math.random() * 10) + 1; // Limitar a números más pequeños
+            } else if (operator === '/') {
+                num2 = Math.floor(Math.random() * 9) + 1; // Evitar división por cero
+                num1 = num2 * (Math.floor(Math.random() * 10) + 1); // Asegurar que el resultado sea entero
+            }
+
+            // Calcular la respuesta correcta
+            switch (operator) {
+                case '+':
+                    correctAnswer = num1 + num2;
+                    break;
+                case '-':
+                    correctAnswer = num1 - num2;
+                    break;
+                case '*':
+                    correctAnswer = num1 * num2;
+                    break;
+                case '/':
+                    correctAnswer = (num1 / num2).toFixed(2); // Redondear a 2 decimales
+                    break;
+            }
+
+            // Mostrar la operación en el HTML
+            document.getElementById('operation').innerText = `${num1} ${operator} ${num2} = ?`;
+            document.getElementById('userAnswer').value = ''; // Limpiar el input
+            document.getElementById('resultMessage').innerText = ''; // Limpiar el mensaje de resultado
+            document.getElementById('nextButton').style.display = 'none'; // Ocultar el botón de siguiente
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseFloat(document.getElementById('userAnswer').value).toFixed(2);
+            if (userAnswer == correctAnswer) { // Usar == para comparación
+                document.getElementById('resultMessage').innerText = '¡Correcto! Bien hecho.';
+                document.getElementById('nextButton').style.display = 'inline'; // Mostrar el botón de siguiente
+            } else {
+                document.getElementById('resultMessage').innerText = `Incorrecto. La respuesta correcta es ${correctAnswer}.`;
+                document.getElementById('nextButton').style.display = 'none'; // Ocultar el botón de siguiente si es incorrecto
+            }
+        }
+
+        // Generar la primera operación al cargar la página
+        window.onload = generateOperation;
+    </script>
+
+</body>
+</html>

@@ -12,6 +12,9 @@ body {
     font-family: "Heebo", sans-serif;
     background-color: #ebccee;
     text-align: justify;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 /* Navigation Styles */
@@ -86,6 +89,7 @@ ul li:last-child {
 }
 
 .Cont {
+    
     flex-direction: column;
     margin: 0 auto;
     max-width: 1000px;
@@ -222,4 +226,46 @@ ul li:last-child {
     
     display: grid;
     place-items: center;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Heebo", sans-serif;
+    background-color: #d2a5d6;
+    height: 110px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.Enlace {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.IG{
+    margin-top: 50px;
+    margin-left: 5px;
+    max-width: 21px;
+    margin-right: 50px;
+    height: auto;
+}
+
+.imgEmail {
+    margin-top: 50px;
+    max-width: 28px;
+    height: auto;
+}
+
+.info {
+    margin-left: 50px;
+}
+
+.contactos {
+    display: flex;
+    justify-content: end;
+    margin-right: 55px;
 }
