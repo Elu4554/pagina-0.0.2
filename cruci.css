@@ -1,0 +1,67 @@
+body {
+    background-color: #ebccee;
+    font-family: Arial, sans-serif;
+}
+h2 {
+    text-align: center;
+}
+.crucigrama {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    gap: 5px;
+    justify-content: center;
+    
+}
+.crucigrama input {
+    background-color: #ecd8ee;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .crucigrama {
+        margin: 0 auto;
+        font-size: 12px;
+        gap: 0px;
+        margin: 1px 1px;
+    }
+
+    .crucigrama input {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .botonVer {
+        display: flex;
+        margin-top: 20px;
+    }
+}
+
+.boton-verificar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Espacio entre el crucigrama y el botón */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    max-width: 100px;
+}
+
+.botonVer {
+    display: flex;
+    justify-content: center;
+}
+
+#resultado {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.pagina {
+    display: flex;
+    justify-content: center;
+}

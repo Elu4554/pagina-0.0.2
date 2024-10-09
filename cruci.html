@@ -4,99 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crucigrama Matemático</title>
-    <style>
-        body {
-            background-color: #ebccee;
-            font-family: Arial, sans-serif;
-        }
-        h2 {
-            text-align: center;
-        }
-        .crucigrama {
-            
-            display: grid;
-            grid-template-columns: repeat(5, 50px);
-            gap: 5px;
-            justify-content: center;
-        }
-        .crucigrama input {
-            background-color: #ecd8ee;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            text-align: center;
-        }
-        .pistas {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .pista {
-            margin: 5px 0;
-        }
-        .boton-verificar {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        #resultado {
-            text-align: center;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="cruci.css">
 </head>
 <body>
 
     <h2>Crucigrama Matemático</h2>
-
-    <div class="crucigrama">
-        <!-- Fila 1 -->
-        <input type="text" maxlength="1" id="c1" value="2" readonly>
-        <input type="text" maxlength="1" id="c2" value="*" readonly>
-        <input type="text" maxlength="1" id="c3">
-        <input type="text" maxlength="1" id="c4" value="=" readonly>
-        <input type="text" maxlength="1" id="c5" value="8" readonly>
-
-        <!-- Fila 2 -->
-        <input disabled>
-        <input disabled>
-        <input type="text" maxlength="1" id="c6" value="+" readonly>
-        <input disabled>
-        <input disabled>
-
-        <!-- Fila 3 -->
-        <input disabled>
-        <input disabled>
-        <input type="text" maxlength="2" id="c7" >
-        <input disabled>
-        <input disabled>
-
-        <!-- Fila 4 -->
-        <input disabled>
-        <input disabled>
-        <input type="text" maxlength="1" id="c8" value="=" readonly>
-        <input disabled>
-        <input disabled>
-
-        <!-- Fila 5 -->
-        <input disabled>
-        <input disabled>
-        <input type="text" maxlength="1" id="c9" value="14" readonly>
-        <input disabled>
-        <input disabled>
+    <div class="pagina">
+        <div class="crucigrama">
+            <!-- Fila 1 -->
+            <input type="text" maxlength="1" id="c1" value="2" readonly>
+            <input type="text" maxlength="1" id="c2" value="*" readonly>
+            <input type="text" maxlength="1" id="c3">
+            <input type="text" maxlength="1" id="c4" value="=" readonly>
+            <input type="text" maxlength="1" id="c5" value="8" readonly>
+    
+            <!-- Fila 2 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c6" value="+" readonly>
+            <input disabled>
+            <input disabled>
+    
+            <!-- Fila 3 -->
+            <input type="text" maxlength="2" id="c10" >
+            <input type="text" maxlength="2" id="c11" value="-" readonly>
+            <input type="text" maxlength="2" id="c7" >
+            <input type="text" maxlength="2" id="c12" value="=" readonly >
+            <input type="text" maxlength="2" id="c13" >
+    
+            <!-- Fila 4 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c8" value="=" readonly>
+            <input disabled>
+            <input disabled>
+    
+            <!-- Fila 5 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c9" value="14" readonly>
+            <input disabled>
+            <input disabled>
+            
+        </div>
+    
         
-    </div>
 
+    </div>
+    <div class="botonVer">
+        <button class="boton-verificar" onclick="verificarCrucigrama()">Verificar</button>
+
+    </div>
     
 
-    <button class="boton-verificar" onclick="verificarCrucigrama()">Verificar</button>
     <div id="resultado"></div>
 
     <script>
         function verificarCrucigrama() {
             const respuestas = {
-                c3: "4", c7: "10"
+                c3: "4", c7: "10", c10: "11", c13: "1"
                 
             };
 

@@ -97,34 +97,79 @@ hr {
     font-size: 18px;
 }
 
-/* Estilos de navegación */
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: rgb(176, 129, 219);
     padding: 10px;
-    margin-bottom: 20px; /* Añade espacio debajo del nav para evitar superposición */
+    overflow-x: hidden;
+
 }
 
-nav ul {
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Asegura que el ul en la navegación sea horizontal */
+    display: flex;
+    padding: 0;
+    
 }
 
-nav ul li {
-    margin-right: 20px;
+ul li {
+    margin: clamp(5px, 10px, 20px);
+    padding: 0;
 }
 
-nav ul li a {
+ul li a {
     text-decoration: none;
     color: white;
+    font-size: clamp(12px, 14px, 18px);
+    padding: 0;
 }
 
-/* Estilo adicional para la imagen en navegación */
-nav .imgDPCL {
-    width: 200px;
+ul li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    
+    width: 50%;
     height: auto;
+    margin: 50px auto 0;
+}
+
+#link {
+    display: flex;
+    margin: 0 auto;
+
+}
+
+.imgDPCL {
+    min-width: 20px;
+    max-width: 60px;
+    width: 100%;
+    height: auto;
+    margin-right: 5px;
+
+}
+
+@media (max-width: 800px) {
+    .imgDPCL {
+        width: 40px;
+        height: auto;
+        padding: 0;
+    }
+
+    ul li {
+        margin: 4px; /* Reduce los márgenes en pantallas pequeñas */
+        padding: 0;
+    }
+
+    ul li a {
+        font-size: 12px; /* Reduce el tamaño del texto en pantallas pequeñas */
+        padding: 0;
+    }
 }
