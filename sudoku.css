@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Ajustes generales */
 body {
     font-family: "Heebo", sans-serif;
     text-align: center;
@@ -9,73 +9,76 @@ body {
 }
 
 hr {
-    width: 500px;
+    width: 100%; /* Asegura que se mantenga dentro de los márgenes de la página */
+    max-width: 500px; /* Limita su tamaño máximo */
+    margin: auto; /* Centrar */
 }
 
-#errors {
-    color: coral;
-}
-
+/* Tablero */
 #board {
-    width: 450px;
-    height: 450px;
-    margin: 0 auto;
+    width: clamp(200px, 50vw, 450px); /* Escala de acuerdo a la pantalla */
+    height: clamp(200px, 50vw, 450px);
+    margin: 20px auto; /* Añadir margen superior/inferior */
     display: flex;
     flex-wrap: wrap;
 }
 
 .tile {
-    width: 48px; 
-    height: 48px;
+    width: calc(100% / 9 - 2px); /* 9 columnas menos 2px por los bordes */
+    height: calc(100% / 9 - 2px);
     border: 1px solid gray;
-    font-size: 20px;
+    font-size: clamp(12px, 2vw, 20px); /* Tamaño dinámico del texto */
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Digits - Números de entrada */
 #digits {
-    width: 450px;
+    width: clamp(200px, 50vw, 450px);
     height: 50px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
 }
 
+/* Ajustes de las celdas de los números */
 .number {
     width: 44px; 
     height: 44px;
     border: 1px solid black;
     margin: 2px;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: clamp(12px, 2vw, 20px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.number-selected {
-    background-color: gray;
-}
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 800px) {
+    #board {
+        width: 70vw; /* El tablero ocupará el 90% del ancho de la pantalla */
+        height: 70vw; /* Mantener proporción cuadrada */
+    }
 
-.tile-start {
-    background-color: #eedff0;
-}
+    #digits {
+        place-items: center;
+        width: 70vw;
+        height: 40px;
+    }
 
-.horizontal-line {
-    border-bottom: 1px solid black;
-}
+    .number {
+        width: 26px;
+        height: 26px;
+        font-size: 12px; /* Ajustar el tamaño de los números en pantallas pequeñas */
+    }
 
-.vertical-line {
-    border-right: 1px solid black;
-}
-
-#check {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    #check {
+        margin-top: 10px;
+        padding: 5px 10px;
+        font-size: 12px; /* Tamaño de texto más pequeño */
+    }
 }
 
 /* Estilos para el leaderboard y la lista de tiempos */
@@ -87,27 +90,26 @@ hr {
 }
 
 #times-list {
-    list-style-type: none; /* Sin viñetas */
-    padding: 0; /* Sin relleno */
-    margin: 0; /* Sin margen */
-    text-align: left; /* Alineación a la izquierda para el contenido */
-    display: block; /* Asegura que la lista sea un bloque vertical */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: block;
 }
 
 #times-list li {
-    display: block; /* Los elementos de la lista se muestran en bloque (verticalmente) */
-    margin: 5px 0; /* Espacio vertical entre los elementos de la lista */
+    display: block;
+    margin: 5px 0;
     font-size: 18px;
 }
 
+/* Estilos de la navegación */
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: rgb(176, 129, 219);
     padding: 10px;
-    overflow-x: hidden;
-
 }
 
 ul {
@@ -115,64 +117,27 @@ ul {
     padding: 0;
     margin: 0;
     display: flex;
-    padding: 0;
-    
 }
 
 ul li {
     margin: clamp(5px, 10px, 20px);
-    padding: 0;
 }
 
 ul li a {
     text-decoration: none;
     color: white;
     font-size: clamp(12px, 14px, 18px);
-    padding: 0;
-}
-
-ul li:last-child {
-    margin-right: 0; /* Elimina el margen derecho del último elemento */
 }
 
 .imagen {
     display: flex;
     justify-content: center;
-    
     width: 50%;
-    height: auto;
     margin: 50px auto 0;
 }
 
-#link {
-    display: flex;
-    margin: 0 auto;
-
-}
-
 .imgDPCL {
-    min-width: 20px;
-    max-width: 60px;
-    width: 100%;
+    width: clamp(20px, 10vw, 60px);
     height: auto;
     margin-right: 5px;
-
-}
-
-@media (max-width: 800px) {
-    .imgDPCL {
-        width: 40px;
-        height: auto;
-        padding: 0;
-    }
-
-    ul li {
-        margin: 4px; /* Reduce los márgenes en pantallas pequeñas */
-        padding: 0;
-    }
-
-    ul li a {
-        font-size: 12px; /* Reduce el tamaño del texto en pantallas pequeñas */
-        padding: 0;
-    }
 }
