@@ -82,6 +82,9 @@ ul li:last-child {
 }
 
 /* Container Styles */
+h1 {
+    text-align: center;
+}
 
 .Titulo {
     margin-top: 100px;
