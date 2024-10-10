@@ -255,16 +255,19 @@ footer {
 }
 
 .IG{
+    background-color: rgb(49, 49, 49);
     margin-top: 42px;
     margin-left: 5px;
     max-width: 34px;
     margin-right: 50px;
     height: 34px;
+    border-radius: 17px;
 }
 
 .imgEmail {
+    background-color: white;
     margin-top: 50px;
-    max-width: 28px;
+    max-width: 24px;
     height: auto;
 }
 
