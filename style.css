@@ -297,6 +297,12 @@ footer {
     margin-bottom: 500px;
 }
 
+@media (max-width: 800px){
+    .Actividades{
+        flex-direction: column;
+    }
+}
+
 .espacio {
     margin-bottom: 500px;
 }
