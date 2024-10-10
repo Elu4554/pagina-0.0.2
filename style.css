@@ -5,6 +5,7 @@
     width: 100%;
     height: auto;
     margin-right: 5px;
+    height: 100%;
 
 }
 
@@ -271,4 +272,25 @@ footer {
     display: flex;
     justify-content: end;
     margin-right: 55px;
+}
+
+.imagenes {
+    
+    display: flex;
+    flex-direction: column;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+}
+
+.Actividades {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 500px;
+}
+
+.espacio {
+    margin-bottom: 500px;
 }
