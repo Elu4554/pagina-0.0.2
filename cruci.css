@@ -167,17 +167,17 @@ footer {
 }
 
 .IG{
-    margin-top: 50px;
+    margin-top: 42px;
     margin-left: 5px;
-    max-width: 21px;
+    max-width: 34px;
     margin-right: 50px;
-    height: auto;
+    height: 34px;
 }
 
 .imgEmail {
     margin-top: 50px;
     max-width: 28px;
-    height: auto;
+    max-height: 28px;
 }
 
 .info {
