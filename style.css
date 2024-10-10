@@ -1,4 +1,9 @@
 /* General Styles */
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
 .imgDPCL {
     min-width: 20px;
     max-width: 60px;
@@ -285,6 +290,7 @@ footer {
 }
 
 .Actividades {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
