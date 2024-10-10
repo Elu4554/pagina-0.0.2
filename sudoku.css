@@ -28,7 +28,7 @@ hr {
     width: calc(100% / 9 - 2px); /* 9 columnas menos 2px por los bordes */
     height: calc(100% / 9 - 2px);
     border: 1px solid gray;
-    font-size: clamp(12px, 2vw, 20px); /* Tamaño dinámico del texto */
+    font-size: 14px;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -71,21 +71,21 @@ hr {
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 800px) {
     #board {
-        width: 70vw; /* El tablero ocupará el 90% del ancho de la pantalla */
-        height: 70vw; /* Mantener proporción cuadrada */
+        width: 300px; /* El tablero ocupará el 90% del ancho de la pantalla */
+        height: 300px; /* Mantener proporción cuadrada */
     }
 
     #digits {
         place-items: center;
-        width: 70vw;
+        width: 300px;
         height: 40px;
        
     }
 
     .number {
         margin: 1px;
-        width: 35px;
-        height: 35px;
+        width: 28px;
+        height: 28px;
         font-size: 14px; /* Ajustar el tamaño de los números en pantallas pequeñas */
     }
 
