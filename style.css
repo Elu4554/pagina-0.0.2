@@ -4,6 +4,8 @@ h1 {
     justify-content: center;
 }
 
+
+
 .imgDPCL {
     min-width: 20px;
     max-width: 60px;
@@ -26,6 +28,7 @@ body {
 
 /* Navigation Styles */
 nav {
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
