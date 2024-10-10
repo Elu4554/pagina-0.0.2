@@ -1,0 +1,195 @@
+body{
+    font-family: "Heebo", sans-serif;
+    background-color: #ebccee;
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.primero {
+   
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.t {
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    color: black;
+}
+
+img{
+    width: 400px;
+    height: auto;
+}
+
+.contenedor {
+    width: 600px;
+    height: auto;
+    margin-right: 50px;
+}
+
+.texto {
+    font-size: 20px;
+}
+
+.segundo {
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1000px){
+    img{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 200px;
+    }
+
+    .texto {
+        font-size: 18px;
+        margin-left: 20px;
+    }
+    
+    .primero{
+        flex-direction: column;
+    }
+
+    .segundo{
+        flex-direction: column;
+    }
+
+    .contenedor {
+        width: 400px;
+        margin-right: 10px;
+
+    }
+}
+
+.imgDPCL {
+    min-width: 20px;
+    max-width: 60px;
+    width: 100%;
+    height: auto;
+    margin-right: 5px;
+    height: 100%;
+
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(176, 129, 219);
+    padding: 10px;
+    overflow-x: hidden;
+
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    
+}
+
+ul li {
+    margin: clamp(5px, 10px, 20px);
+    padding: 0;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(12px, 14px, 18px);
+    padding: 0;
+}
+
+ul li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+@media (max-width: 800px) {
+    .imgDPCL {
+        width: 40px;
+        height: auto;
+        padding: 0;
+    }
+
+    ul li {
+        margin: 4px; /* Reduce los márgenes en pantallas pequeñas */
+        padding: 0;
+    }
+
+    ul li a {
+        font-size: 12px; /* Reduce el tamaño del texto en pantallas pequeñas */
+        padding: 0;
+    }
+}
+
+footer {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Heebo", sans-serif;
+    background-color: #d2a5d6;
+    height: 110px;
+    width: 100%;
+    
+    padding: 0;
+}
+
+.Enlace {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.IG{
+    background-color: rgb(49, 49, 49);
+    margin-top: 42px;
+    margin-left: 5px;
+    max-width: 34px;
+    margin-right: 50px;
+    height: 34px;
+    border-radius: 17px;
+}
+
+.imgEmail {
+    background-color: white;
+    margin-top: 50px;
+    max-width: 24px;
+    height: auto;
+}
+
+.info {
+    color: rgb(40, 42, 43);
+    margin-left: 50px;
+}
+
+.contactos {
+    display: flex;
+    justify-content: end;
+    margin-right: 55px;
+}
+
+.imagenes {
+    
+    display: flex;
+    flex-direction: column;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+}
