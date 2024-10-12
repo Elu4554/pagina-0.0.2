@@ -319,3 +319,21 @@ footer {
     color: black;
     
 }
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: fall 0.7s forwards;
+    z-index: 9999; /* Asegúrate de que el confeti esté por encima de otros elementos */
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh); }
+}
