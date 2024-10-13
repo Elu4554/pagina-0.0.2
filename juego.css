@@ -1,0 +1,70 @@
+body{
+    background-color: #ebccee;
+    font-family: "Heebo", sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+}
+
+.boton {
+    background-color: #d3a1d8;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.seleccionado {
+    background-color: #be87c4;
+    color: black;
+}
+
+.correcto {
+    background-color: rgb(105, 201, 105);
+    color: white;
+}
+
+#pasarNivel {
+    display: none;
+    margin-top: 20px;
+}
+
+.operacion {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: 150px;
+}
+
+.respuesta {
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: 150px;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    margin-top: 50px;
+
+}
+
+.siguiente {
+    display: flex;
+    justify-content: center;
+    
+}
