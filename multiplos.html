@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="multiplos.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contBig">
+
+
+        <div class="contenedor">
+            <div class="no1">
+                <button id="boton1" class="boton">34</button>
+                <button id="boton2" class="boton">24</button>
+                <button id="boton3" class="boton">35</button>
+                <button id="boton4" class="boton">12</button>
+                <button id="boton5" class="boton">67</button>
+                
+            </div>
+            
+            <div class="no2">
+                <button id="boton6" class="boton">43</button>
+                <button id="boton7" class="boton">42</button>
+                <button id="boton8" class="boton">15</button>
+                <button id="boton9" class="boton">18</button>
+                <button id="boton10" class="boton">27</button>
+                
+            </div>
+    
+            
+      
+        </div>
+
+        <div class="no3">
+            <button id="botonExtra">¡Todos los correctos seleccionados!</button>
+        </div>
+
+    </div>
+    
+
+    <script>
+        // Guardamos las referencias a los botones
+        const botones = [
+            document.getElementById('boton1'),
+            document.getElementById('boton2'),
+            document.getElementById('boton3'),
+            document.getElementById('boton4'),
+            document.getElementById('boton5'),
+            document.getElementById('boton6'),
+            document.getElementById('boton7'),
+            document.getElementById('boton8'),
+            document.getElementById('boton9'),
+            document.getElementById('boton10')
+        ];
+
+        // IDs de botones que son múltiplos correctos
+        const multiplosCorrectos = ['boton2', 'boton4', 'boton7', 'boton9'];
+
+        // Contador de botones correctos seleccionados
+        let multiplosEncontrados = 0;
+
+        // Referencia al botón extra
+        const botonExtra = document.getElementById('botonExtra');
+
+        // Función que se ejecuta cuando se hace clic en un botón
+        function verificarMultiplo(event) {
+            const boton = event.target; // Botón que fue clickeado
+            const botonID = boton.id;   // ID del botón
+
+            // Si el botón está en la lista de múltiplos correctos y no ha sido seleccionado antes
+            if (multiplosCorrectos.includes(botonID) && !boton.classList.contains('correcto')) {
+                boton.classList.add('correcto'); // Cambiamos el color a verde
+                multiplosEncontrados++;          // Incrementamos el contador
+
+                // Verificamos si se han encontrado los 4 múltiplos correctos
+                if (multiplosEncontrados === 4) {
+                    botonExtra.style.display = 'block'; // Mostramos el botón extra
+                }
+            }
+        }
+
+        // Añadimos el event listener a cada botón
+        botones.forEach(boton => {
+            boton.addEventListener('click', verificarMultiplo);
+        });
+    </script>
+
+</body>
+</html>

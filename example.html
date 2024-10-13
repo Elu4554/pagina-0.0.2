@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Esto es un ejemplo</h1>
+
+    <button id="cambio" onclick="cambiar()">Cambiar</button>
+
+    <div id="botones">
+        <button id="boton1">1</button>
+        <button id="boton2">2</button>
+
+    </div>
+
+    <script>
+        function cambiar(){
+            const COLOR = "#ebccee";
+            let texto = document.getElementsByTagName('h1')[0];
+            texto.innerHTML = "Hola mundo";
+            texto.style.backgroundColor= COLOR;
+            texto.style.width="100px";
+
+        }
+
+        const boton1 = document.getElementById('boton1');
+        const boton2 = document.getElementById('boton2');
+
+        const parejaBotones = [ [boton1, boton2] ];
+
+        function verificar(id1, id2) {
+            if (parejaBotones.includes(id1) && parejaBotones.includes(id2)) {
+                texto.innerHTML = "la pareja es correcta";
+            }        
+        }
+
+    </script>
+
+</body>
+</html>
