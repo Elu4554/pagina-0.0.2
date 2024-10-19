@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .correcto{
+            background-color: greenyellow;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Esto es un ejemplo</h1>
@@ -32,6 +38,10 @@
         const parejaBotones = [ [boton1, boton2] ];
 
         function verificar(id1, id2) {
+            const boton = event.target;
+            const botonID = boton.id;
+
+
             if (parejaBotones.includes(id1) && parejaBotones.includes(id2)) {
                 texto.innerHTML = "la pareja es correcta";
             }        

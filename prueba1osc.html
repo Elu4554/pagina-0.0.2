@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Matemático</title>
+    <link rel="stylesheet" href="prueba1osc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <ul>
+            <li id = "0"><a href="index.html">INICIO</a></li>
+            <li id = "1"><a href="actividades.html">ACTIVIDADES</a></li>
+            <li id = "2"><a href="info.html">INFORMACION</a></li>
+            <li class = "excepcion"><a href="comentarios.html">COMENTARIOS</a></li>
+        </ul>
+    </nav>
+</head>
+<body>
+
+    <div class="etapa">
+        <h1>Etapa 1: aritmetica</h1>
+
+    </div>
+
+    <ul id="botones">
+
+        <li><a href="problema1-1-1.html"><button class = "niveles"></button></a></li>
+        <li><a href="index.html"><button class = "niveles" id = "nivel2" disabled></button></a></li>
+        <li><button class = "niveles" disabled></button></li>
+        <li><button class = "niveles" disabled></button></li>
+        <li><button class = "niveles" disabled></button></li>
+        <li><button class = "niveles" id="borrarStorage"></button></li>
+
+
+    </ul>
+
+    <div>
+
+    </div>
+    
+
+    <script>
+        // Selecciona el botón por su id
+        document.getElementById('borrarStorage').addEventListener('click', function() {
+        // Limpia el localStorage
+        localStorage.clear();
+        
+        // Opcional: Mostrar un mensaje de confirmación
+        alert('El localStorage ha sido borrado.');
+        });
+            
+
+        if (localStorage.getItem("nivel1Completado")) {
+            document.getElementById("nivel2").disabled = false; // Habilita el botón del nivel 1
+        }
+    </script>
+</body>
+
+<footer>
+
+    <div class="info">
+        <h2>DPCL</h2>
+        <p>Contactanos en:</p>
+        
+        
+    </div>
+
+    <div class="contactos">
+        <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
+            <img class="imgEmail" src="Vector-Email-Icon-Transparent.png" alt="email">
+        </a>
+        
+        <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class = "IG" src="instagram_white_28dp.png" alt="IG">
+        </a>
+
+    </div>
+    
+    
+</footer>
+</html>
