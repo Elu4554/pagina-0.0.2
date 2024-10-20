@@ -1,5 +1,8 @@
 /* Ajustes generales */
-
+html, body {
+    height: 100%;
+    overflow: auto;
+}
 
 body {
     font-family: "Heebo", sans-serif;
@@ -8,6 +11,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    overflow: auto;
 }
 
 
