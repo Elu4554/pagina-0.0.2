@@ -137,12 +137,7 @@ ul li:last-child {
 
 }
 
-@media (max-width: 1000px) {
-    #link {
-        max-width: 95%;
-    }
 
-}
 
 footer {
     margin-top: 60px;
@@ -204,7 +199,9 @@ footer {
 .mas {
     background-color: #ebccee;
     border-color: #ebccee;
-
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
 }
 
 .opciones{
@@ -212,6 +209,8 @@ footer {
     width: 150px;
     justify-content: end;
     text-align: center;
+    height: 190px;
+    
 
 }
 
@@ -219,11 +218,16 @@ footer {
     justify-items: center;
     display: flex;
     flex-direction: column;
+    
 }
 
 .op {
     display: none;
     justify-content: flex-end;
+}
+
+.textos {
+    font-size: 17px;
 }
 
 @media(prefers-color-scheme: dark){
@@ -253,5 +257,27 @@ footer {
     .opciones {
         background-color: #16101b;
     }
+
+    
 }
 
+.menu {
+    width: 25px;
+    height: 25px;
+}
+
+@media (max-width: 1000px) {
+    #link {
+        max-width: 95%;
+    }
+
+    .textos {
+        font-size: 14px;
+    }
+
+    .opciones {
+        width: 140px;
+        height: 135px;
+    }
+
+}
