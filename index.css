@@ -106,7 +106,7 @@ ul li:last-child {
 
 @media (max-width: 800px) {
     .cont {
-        max-width: 500px;
+        max-width: 350px;
     }
 
     .Titulo {
