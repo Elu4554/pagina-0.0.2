@@ -201,6 +201,31 @@ footer {
     align-items: center;
 }
 
+.mas {
+    background-color: #ebccee;
+    border-color: #ebccee;
+
+}
+
+.opciones{
+    background-color: #ebccee;
+    width: 150px;
+    justify-content: end;
+    text-align: center;
+
+}
+
+.opc {
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.op {
+    display: none;
+    justify-content: flex-end;
+}
+
 @media(prefers-color-scheme: dark){
     body {
         background-color: #312531;
@@ -219,4 +244,14 @@ footer {
         color: white;
     }
 
+    .mas{
+        color: white;
+        background-color: #17111d;
+        border-color: #17111d;
+    }
+
+    .opciones {
+        background-color: #16101b;
+    }
 }
+
