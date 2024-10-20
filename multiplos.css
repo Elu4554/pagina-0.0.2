@@ -118,3 +118,23 @@ ul li:last-child {
         padding: 0;
     }
 }
+
+@media(prefers-color-scheme: dark){
+    body {
+        background-color: #312531;
+        color: white;
+    }
+
+    nav {
+        background-color: #17111d;
+    }
+
+    footer {
+        background-color: #17111d;
+    }
+
+    .info{
+        color: white;
+    }
+
+}

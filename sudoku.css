@@ -1,4 +1,6 @@
 /* Ajustes generales */
+
+
 body {
     font-family: "Heebo", sans-serif;
     text-align: center;
@@ -236,4 +238,24 @@ footer {
     display: flex;
     justify-content: end;
     margin-right: 55px;
+}
+
+@media(prefers-color-scheme: dark){
+    body {
+        background-color: #312531;
+        color: white;
+    }
+
+    nav {
+        background-color: #17111d;
+    }
+
+    footer {
+        background-color: #17111d;
+    }
+
+    .info{
+        color: white;
+    }
+
 }
