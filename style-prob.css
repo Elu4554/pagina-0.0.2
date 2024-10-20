@@ -101,7 +101,7 @@ ul li:last-child {
 
 @media (max-width: 800px) {
     .Cont {
-        max-width: 350px;
+        width: 350px;
     }
 
     .Titulo {
@@ -114,6 +114,10 @@ ul li:last-child {
         margin: 0 auto;
         height: auto;
         max-width: 400px;
+    }
+
+    #problema {
+        width: 350px;
     }
 }
 
