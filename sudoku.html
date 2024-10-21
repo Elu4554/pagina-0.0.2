@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
     <title>Sudoku</title>
     <link rel="stylesheet" href="sudoku.css">
+    <link rel="stylesheet" href="nav.css">
     <script src="sudoku.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,15 +13,28 @@
     <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
     <nav> 
         <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
-        <ul>
-            <li><a href="index.html">INICIO</a></li>
-            <li><a href="actividades.html">ACTIVIDADES</a></li>
-            <li><a href="info.html">INFORMACION</a></li>
-            <li><a href="comentarios.html">COMENTARIOS</a></li>
-        </ul>
+        <div class="trofeo">
+            <img id = "trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <p class="textos">0</p>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="ic--round-menu.png" alt="menu"></button>
+        
     </nav>
 </head>
 <body>
+    <div id = "op" class="op">
+        <div class = "opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+                
+            </ul>
+        </div>
+
+    </div>
+
     <h1>Sudoku</h1>
     <hr>
     <h2 id="errors">Errores: 0</h2>
@@ -36,6 +50,20 @@
         <h3>Mejores Tiempos</h3>
         <ul id="times-list"></ul>
     </div>
+
+    <script>
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+        
+    
+    </script>
+
 </body>
 
 <footer>

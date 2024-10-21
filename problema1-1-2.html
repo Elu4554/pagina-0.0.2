@@ -5,22 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPCL</title>
     <link rel="stylesheet" href="style-prob.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
     <nav> 
         <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
-        <ul>
-            <li id = "0"><a href="index.html">INICIO</a></li>
-            <li id = "1"><a href="actividades.html">ACTIVIDADES</a></li>
-            <li id = "2"><a href="info.html">INFORMACION</a></li>
-            <li class = "excepcion"><a href="comentarios.html">COMENTARIOS</a></li>
-        </ul>
+        <div class="trofeo">
+            <img id = "trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <p class="textos">0</p>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="ic--round-menu.png" alt="menu"></button>
+        
     </nav>
 </head>
 
 <body>
+    <div id = "op" class="op">
+        <div class = "opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+                
+            </ul>
+        </div>
+
+    </div>
+
     <div class = "Cont" >
         <p id = "problema">Intercala signos aritméticos entre los números 3, 5 y 7 para obtener 38.
             
@@ -48,6 +62,15 @@
     </div>
     
     <script>
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
         function validar() {
             // Obtener el valor ingresado por el usuario
             const simbolo1 = document.getElementById("simbolo1").value;
