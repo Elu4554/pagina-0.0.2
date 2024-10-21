@@ -32,6 +32,12 @@
     right: 0px; /* Ajusta la distancia desde el borde derecho */
 }
 
+@media (max-width: 800px) {
+    .op {
+        top: 110px
+    }
+}
+
 .textos {
     font-size: 17px;
 }
