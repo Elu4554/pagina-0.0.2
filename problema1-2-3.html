@@ -11,54 +11,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
     <nav> 
-        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <h1 class="logo"><a href="index.html"><img class="imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
         <div class="trofeo">
-            <img id = "trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <img id="trofeo" src="stash--trophy-solid.png" alt="trofeo">
             <span id="valor" class="textos">0</span>
         </div>
-        <button id = "mas" class="mas"><img class = "menu" src="ic--round-menu.png" alt="menu"></button>
-        
+        <button id="mas" class="mas"><img class="menu" src="ic--round-menu.png" alt="menu"></button>
     </nav>
 </head>
 
 <body>
-    <div id = "op" class="op">
-        <div class = "opciones">
+    <div id="op" class="op">
+        <div class="opciones">
             <ul class="opc">
                 <li><a class="textos" href="index.html">Inicio</a></li>
                 <li><a class="textos" href="actividades.html">Actividades</a></li>
                 <li><a class="textos" href="info.html">Info</a></li>
                 <li><a class="textos" href="comentarios.html">Comentarios</a></li>
-                
             </ul>
         </div>
-
     </div>
 
-    <div class = "Cont" >
-        <p id = "problema">Intercala signos aritméticos entre los números 3, 5 y 7 para obtener 38.
-            
-        </p>
+    <div class="Cont">
+        <p id="problema">¿Es correcto el enunciado "12 + 30 = 30"?</p>
 
-        <p id = "resolucion">
-            3 <input type="text" id="simbolo1" size="1">  5 <input type="text" id="simbolo2" size="1"> 7 = 38
-        </p>
-
-        <div id= "contBoton">
-
-            <button onclick="validar()" id= "boton" >Comprobar</button>
-
+        <div class="botones">
+            <button class="pipi" id="Yes">Sí</button>
+            <button class="pipi" id="No">No</button>
         </div>
 
         <p id="mensaje" class="resultado"></p>
 
+        <p id="mensaje" class="mensaje"></p>
+
         <div id="botonExtra" class="boton-extra-container">
             <button id="nextButton" disabled>
-                <a id="nextLink" href="problema1-2-2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+                <a id="nextLink" href="felicitaciones2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
             </button>
         </div>
-        
-
     </div>
     
     <script>
@@ -71,34 +61,32 @@
             }
         });
 
-        function validar() {
-            // Obtener el valor ingresado por el usuario
-            const simbolo1 = document.getElementById("simbolo1").value;
-            const simbolo2 = document.getElementById("simbolo2").value;
-            const mensaje = document.getElementById("mensaje");
-            const botonExtra = document.getElementById("botonExtra");
-            const nextButton = document.getElementById("nextButton");
-            const nextLink = document.getElementById("nextLink");
-    
-            // Comprobar si el símbolo es el correcto
-            if (simbolo1 === "+"  && (simbolo2 === "*" || simbolo2 === "x" || simbolo2 === "X")) {
-                mensaje.textContent = "¡Correcto! 3 + 5 * 7 = 38";
-                mensaje.classList.remove("incorrecto");
-    
-                botonExtra.style.display = "flex";
-                nextButton.disabled = false;
-                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
-            } else {
-                mensaje.textContent = "Incorrecto, intenta de nuevo.";
-                mensaje.classList.add("incorrecto");
-    
-                botonExtra.style.display = "flex";
-                nextButton.disabled = true;
-                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
-            }
-        }
+        // Obtener los botones y el elemento para mostrar el mensaje
+        const yesButton = document.getElementById("Yes");
+        const noButton = document.getElementById("No");
+        const mensajeBoton = document.getElementById("mensaje");
+        const nextButton = document.getElementById("nextButton");
+        const nextLink = document.getElementById("nextLink");
 
-        ///////
+        // Agregar evento al botón Yes
+        yesButton.addEventListener("click", function() {
+            mensajeBoton.textContent = "Incorrecto";
+            mensajeBoton.classList.remove("correcto");
+            mensajeBoton.classList.add("incorrecto");
+            // Desbloquear el botón "Next" porque "No" es la respuesta correcta
+            nextButton.disabled = true; 
+            nextLink.style.pointerEvents = "none"; // Desactivar el enlace
+        });
+
+        // Agregar evento al botón No
+        noButton.addEventListener("click", function() {
+            mensajeBoton.textContent = "Correcto, 12 + 15 No es igual a 30";
+            mensajeBoton.classList.remove("incorrecto");
+            mensajeBoton.classList.add("correcto");
+            // Desbloquear el botón "Next"
+            nextButton.disabled = false; 
+            nextLink.style.pointerEvents = "auto"; // Habilitar el enlace
+        });
 
         // Inicializamos el valor de localStorage si no existe
         if (!localStorage.getItem('contador')) {
@@ -116,7 +104,6 @@
 
         // Evento para el botón que suma 30, pero solo una vez
         document.getElementById('regreso').addEventListener('click', () => {
-            // Verificamos si ya se sumaron los puntos una vez
             if (localStorage.getItem('botonPresionado') !== 'true') {
                 let valorActual = parseInt(localStorage.getItem('contador'));
                 valorActual += 30;
@@ -132,31 +119,21 @@
                 actualizarValor();
             }
         });
-
     </script>
-
 </body>
 
 <footer>
-
     <div class="info">
         <h2>DPCL</h2>
         <p>Contactanos en:</p>
-        
-        
     </div>
-
     <div class="contactos">
-        <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
+        <a class="Enlace" href="mailto:contactodpcl@gmail.com"> 
             <img class="imgEmail" src="Vector-Email-Icon-Transparent.png" alt="email">
         </a>
-        
-        <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
-            <img class = "IG" src="instagram_white_28dp.png" alt="IG">
+        <a href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class="IG" src="instagram_white_28dp.png" alt="IG">
         </a>
-
     </div>
-    
-    
 </footer>
 </html>

@@ -35,13 +35,15 @@
 
     </div>
 
+
     <div class = "Cont" >
-        <p id = "problema">Intercala signos aritméticos entre los números 3, 5 y 7 para obtener 38.
+        <p id = "problema">Encuentra el símbolo que efectivamente dé como resultado 2/4
+
             
         </p>
 
         <p id = "resolucion">
-            3 <input type="text" id="simbolo1" size="1">  5 <input type="text" id="simbolo2" size="1"> 7 = 38
+            ¼ <input type="text" id="simbolo1" size="1"> ¼ = 2/4 
         </p>
 
         <div id= "contBoton">
@@ -54,7 +56,7 @@
 
         <div id="botonExtra" class="boton-extra-container">
             <button id="nextButton" disabled>
-                <a id="nextLink" href="problema1-2-2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+                <a id="nextLink" href="problema1-1-3.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
             </button>
         </div>
         
@@ -74,15 +76,15 @@
         function validar() {
             // Obtener el valor ingresado por el usuario
             const simbolo1 = document.getElementById("simbolo1").value;
-            const simbolo2 = document.getElementById("simbolo2").value;
+            
             const mensaje = document.getElementById("mensaje");
             const botonExtra = document.getElementById("botonExtra");
             const nextButton = document.getElementById("nextButton");
             const nextLink = document.getElementById("nextLink");
     
             // Comprobar si el símbolo es el correcto
-            if (simbolo1 === "+"  && (simbolo2 === "*" || simbolo2 === "x" || simbolo2 === "X")) {
-                mensaje.textContent = "¡Correcto! 3 + 5 * 7 = 38";
+            if (simbolo1 === "+") {
+                mensaje.textContent = "¡Correcto! ¼ + ¼ = 2/4";
                 mensaje.classList.remove("incorrecto");
     
                 botonExtra.style.display = "flex";
@@ -132,11 +134,9 @@
                 actualizarValor();
             }
         });
-
     </script>
 
 </body>
-
 <footer>
 
     <div class="info">

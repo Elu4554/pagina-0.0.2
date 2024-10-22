@@ -297,3 +297,23 @@ footer {
     }
 
 }
+
+.botones {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    
+}
+
+#No {
+    margin-left: 25px;
+}
+
+.pipi {
+    background-color: rgb(214, 181, 245);
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    border-color: rgb(196, 155, 235);
+    border-radius: 5%;
+}

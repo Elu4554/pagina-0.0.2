@@ -197,9 +197,19 @@ ul li:last-child {
     text-decoration: none;
 }
 
+#link-act2 {
+    color: black;
+    text-decoration: none;
+}
 
 
 #regreso {
+    border-radius: 5px;
+    background-color: rgb(214, 181, 245);
+    border-color: rgb(196, 155, 235);
+}
+
+#regreso2 {
     border-radius: 5px;
     background-color: rgb(214, 181, 245);
     border-color: rgb(196, 155, 235);
