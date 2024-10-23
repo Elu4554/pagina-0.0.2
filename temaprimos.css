@@ -1,90 +1,16 @@
-@media (max-width: 1000px) {
-    
-
-    .menu {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-    
-    .imgDPCL {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-}
-
-body{
-    font-family: "Heebo", sans-serif;
+body {
+    flex-direction: column;
     background-color: #ebccee;
-    text-align: justify;
+    justify-content: center;
+    display: flex;
     margin: 0;
     padding: 0;
-    width: 100%;
+    font-family: "Heebo", sans-serif;
 }
 
-.primero {
+h1 {
     display: flex;
-    flex-direction: row;
-    text-align: justify;
-    align-items: center;
     justify-content: center;
-    
-}
-
-.t {
-    font-weight: bold;
-    font-size: 32px;
-    text-align: center;
-    color: black;
-}
-
-img{
-    width: 400px;
-    height: auto;
-}
-
-.contenedor {
-    width: 600px;
-    height: auto;
-    margin-right: 50px;
-}
-
-.texto {
-    font-size: 20px;
-}
-
-.segundo {
-    display: flex;
-    flex-direction: row;
-    text-align: justify;
-    align-items: center;
-    justify-content: center;
-}
-
-@media (max-width: 1000px){
-    img{
-        margin-top: 15px;
-        margin-bottom: 15px;
-        width: 200px;
-    }
-
-    .texto {
-        font-size: 18px;
-        
-    }
-    
-    .primero{
-        flex-direction: column;
-    }
-
-    .segundo{
-        flex-direction: column;
-    }
-
-    .contenedor {
-        width: 350px;
-        margin-right: 10px;
-
-    }
 }
 
 .imgDPCL {
@@ -98,6 +24,7 @@ img{
 }
 
 nav {
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -149,6 +76,68 @@ ul li:last-child {
         padding: 0;
     }
 }
+
+.Titulo {
+    margin-top: 100px;
+    display: flex;
+    font-weight: bold;
+    font-size: 22px;
+    justify-content: center;
+}
+
+.Text {
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    
+}
+
+.Cont {
+    
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 250px;
+    height: auto;
+    display: flex;
+    justify-items: center;
+    
+}
+
+@media (max-width: 800px) {
+    .Cont {
+        max-width: 350px;
+    }
+
+    .Titulo {
+        font-size: 20px;
+    }
+
+    .Text {
+        text-align: justify;
+        font-size: 16px;
+        margin: 0 auto;
+        height: auto;
+        max-width: 400px;
+    }
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    
+    width: 50%;
+    height: auto;
+    margin: 50px auto 0;
+}
+
+#link {
+    display: flex;
+    margin: 0 auto;
+
+}
+
+
 
 footer {
     margin-top: 60px;
@@ -207,6 +196,51 @@ footer {
     align-items: center;
 }
 
+.mas {
+    background-color: #ebccee;
+    border-color: #ebccee;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.opciones{
+    background-color: #ebccee;
+    width: 150px;
+    justify-content: end;
+    text-align: center;
+    height: 190px;
+    
+
+}
+
+.opc {
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.op {
+    display: none;
+    justify-content: flex-end;
+}
+
+.textos {
+    font-size: 17px;
+}
+
+#trofeo {
+    width: 40px;
+    height: 40px;
+}
+
+.trofeo {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
 @media(prefers-color-scheme: dark){
     body {
         background-color: #312531;
@@ -225,4 +259,56 @@ footer {
         color: white;
     }
 
+    .mas{
+        color: white;
+        background-color: #17111d;
+        border-color: #17111d;
+    }
+
+    .opciones {
+        background-color: #16101b;
+    }
+
+    
+}
+
+.menu {
+    width: 25px;
+    height: 25px;
+}
+
+@media (max-width: 1000px) {
+    #link {
+        max-width: 95%;
+    }
+
+    .textos {
+        font-size: 14px;
+    }
+
+    .opciones {
+        width: 140px;
+        height: 135px;
+    }
+
+}
+
+.primos {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.pi {
+    display: flex;
+    justify-content: center;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }

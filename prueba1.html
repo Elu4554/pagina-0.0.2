@@ -41,9 +41,9 @@
         <li><a href="problema1-1-1.html"><button class = "niveles"></button></a></li>
         <li><a href="problema1-2-1.html"><button class = "niveles" id = "nivel2" disabled></button></a></li>
         <li><a href="problema1-3-1.html"><button class = "niveles" id = "nivel3" disabled></button></a></li>
-        <li><button class = "niveles" id = "nivel4" disabled></button></li>
-        <li><button class = "niveles" disabled></button></li>
-        <li><button class = "niveles" disabled></button></li>
+        <li><a href="problema1-4-1.html"><button class = "niveles" id = "nivel4" disabled></button></a></li>
+        <li><a href="problema1-5-1.html"><button class = "niveles" id = "nivel5" disabled></button></a></li>
+        <li><button class = "niveles" id = "nivel6" disabled></button></li>
         <li><button class = "niveles" disabled></button></li>
         <li><button class = "niveles" disabled></button></li>
         <li><button class = "niveles" disabled></button></li>
@@ -89,6 +89,14 @@
 
         if (localStorage.getItem("nivel3Completado")) {
             document.getElementById("nivel4").disabled = false; // Habilita el botón del nivel 1
+        }
+
+        if (localStorage.getItem("nivel4Completado")) {
+            document.getElementById("nivel5").disabled = false; // Habilita el botón del nivel 1
+        }
+
+        if (localStorage.getItem("nivel5Completado")) {
+            document.getElementById("nivel6").disabled = false; // Habilita el botón del nivel 1
         }
 
         ///////

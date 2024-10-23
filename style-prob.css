@@ -318,6 +318,12 @@ footer {
     border-radius: 5%;
 }
 
+.pipi2 {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
 #botonCompletar {
     margin-top: 20px;
     display: flex;

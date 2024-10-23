@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCL</title>
+    <link rel="stylesheet" href="style-prob.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="multiplos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id = "trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="ic--round-menu.png" alt="menu"></button>
+        
+    </nav>
+</head>
+
+<body>
+    <div id = "op" class="op">
+        <div class = "opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="contBig">
+
+        <p class="pipi2">Encuentra todos los numeros primos.</p>
+
+
+        <div class="contenedor">
+            <div class="no1">
+                <button id="boton2" class="boton">2</button>
+                <button id="boton1" class="boton">10</button>
+                <button id="boton3" class="boton">18</button>
+                <button id="boton4" class="boton">23</button>
+                <button id="boton5" class="boton">53</button>
+                
+            </div>
+            
+            <div class="no2">
+                <button id="boton9" class="boton">1</button>
+                <button id="boton6" class="boton">43</button>
+                <button id="boton7" class="boton">35</button>
+                <button id="boton8" class="boton">15</button>
+                <button id="boton10" class="boton">27</button>
+                
+            </div>
+    
+            
+        </div>
+
+        <div class="no3">
+            <a href="problema1-5-3.html">
+                <button id="botonExtra">Siguiente reto</button>
+            </a>
+            
+        </div>
+
+    </div>
+    
+    
+
+    <script>
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        function validar() {
+            // Obtener el valor ingresado por el usuario
+            const simbolo1 = document.getElementById("simbolo1").value;
+            const simbolo2 = document.getElementById("simbolo2").value;
+            const mensaje = document.getElementById("mensaje");
+            const botonExtra = document.getElementById("botonExtra");
+            const nextButton = document.getElementById("nextButton");
+            const nextLink = document.getElementById("nextLink");
+    
+            // Comprobar si el símbolo es el correcto
+            if (simbolo1 === "/"  && simbolo2 === "+") {
+                mensaje.textContent = "¡Correcto! 12 / 4 + 3 = 6";
+                mensaje.classList.remove("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = false;
+                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
+            } else {
+                mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                mensaje.classList.add("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = true;
+                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
+            }
+        }
+
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        // Guardamos las referencias a los botones
+        const botones = [
+            document.getElementById('boton1'),
+            document.getElementById('boton2'),
+            document.getElementById('boton3'),
+            document.getElementById('boton4'),
+            document.getElementById('boton5'),
+            document.getElementById('boton6'),
+            document.getElementById('boton7'),
+            document.getElementById('boton8'),
+            document.getElementById('boton9'),
+            document.getElementById('boton10')
+        ];
+
+        // IDs de botones que son múltiplos correctos
+        const multiplosCorrectos = ['boton2', 'boton4','boton5', 'boton6'];
+
+        // Contador de botones correctos seleccionados
+        let multiplosEncontrados = 0;
+
+        // Referencia al botón extra
+        const botonExtra = document.getElementById('botonExtra');
+
+        // Función que se ejecuta cuando se hace clic en un botón
+        function verificarMultiplo(event) {
+            const boton = event.target; // Botón que fue clickeado
+            const botonID = boton.id;   // ID del botón
+
+            // Si el botón está en la lista de múltiplos correctos y no ha sido seleccionado antes
+            if (multiplosCorrectos.includes(botonID) && !boton.classList.contains('correcto')) {
+                boton.classList.add('correcto'); // Cambiamos el color a verde
+                multiplosEncontrados++;          // Incrementamos el contador
+
+                // Verificamos si se han encontrado los 4 múltiplos correctos
+                if (multiplosEncontrados === 4) {
+                    botonExtra.style.display = 'block'; // Mostramos el botón extra
+                }
+            }
+        }
+
+        // Añadimos el event listener a cada botón
+        botones.forEach(boton => {
+            boton.addEventListener('click', verificarMultiplo);
+        });
+
+        ///////
+
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Evento para el botón que suma 30, pero solo una vez
+        document.getElementById('regreso').addEventListener('click', () => {
+            // Verificamos si ya se sumaron los puntos una vez
+            if (localStorage.getItem('botonPresionado') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
+                actualizarValor();
+            }
+        });
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
+    </script>
+
+</body>
+<footer>
+
+    <div class="info">
+        <h2>DPCL</h2>
+        <p>Contactanos en:</p>
+        
+        
+    </div>
+
+    <div class="contactos">
+        <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
+            <img class="imgEmail" src="Vector-Email-Icon-Transparent.png" alt="email">
+        </a>
+        
+        <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class = "IG" src="instagram_white_28dp.png" alt="IG">
+        </a>
+
+    </div>
+    
+    
+</footer>
+</html>

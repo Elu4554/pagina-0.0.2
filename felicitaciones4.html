@@ -34,12 +34,12 @@
 
     <div id="con">
         <div id="contenedor">
-            <p id="feliz"> Lo lograste, terminaste el nivel, ¡Sigue! </p>
+            <p id="feliz"> Bien hecho, ¡Muy bien! </p>
         </div>
         
         <div id="cont-boton">
-            <button id="regreso3">
-                <a href="prueba1.html" id="link-act3">Regresar</a>
+            <button id="regreso4">
+                <a href="prueba1.html" id="link-act4">Regresar</a>
             </button>
         </div>
     </div>
@@ -55,17 +55,17 @@
         });
 
         // Sumar puntos al contador cuando el botón regreso2 es presionado
-        document.getElementById("regreso3").addEventListener("click", function() {
+        document.getElementById("regreso4").addEventListener("click", function() {
             // Marca el nivel como completado
-            localStorage.setItem("nivel3Completado", "true");
+            localStorage.setItem("nivel4Completado", "true");
             alert("¡Nivel completado!");
 
             // Sumar puntos al contador
-            if (localStorage.getItem('botonPresionado3') !== 'true') {
+            if (localStorage.getItem('botonPresionado4') !== 'true') {
                 let valorActual = parseInt(localStorage.getItem('contador'));
                 valorActual += 30;
                 localStorage.setItem('contador', valorActual);
-                localStorage.setItem('botonPresionado3', 'true'); // Registramos que ya se sumó
+                localStorage.setItem('botonPresionado4', 'true'); // Registramos que ya se sumó
                 actualizarValor(); // Actualiza el valor en el HTML
             }
         });

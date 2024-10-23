@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPCL</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-prob.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,15 +35,34 @@
 
     </div>
 
-    <section class="espacio">
-        <h1 >aqui veras infomracion</h1>
 
-        <a class = "temas" href="temaPCL.html"><p>Logica y pensamiento critico</p></a>
+    <div class = "Cont" >
+        <p id = "problema">
+            Intercala signos aritméticos entre los números 36, 9 y 4 para obtener 0.
+            
+        </p>
 
-        <a class = "temas" href="primos.html"><p>Numero primos</p></a>
+        <p id = "resolucion">
+            36 <input type="text" id="simbolo1" size="1">  9 <input type="text" id="simbolo2" size="1"> 4 = 0
+        </p>
 
-    </section>
+        <div id= "contBoton">
 
+            <button onclick="validar()" id= "boton" >Comprobar</button>
+
+        </div>
+
+        <p id="mensaje" class="resultado"></p>
+
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="problema1-4-3.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
+        
+
+    </div>
+    
     <script>
         document.getElementById("mas").addEventListener("click", function() {
             var div = document.getElementById("op");
@@ -53,7 +72,34 @@
                 div.style.display = "none";
             }
         });
-        
+
+        function validar() {
+            // Obtener el valor ingresado por el usuario
+            const simbolo1 = document.getElementById("simbolo1").value;
+            const simbolo2 = document.getElementById("simbolo2").value;
+            const mensaje = document.getElementById("mensaje");
+            const botonExtra = document.getElementById("botonExtra");
+            const nextButton = document.getElementById("nextButton");
+            const nextLink = document.getElementById("nextLink");
+    
+            // Comprobar si el símbolo es el correcto
+            if (simbolo1 === "-"  && (simbolo2 === "*" || simbolo2 === "x" || simbolo2 === "X"  )) {
+                mensaje.textContent = "¡Correcto! 36 - 9 * 4 = 0";
+                mensaje.classList.remove("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = false;
+                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
+            } else {
+                mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                mensaje.classList.add("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = true;
+                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
+            }
+        }
+
         ///////
 
         // Inicializamos el valor de localStorage si no existe
@@ -88,12 +134,9 @@
                 actualizarValor();
             }
         });
-    
     </script>
-    
 
 </body>
-
 <footer>
 
     <div class="info">
