@@ -73,12 +73,12 @@ ul li:last-child {
 
 /* Container Styles */
 
-.Titulo {
+.titulo {
     margin-top: 100px;
     margin-bottom: 0;
     display: flex;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
     justify-content: center;
     text-align: center;
 }
@@ -106,8 +106,8 @@ ul li:last-child {
         width: 350px;
     }
 
-    .Titulo {
-        font-size: 20px;
+    .titulo {
+        font-size: 18px;
     }
 
     .Text {
