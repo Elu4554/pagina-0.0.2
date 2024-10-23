@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibuja en el Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dibuja y escribe en el Canvas</h1>
+    <canvas id="miCanvas" width="800" height="600"></canvas>
+    <br>
+    <input type="text" id="texto" placeholder="Ingresa tu texto aquí">
+    <button id="agregarTexto">Agregar Texto</button>
+
+    <script>
+        var canvas = document.getElementById('miCanvas');
+        var ctx = canvas.getContext('2d');
+        var dibujando = false;
+
+        // Funciones para dibujar
+        canvas.addEventListener('mousedown', function(e) {
+            dibujando = true;
+            ctx.beginPath();  // Inicia un nuevo camino
+            ctx.moveTo(e.offsetX, e.offsetY);  // Mueve el punto de inicio
+        });
+
+        canvas.addEventListener('mousemove', function(e) {
+            if (dibujando) {
+                ctx.lineTo(e.offsetX, e.offsetY);  // Dibuja una línea hasta el punto actual
+                ctx.stroke();  // Dibuja el contorno
+            }
+        });
+
+        canvas.addEventListener('mouseup', function() {
+            dibujando = false;  // Detiene el dibujo
+        });
+
+        canvas.addEventListener('mouseout', function() {
+            dibujando = false;  // Detiene el dibujo si el mouse sale del canvas
+        });
+
+        // Función para agregar texto al canvas
+        document.getElementById('agregarTexto').addEventListener('click', function() {
+            var texto = document.getElementById('texto').value;
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "black";  // Color del texto
+            ctx.fillText(texto, 100, 100);  // Posición donde se dibuja el texto
+        });
+    </script>
+</body>
+</html>
