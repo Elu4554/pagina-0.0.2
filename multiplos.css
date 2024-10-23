@@ -1,6 +1,6 @@
 body {
     font-family: "Heebo", sans-serif;
-    background-color: #312531;
+    background-color: #ebccee;
     text-align: justify;
     margin: 0;
     padding: 0;
@@ -82,7 +82,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #17111d;
+    background-color: rgb(176, 129, 219);
     padding: 10px;
     overflow-x: hidden;
     
