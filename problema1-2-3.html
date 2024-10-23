@@ -81,6 +81,9 @@
         // Agregar evento al botón Yes
         yesButton.addEventListener("click", function() {
             mensajeBoton.textContent = "Incorrecto";
+            sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
             mensajeBoton.classList.remove("correcto");
             mensajeBoton.classList.add("incorrecto");
             // Desbloquear el botón "Next" porque "No" es la respuesta correcta
@@ -91,6 +94,9 @@
         // Agregar evento al botón No
         noButton.addEventListener("click", function() {
             mensajeBoton.textContent = "Correcto, 12 + 15 No es igual a 30";
+            sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
             mensajeBoton.classList.remove("incorrecto");
             mensajeBoton.classList.add("correcto");
             // Desbloquear el botón "Next"

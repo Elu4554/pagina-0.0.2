@@ -91,6 +91,9 @@
             // Comprobar si el símbolo es el correcto
             if (simbolo1 === "-" ) {
                 mensaje.textContent = "¡Correcto! 2/4 - 1/4 = 2/8 ";
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.remove("incorrecto");
     
                 botonExtra.style.display = "flex";
@@ -98,6 +101,9 @@
                 nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
             } else {
                 mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.add("incorrecto");
     
                 botonExtra.style.display = "flex";

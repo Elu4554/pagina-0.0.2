@@ -59,7 +59,7 @@
                 <a id="nextLink" href="problema1-5-2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
             </button>
         </div>
-        
+
         <audio id="sonidoError" preload="auto">
             <source src="incorrecto.wav" type="audio/mpeg">
             Tu navegador no soporta la etiqueta de audio.
@@ -94,6 +94,9 @@
             // Comprobar si el símbolo es el correcto
             if (simbolo1 === "/"  && (simbolo2 === "*" || simbolo2 === "x" || simbolo2 === "X")) {
                 mensaje.textContent = "¡Correcto! 18 / 3 x 2 = 6";
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.remove("incorrecto");
     
                 botonExtra.style.display = "flex";
@@ -101,6 +104,9 @@
                 nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
             } else {
                 mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.add("incorrecto");
     
                 botonExtra.style.display = "flex";

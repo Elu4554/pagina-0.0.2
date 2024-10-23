@@ -93,6 +93,9 @@
             // Comprobar si el símbolo es el correcto
             if ((simbolo1 === "*" || simbolo1 === "x" || simbolo1 === "X") && (simbolo2 === "+" )) {
                 mensaje.textContent = "¡Correcto! 8 * 3 + 4 = 28";
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.remove("incorrecto");
     
                 botonExtra.style.display = "flex";
@@ -100,6 +103,9 @@
                 nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
             } else {
                 mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.add("incorrecto");
     
                 botonExtra.style.display = "flex";

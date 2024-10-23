@@ -138,10 +138,16 @@ document.getElementById("mas").addEventListener("click", function() {
 
             if (correcto) {
                 resultado.textContent = "¡Felicidades! Has completado el crucigrama correctamente.";
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 resultado.style.color = "green";
                 botonCompletar.style.display = "block"; // Mostrar el botón
             } else {
                 resultado.textContent = "Algunas respuestas son incorrectas. ¡Inténtalo de nuevo!";
+                sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 resultado.style.color = "red";
                 botonCompletar.style.display = "none"; // Ocultar el botón si hay errores
             }

@@ -160,6 +160,9 @@
             // Si el botón está en la lista de múltiplos correctos y no ha sido seleccionado antes
             if (multiplosCorrectos.includes(botonID) && !boton.classList.contains('correcto')) {
                 boton.classList.add('correcto'); // Cambiamos el color a verde
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 multiplosEncontrados++;          // Incrementamos el contador
 
                 // Verificamos si se han encontrado los 4 múltiplos correctos
