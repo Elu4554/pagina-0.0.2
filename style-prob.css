@@ -317,3 +317,29 @@ footer {
     border-color: rgb(196, 155, 235);
     border-radius: 5%;
 }
+
+#botonCompletar {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#regreso {
+    background-color: rgb(214, 181, 245);
+    width: 120px;
+    border-color: rgb(196, 155, 235);
+    border-radius: 5%;
+    text-align: center;
+    align-items: center; /* Asegura que el texto esté centrado dentro del botón */
+}
+
+.boton-verificar {
+    background-color: rgb(214, 181, 245);
+    width: 120px;
+    border-color: rgb(196, 155, 235);
+    border-radius: 5%;
+    text-align: center;
+    align-items: center; /* Asegura que el texto esté centrado dentro del botón */
+
+}

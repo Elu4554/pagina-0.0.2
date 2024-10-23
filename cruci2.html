@@ -4,94 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crucigrama Matemático</title>
-    
+    <link rel="stylesheet" href="cruci.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class="logo"><a href="index.html"><img class="imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id="trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <button id="mas" class="mas"><img class="menu" src="ic--round-menu.png" alt="menu"></button>
+    </nav>
 </head>
 <body>
+    <div id="op" class="op">
+        <div class="opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+            </ul>
+        </div>
+    </div>
 
     <h2>Crucigrama Matemático</h2>
     <div class="pagina">
-        <div id="crucigrama" class="crucigrama">
-            <!-- Aquí se generará el crucigrama dinámicamente -->
+        <div class="crucigrama">
+            <!-- Fila 1 -->
+            <input type="text" maxlength="1" id="c1" value="2" readonly>
+            <input type="text" maxlength="1" id="c2" value="*" readonly>
+            <input type="text" maxlength="1" id="c3">
+            <input type="text" maxlength="1" id="c4" value="=" readonly>
+            <input type="text" maxlength="1" id="c5" value="8" readonly>
+
+            <!-- Fila 2 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c6" value="+" readonly>
+            <input disabled>
+            <input disabled>
+
+            <!-- Fila 3 -->
+            <input type="text" maxlength="2" id="c10">
+            <input type="text" maxlength="2" id="c11" value="-" readonly>
+            <input type="text" maxlength="2" id="c7">
+            <input type="text" maxlength="2" id="c12" value="=" readonly>
+            <input type="text" maxlength="2" id="c13" value="1" readonly>
+
+            <!-- Fila 4 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c8" value="=" readonly>
+            <input disabled>
+            <input disabled>
+
+            <!-- Fila 5 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c9" value="14" readonly>
+            <input disabled>
+            <input disabled>
         </div>
     </div>
-    
+
     <div class="botonVer">
-        <button id="btnVerificar" class="boton-verificar" onclick="verificarCrucigrama()">Verificar</button>
-        <button id="btnNuevoCrucigrama" class="boton-verificar" onclick="generarCrucigrama()" disabled>Generar Nuevo Crucigrama</button>
+        <button class="boton-verificar" onclick="verificarCrucigrama()">Verificar</button>
     </div>
-    
+
     <div id="resultado"></div>
 
+    <!-- Botón oculto que aparecerá al completar el crucigrama -->
+    <div id="botonCompletar" style="display: none;">
+        <button id="regreso" class="boton-completar">Volver al inicio</button>
+    </div>
+
     <script>
-        let respuestasCorrectas = {};
-
-        // Función para generar un número aleatorio entre 1 y 50
-        function generarNumeroAleatorio() {
-            return Math.floor(Math.random() * 50) + 1;
-        }
-
-        function generarCrucigrama() {
-            const crucigramaDiv = document.getElementById("crucigrama");
-            crucigramaDiv.innerHTML = ''; // Limpiar el crucigrama anterior
-            respuestasCorrectas = {}; // Reiniciar respuestas correctas
-            
-            // Generar una operación aleatoria: num1 * num2 = resultado
-            const num1 = generarNumeroAleatorio();
-            const num2 = generarNumeroAleatorio();
-            const resultadoMultiplicacion = num1 * num2;
-
-            // Generar otra operación aleatoria: num3 - num4 = resultado
-            const num3 = generarNumeroAleatorio();
-            const num4 = generarNumeroAleatorio();
-            const resultadoResta = num3 - num4;
-
-            // Estructura del crucigrama
-            const estructura = [
-                { id: "c1", value: num1, readonly: true },
-                { id: "c2", value: "*", readonly: true },
-                { id: "c3", value: "", readonly: false }, // respuesta que el usuario debe llenar
-                { id: "c4", value: "=", readonly: true },
-                { id: "c5", value: resultadoMultiplicacion, readonly: true },
-
-                { id: "c6", value: "", readonly: false }, // respuesta que el usuario debe llenar
-                { id: "c7", value: "-", readonly: true },
-                { id: "c8", value: num4, readonly: true },
-                { id: "c9", value: "=", readonly: true },
-                { id: "c10", value: resultadoResta, readonly: true }
-            ];
-
-            // Definir las respuestas correctas
-            respuestasCorrectas["c3"] = num2.toString();
-            respuestasCorrectas["c6"] = num3.toString();
-
-            // Generar el HTML para el crucigrama
-            estructura.forEach(celda => {
-                const input = document.createElement("input");
-                input.type = "text";
-                input.maxLength = 2;
-                input.id = celda.id;
-                if (celda.readonly) {
-                    input.value = celda.value;
-                    input.readOnly = true;
-                }
-                crucigramaDiv.appendChild(input);
-            });
-
-            // Desactivar el botón de nuevo crucigrama hasta que el actual se resuelva
-            document.getElementById("btnNuevoCrucigrama").disabled = true;
-            document.getElementById("resultado").textContent = '';
-        }
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
 
         function verificarCrucigrama() {
-            let correcto = true;
+            const respuestas = {
+                c3: "4", c7: "10", c10: "11", c13: "1"
+            };
 
-            // Verificar cada respuesta
-            for (let id in respuestasCorrectas) {
+            let correcto = true;
+            for (let id in respuestas) {
                 const input = document.getElementById(id);
-                if (input.value !== respuestasCorrectas[id]) {
+                if (input.value !== respuestas[id]) {
                     input.style.backgroundColor = "red";
                     correcto = false;
                 } else {
@@ -100,23 +109,68 @@
             }
 
             const resultado = document.getElementById("resultado");
+            const botonCompletar = document.getElementById("botonCompletar");
+
             if (correcto) {
                 resultado.textContent = "¡Felicidades! Has completado el crucigrama correctamente.";
                 resultado.style.color = "green";
-                document.getElementById("btnNuevoCrucigrama").disabled = false;
+                botonCompletar.style.display = "block"; // Mostrar el botón
             } else {
                 resultado.textContent = "Algunas respuestas son incorrectas. ¡Inténtalo de nuevo!";
                 resultado.style.color = "red";
+                botonCompletar.style.display = "none"; // Ocultar el botón si hay errores
             }
         }
 
-        // Generar un crucigrama al cargar la página
-        window.onload = generarCrucigrama;
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Evento para el botón que suma 30, pero solo una vez
+        document.getElementById('regreso').addEventListener('click', () => {
+            // Verificamos si ya se sumaron los puntos una vez
+            if (localStorage.getItem('botonPresionado') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
+                actualizarValor();
+            }
+        });
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
     </script>
 
 </body>
 
 <footer>
-    <!-- El contenido de tu footer aquí -->
+    <div class="info">
+        <h2>DPCL</h2>
+        <p>Contactanos en:</p>
+    </div>
+
+    <div class="contactos">
+        <a class="Enlace" href="mailto:contactodpcl@gmail.com"> 
+            <img class="imgEmail" src="Vector-Email-Icon-Transparent.png" alt="email">
+        </a>
+        <a href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class="IG" src="instagram_white_28dp.png" alt="IG">
+        </a>
+    </div>
 </footer>
 </html>

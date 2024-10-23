@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCL</title>
+    <link rel="stylesheet" href="style-prob.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="juego.css">
+    <link rel="stylesheet" href="cruci.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id = "trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="ic--round-menu.png" alt="menu"></button>
+        
+    </nav>
+</head>
+
+<body>
+    <div id="op" class="op">
+        <div class="opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Crucigrama Matemático</h2>
+    <div class="pagina">
+        <div class="crucigrama">
+            <!-- Fila 1 -->
+            <input type="text" maxlength="1" id="c1" value="2" readonly>
+            <input type="text" maxlength="1" id="c2" value="*" readonly>
+            <input type="text" maxlength="1" id="c3">
+            <input type="text" maxlength="1" id="c4" value="=" readonly>
+            <input type="text" maxlength="1" id="c5" value="8" readonly>
+
+            <!-- Fila 2 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c6" value="+" readonly>
+            <input disabled>
+            <input disabled>
+
+            <!-- Fila 3 -->
+            <input type="text" maxlength="2" id="c10">
+            <input type="text" maxlength="2" id="c11" value="-" readonly>
+            <input type="text" maxlength="2" id="c7">
+            <input type="text" maxlength="2" id="c12" value="=" readonly>
+            <input type="text" maxlength="2" id="c13" value="1" readonly>
+
+            <!-- Fila 4 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c8" value="=" readonly>
+            <input disabled>
+            <input disabled>
+
+            <!-- Fila 5 -->
+            <input disabled>
+            <input disabled>
+            <input type="text" maxlength="1" id="c9" value="14" readonly>
+            <input disabled>
+            <input disabled>
+        </div>
+    </div>
+
+    <div class="botonVer">
+        <button class="boton-verificar" onclick="verificarCrucigrama()">Verificar</button>
+    </div>
+
+    <div id="resultado"></div>
+
+    <!-- Botón oculto que aparecerá al completar el crucigrama -->
+    <div id="botonCompletar" style="display: none;">
+        <a href="problema1-3-3.html">
+            <button id="regreso" class="boton-completar">Siguiente reto</button>
+
+        </a>
+        
+    </div>
+    
+    <script>
+
+document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        function verificarCrucigrama() {
+            const respuestas = {
+                c3: "4", c7: "10", c10: "11", c13: "1"
+            };
+
+            let correcto = true;
+            for (let id in respuestas) {
+                const input = document.getElementById(id);
+                if (input.value !== respuestas[id]) {
+                    input.style.backgroundColor = "red";
+                    correcto = false;
+                } else {
+                    input.style.backgroundColor = "lightgreen";
+                }
+            }
+
+            const resultado = document.getElementById("resultado");
+            const botonCompletar = document.getElementById("botonCompletar");
+
+            if (correcto) {
+                resultado.textContent = "¡Felicidades! Has completado el crucigrama correctamente.";
+                resultado.style.color = "green";
+                botonCompletar.style.display = "block"; // Mostrar el botón
+            } else {
+                resultado.textContent = "Algunas respuestas son incorrectas. ¡Inténtalo de nuevo!";
+                resultado.style.color = "red";
+                botonCompletar.style.display = "none"; // Ocultar el botón si hay errores
+            }
+        }
+
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Evento para el botón que suma 30, pero solo una vez
+        document.getElementById('regreso').addEventListener('click', () => {
+            // Verificamos si ya se sumaron los puntos una vez
+            if (localStorage.getItem('botonPresionado') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
+                actualizarValor();
+            }
+        });
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
+
+        const boton1 = document.getElementById('boton1');
+        const boton2 = document.getElementById('boton2');
+        const boton3 = document.getElementById('boton3');
+        const boton4 = document.getElementById('boton4');
+        const boton5 = document.getElementById('boton5');
+        const boton6 = document.getElementById('boton6');
+        const boton7 = document.getElementById('boton7');
+        const boton8 = document.getElementById('boton8');
+        const pasarNivel = document.getElementById('pasarNivel');
+        const sonidoError = document.getElementById('sonidoError');
+        const sonidoCorrecto = document.getElementById('sonidoCorrecto');
+
+        let seleccionados = [];
+        const parejasCorrectas = [
+            ['boton1', 'boton5'],
+            ['boton2', 'boton6'],
+            ['boton3', 'boton4'],
+            ['boton7', 'boton8']
+        ];
+        let parejasEncontradas = 0;
+        let sonidoEnReproduccion = false; // Nueva variable para controlar el estado del sonido
+
+        function esParejaCorrecta(id1, id2) {
+            return parejasCorrectas.some(pareja => (pareja.includes(id1) && pareja.includes(id2)));
+        }
+
+        function verificarNivel() {
+            if (parejasEncontradas === parejasCorrectas.length) {
+                pasarNivel.style.display = 'block';
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
+            }
+        }
+
+        function seleccionarBoton(boton) {
+            if (boton.classList.contains('correcto')) return;
+
+            if (boton.classList.contains('seleccionado')) {
+                boton.classList.remove('seleccionado');
+                seleccionados = seleccionados.filter(id => id !== boton.id);
+                return;
+            }
+
+            boton.classList.add('seleccionado');
+            seleccionados.push(boton.id);
+
+            if (seleccionados.length === 2) {
+                const [id1, id2] = seleccionados;
+
+                if (esParejaCorrecta(id1, id2)) {
+                    document.getElementById(id1).classList.add('correcto');
+                    document.getElementById(id2).classList.add('correcto');
+                    parejasEncontradas++;
+
+                    if (!sonidoEnReproduccion) { // Solo reproducir si no hay sonido en reproducción
+                        sonidoEnReproduccion = true; // Establecer que el sonido se está reproduciendo
+                        sonidoCorrecto.play().then(() => {
+                            sonidoEnReproduccion = false; // Restablecer después de reproducir
+                        }).catch(error => {
+                            console.error("Error al reproducir el sonido correcto:", error);
+                            sonidoEnReproduccion = false; // Asegurarse de restablecer si hay un error
+                        });
+                    }
+                } else {
+                    if (!sonidoEnReproduccion) { // Solo reproducir si no hay sonido en reproducción
+                        sonidoEnReproduccion = true; // Establecer que el sonido se está reproduciendo
+                        sonidoError.play().then(() => {
+                            sonidoEnReproduccion = false; // Restablecer después de reproducir
+                        }).catch(error => {
+                            console.error("Error al reproducir el sonido de error:", error);
+                            sonidoEnReproduccion = false; // Asegurarse de restablecer si hay un error
+                        });
+                    }
+                }
+
+                seleccionados.forEach(id => document.getElementById(id).classList.remove('seleccionado'));
+                seleccionados = [];
+                verificarNivel();
+            }
+        }
+
+        boton1.addEventListener('click', () => seleccionarBoton(boton1));
+        boton2.addEventListener('click', () => seleccionarBoton(boton2));
+        boton3.addEventListener('click', () => seleccionarBoton(boton3));
+        boton4.addEventListener('click', () => seleccionarBoton(boton4));
+        boton5.addEventListener('click', () => seleccionarBoton(boton5));
+        boton6.addEventListener('click', () => seleccionarBoton(boton6));
+        boton7.addEventListener('click', () => seleccionarBoton(boton7));
+        boton8.addEventListener('click', () => seleccionarBoton(boton8));
+
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        function validar() {
+            // Obtener el valor ingresado por el usuario
+            const simbolo1 = document.getElementById("simbolo1").value;
+            const simbolo2 = document.getElementById("simbolo2").value;
+            const mensaje = document.getElementById("mensaje");
+            const botonExtra = document.getElementById("botonExtra");
+            const nextButton = document.getElementById("nextButton");
+            const nextLink = document.getElementById("nextLink");
+    
+            // Comprobar si el símbolo es el correcto
+            if ((simbolo1 === "*" || simbolo1 === "x") && simbolo2 === "+") {
+                mensaje.textContent = "¡Correcto! 4 * 5 + 6 = 26";
+                mensaje.classList.remove("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = false;
+                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
+            } else {
+                mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                mensaje.classList.add("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = true;
+                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
+            }
+        }
+
+        ///////
+
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Evento para el botón que suma 30, pero solo una vez
+        document.getElementById('regreso').addEventListener('click', () => {
+            // Verificamos si ya se sumaron los puntos una vez
+            if (localStorage.getItem('botonPresionado') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
+                actualizarValor();
+            }
+        });
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
+    </script>
+
+</body>
+<footer>
+
+    <div class="info">
+        <h2>DPCL</h2>
+        <p>Contactanos en:</p>
+        
+        
+    </div>
+
+    <div class="contactos">
+        <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
+            <img class="imgEmail" src="Vector-Email-Icon-Transparent.png" alt="email">
+        </a>
+        
+        <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class = "IG" src="instagram_white_28dp.png" alt="IG">
+        </a>
+
+    </div>
+    
+    
+</footer>
+</html>
