@@ -349,3 +349,16 @@ footer {
     align-items: center; /* Asegura que el texto esté centrado dentro del botón */
 
 }
+
+.enlaceTema {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+.enlacePrimos {
+    color: white;
+    text-decoration: underline;
+}
