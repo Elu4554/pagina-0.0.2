@@ -61,6 +61,16 @@
         
 
     </div>
+
+    <audio id="sonidoError" preload="auto">
+        <source src="incorrecto.wav" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <audio id="sonidoCorrecto" preload="auto">
+        <source src="correcto.wav" type="audio/wav">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
     
     <script>
         document.getElementById("mas").addEventListener("click", function() {
@@ -84,6 +94,9 @@
             // Comprobar si el símbolo es el correcto
             if ((simbolo1 === "*" || simbolo1 === "x") && simbolo2 === "+") {
                 mensaje.textContent = "¡Correcto! 4 * 5 + 6 = 26";
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.remove("incorrecto");
     
                 botonExtra.style.display = "flex";
@@ -91,6 +104,9 @@
                 nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
             } else {
                 mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
                 mensaje.classList.add("incorrecto");
     
                 botonExtra.style.display = "flex";
