@@ -37,32 +37,71 @@
     </div>
 
 
-    <div class="titulo">
-        <h1>Juego de Emparejar Botones</h1>
-
-    </div>
-
-    <p id="problema">En la columna izquierda hay operaciones aritmeticas, 
-        en la columna derecha estan las soluciones, 
-        empareja cada operacion con su respuesta o en el caso de ser necesario, 
-        con su igualdad</p>
+    <p id="problema">Busca las igualdades y emparejalas</p>
 
     <div class="contenedor">
         <div class="operacion">
-            <button id="boton2" class="boton">4/6</button>
-            <button id="boton3" class="boton">7 + 3 * 2</button>
-            <button id="boton7" class="boton">20 - 5 + 2</button>
-            <button id="boton1" class="boton">15 + 5 + 2</button>
             
-
+            
+            <button id="boton1" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-4.png" alt="5" width="40">
+                </div>
+                    <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-5.png" alt="4" width="40">
+                </div>
+            </button>
+            <button id="boton5" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-1.png" alt="5" width="40">
+                </div>
+                    <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-4.png" alt="4" width="40">
+                </div>
+            </button>
+            <button id="boton3" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-3.png" alt="5" width="40">
+                </div>
+                    <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-6.png" alt="4" width="40">
+                </div>
+            </button>
         </div>
         
         <div class="respuesta">
-            <button id="boton5" class="boton">22</button>
-            <button id="boton8" class="boton">17</button>
-            <button id="boton6" class="boton">12/18</button>
-
-            <button id="boton4" class="boton">13</button>
+            <button id="boton2" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-1.png" alt="5" width="40">
+                </div>
+                    <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-2.png" alt="4" width="40">
+                </div>
+            </button>
+            
+            <button id="boton6" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-8.png" alt="5" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-1.png" alt="4" width="40">
+                    <img src="ri--number-0.png" alt="0" width="40">
+                </div>
+            </button>
+            <button id="boton4" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-2.png" alt="2" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-8.png" alt="4" width="40">
+                </div>
+            </button>
 
         </div>
         
@@ -70,7 +109,7 @@
     </div>
 
     <div class="siguiente">
-        <a id="nextLink" href="felicitaciones4.html" style="text-decoration: none; color: black;">
+        <a id="nextLink" href="felicitaciones6.html" style="text-decoration: none; color: black;">
             <button id="pasarNivel" class="boton">Siguiente</button>
         </a>
         
@@ -90,6 +129,26 @@
 
     
     <script>
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
 
         const boton1 = document.getElementById('boton1');
         const boton2 = document.getElementById('boton2');
@@ -105,10 +164,9 @@
 
         let seleccionados = [];
         const parejasCorrectas = [
-            ['boton1', 'boton5'],
-            ['boton2', 'boton6'],
-            ['boton3', 'boton4'],
-            ['boton7', 'boton8']
+            ['boton1', 'boton6'],
+            ['boton3', 'boton2'],
+            ['boton5', 'boton4'],
         ];
         let parejasEncontradas = 0;
         let sonidoEnReproduccion = false; // Nueva variable para controlar el estado del sonido
@@ -191,33 +249,7 @@
             }
         });
 
-        function validar() {
-            // Obtener el valor ingresado por el usuario
-            const simbolo1 = document.getElementById("simbolo1").value;
-            const simbolo2 = document.getElementById("simbolo2").value;
-            const mensaje = document.getElementById("mensaje");
-            const botonExtra = document.getElementById("botonExtra");
-            const nextButton = document.getElementById("nextButton");
-            const nextLink = document.getElementById("nextLink");
-    
-            // Comprobar si el símbolo es el correcto
-            if ((simbolo1 === "*" || simbolo1 === "x") && simbolo2 === "+") {
-                mensaje.textContent = "¡Correcto! 4 * 5 + 6 = 26";
-                mensaje.classList.remove("incorrecto");
-    
-                botonExtra.style.display = "flex";
-                nextButton.disabled = false;
-                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
-            } else {
-                mensaje.textContent = "Incorrecto, intenta de nuevo.";
-                mensaje.classList.add("incorrecto");
-    
-                botonExtra.style.display = "flex";
-                nextButton.disabled = true;
-                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
-            }
-        }
-
+        
         ///////
 
         // Inicializamos el valor de localStorage si no existe

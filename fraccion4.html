@@ -37,46 +37,94 @@
     </div>
 
 
-    <div class="titulo">
-        <h1>Juego de Emparejar Botones</h1>
+    <p id="problema2">Utiliza símbolos de relación (&lt;, &gt;, =) para comparar las dos fracciones.</p>
 
-    </div>
-
-    <p id="problema">En la columna izquierda hay operaciones aritmeticas, 
-        en la columna derecha estan las soluciones, 
-        empareja cada operacion con su respuesta o en el caso de ser necesario, 
-        con su igualdad</p>
-
-    <div class="contenedor">
-        <div class="operacion">
-            <button id="boton2" class="boton">4/6</button>
-            <button id="boton3" class="boton">7 + 3 * 2</button>
-            <button id="boton7" class="boton">20 - 5 + 2</button>
-            <button id="boton1" class="boton">15 + 5 + 2</button>
-            
-
+    <div class="espaciote">
+        <div class="espacio">
+            <button class="contenido3" id="boton1">
+                <div class="arriba2">
+                    <img src="ri--number-4.png" alt="5" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-5.png" alt="4" width="40">
+                    
+                </div>
+            </button>
+        
+            <button class="contenido3 der" id="boton2">
+                <div class="arriba2">
+                    <img src="ri--number-1.png" alt="5" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-2.png" alt="4" width="40">
+                    
+                </div>
+            </button>
         </div>
         
-        <div class="respuesta">
-            <button id="boton5" class="boton">22</button>
-            <button id="boton8" class="boton">17</button>
-            <button id="boton6" class="boton">12/18</button>
-
-            <button id="boton4" class="boton">13</button>
-
+        <div class="espacio">
+            <button class="contenido3" id="boton3">
+                <div class="arriba2">
+                    <img src="ri--number-3.png" alt="5" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-6.png" alt="4" width="40">
+                    
+                </div>
+            </button>
+        
+            <button class="contenido3 der" id="boton4">
+                <div class="arriba2">
+                    <img src="ri--number-2.png" alt="2" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-8.png" alt="4" width="40">
+                    
+                </div>
+            </button>
         </div>
         
-
-    </div>
-
-    <div class="siguiente">
-        <a id="nextLink" href="felicitaciones4.html" style="text-decoration: none; color: black;">
-            <button id="pasarNivel" class="boton">Siguiente</button>
-        </a>
+        <div class="espacio">
+            <button class="contenido3" id="boton5">
+                <div class="arriba2">
+                    <img src="ri--number-1.png" alt="5" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-4.png" alt="4" width="40">
+                    
+                </div>
+            </button>
         
+            <button class="contenido3 der" id="boton6">
+                <div class="arriba2">
+                    <img src="ri--number-8.png" alt="5" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-1.png" alt="4" width="40">
+                    <img src="ri--number-0.png" alt="0" width="40">
+                </div>
+                
+            </button>
+        </div>
 
     </div>
     
+    <div id= "contBoton">
+        <button onclick="validar()" id= "boton" >Comprobar</button>
+
+    </div>
+
+    <div id="botonExtra" class="boton-extra-container">
+        <button id="nextButton" disabled>
+            <a id="nextLink" href="problema1-2-2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+        </button>
+    </div>
 
     <audio id="sonidoError" preload="auto">
         <source src="incorrecto.wav" type="audio/mpeg">
@@ -88,8 +136,15 @@
         Tu navegador no soporta la etiqueta de audio.
     </audio>
 
-    
     <script>
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
 
         const boton1 = document.getElementById('boton1');
         const boton2 = document.getElementById('boton2');
@@ -97,18 +152,20 @@
         const boton4 = document.getElementById('boton4');
         const boton5 = document.getElementById('boton5');
         const boton6 = document.getElementById('boton6');
-        const boton7 = document.getElementById('boton7');
-        const boton8 = document.getElementById('boton8');
         const pasarNivel = document.getElementById('pasarNivel');
         const sonidoError = document.getElementById('sonidoError');
         const sonidoCorrecto = document.getElementById('sonidoCorrecto');
+        const botonExtra = document.getElementById("botonExtra");
+        const nextLink = document.getElementById('nextLink'); // Botón "Siguiente"
+        const nextButton = document.getElementById("nextButton");
+        
 
         let seleccionados = [];
         const parejasCorrectas = [
-            ['boton1', 'boton5'],
-            ['boton2', 'boton6'],
-            ['boton3', 'boton4'],
-            ['boton7', 'boton8']
+            ['boton1', 'boton6'],
+            ['boton3', 'boton2'],
+            ['boton5', 'boton4'],
+            
         ];
         let parejasEncontradas = 0;
         let sonidoEnReproduccion = false; // Nueva variable para controlar el estado del sonido
@@ -119,7 +176,9 @@
 
         function verificarNivel() {
             if (parejasEncontradas === parejasCorrectas.length) {
-                pasarNivel.style.display = 'block';
+                botonExtra.style.display = "flex";
+            nextButton.disabled = false;
+            nextLink.style.pointerEvents = "auto";
                 sonidoCorrecto.play().catch(error => {
                     console.error("Error al reproducir el sonido correcto:", error);
                 });
@@ -182,76 +241,6 @@
         boton7.addEventListener('click', () => seleccionarBoton(boton7));
         boton8.addEventListener('click', () => seleccionarBoton(boton8));
 
-        document.getElementById("mas").addEventListener("click", function() {
-            var div = document.getElementById("op");
-            if (div.style.display === "none" || div.style.display === "") {
-                div.style.display = "flex";
-            } else {
-                div.style.display = "none";
-            }
-        });
-
-        function validar() {
-            // Obtener el valor ingresado por el usuario
-            const simbolo1 = document.getElementById("simbolo1").value;
-            const simbolo2 = document.getElementById("simbolo2").value;
-            const mensaje = document.getElementById("mensaje");
-            const botonExtra = document.getElementById("botonExtra");
-            const nextButton = document.getElementById("nextButton");
-            const nextLink = document.getElementById("nextLink");
-    
-            // Comprobar si el símbolo es el correcto
-            if ((simbolo1 === "*" || simbolo1 === "x") && simbolo2 === "+") {
-                mensaje.textContent = "¡Correcto! 4 * 5 + 6 = 26";
-                mensaje.classList.remove("incorrecto");
-    
-                botonExtra.style.display = "flex";
-                nextButton.disabled = false;
-                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
-            } else {
-                mensaje.textContent = "Incorrecto, intenta de nuevo.";
-                mensaje.classList.add("incorrecto");
-    
-                botonExtra.style.display = "flex";
-                nextButton.disabled = true;
-                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
-            }
-        }
-
-        ///////
-
-        // Inicializamos el valor de localStorage si no existe
-        if (!localStorage.getItem('contador')) {
-            localStorage.setItem('contador', 0);
-        }
-
-        // Función para actualizar el valor en el HTML
-        function actualizarValor() {
-            const valor = localStorage.getItem('contador');
-            document.getElementById('valor').textContent = valor;
-        }
-
-        // Actualizamos el valor al cargar la página
-        actualizarValor();
-
-        // Evento para el botón que suma 30, pero solo una vez
-        document.getElementById('regreso').addEventListener('click', () => {
-            // Verificamos si ya se sumaron los puntos una vez
-            if (localStorage.getItem('botonPresionado') !== 'true') {
-                let valorActual = parseInt(localStorage.getItem('contador'));
-                valorActual += 30;
-                localStorage.setItem('contador', valorActual);
-                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
-                actualizarValor();
-            }
-        });
-
-        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'contador') {
-                actualizarValor();
-            }
-        });
     </script>
 
 </body>

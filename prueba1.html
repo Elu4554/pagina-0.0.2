@@ -38,13 +38,13 @@
 
     <ul id="botones">
 
-        <li><a href="problema1-1-1.html"><button class = "niveles">1</button></a></li>
-        <li><a href="problema1-2-1.html"><button class = "niveles" id = "nivel2" disabled>2</button></a></li>
-        <li><a href="problema1-3-1.html"><button class = "niveles" id = "nivel3" disabled>3</button></a></li>
-        <li><a href="problema1-4-1.html"><button class = "niveles" id = "nivel4" disabled>4</button></a></li>
+        <li><a href="aritmetica4.html"><button class = "niveles">1</button></a></li>
+        <li><a href="aritmetica1.html"><button class = "niveles" id = "nivel2" disabled>2</button></a></li>
+        <li><a href="aritmetica2.html"><button class = "niveles" id = "nivel3" disabled>3</button></a></li>
+        <li><a href="aritmetica3.html"><button class = "niveles" id = "nivel4" disabled>4</button></a></li>
         <li><a href="problema1-5-1.html"><button class = "niveles" id = "nivel5" disabled>5</button></a></li>
-        <li><button class = "niveles" id = "nivel6" disabled>6</button></li>
-        <li><button class = "niveles" disabled>7</button></li>
+        <li><a href="fraccion.html"><button class = "niveles" id = "nivel6" disabled>6</button></a></li>
+        <li><button class = "niveles" id = "nivel7" disabled>7</button></li>
         <li><button class = "niveles" disabled>8</button></li>
         <li><button class = "niveles" disabled>9</button></li>
         <li><button class = "niveles" disabled>10</button></li>
@@ -97,6 +97,10 @@
 
         if (localStorage.getItem("nivel5Completado")) {
             document.getElementById("nivel6").disabled = false; // Habilita el botón del nivel 1
+        }
+
+        if (localStorage.getItem("nivel6Completado")) {
+            document.getElementById("nivel7").disabled = false; // Habilita el botón del nivel 1
         }
 
         ///////

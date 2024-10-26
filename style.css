@@ -233,6 +233,12 @@ ul li:last-child {
     border-color: rgb(196, 155, 235);
 }
 
+#regreso6 {
+    border-radius: 5px;
+    background-color: rgb(214, 181, 245);
+    border-color: rgb(196, 155, 235);
+}
+
 #regreso:active {
     background-color: rgb(196, 155, 235);
     border-color: rgb(178, 127, 226);
