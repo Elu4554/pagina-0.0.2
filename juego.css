@@ -150,7 +150,7 @@ body{
 
 }
 
-.contenido3 {
+.contenido4 {
     font-size: 70px;
     display: flex;
     flex-direction: column;
@@ -292,7 +292,7 @@ body{
         border-radius: 15px;
     }
 
-    .contenido3 {
+    .contenido4 {
         font-size: 40px;
         border-radius: 10px;
         width: 60px;
