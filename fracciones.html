@@ -36,55 +36,38 @@
 
     </div>
 
+    <h1>Fracciones</h1>
 
-    <p id="problema2">Si quieres repartir una pizza de ocho rebanadas para cuatro personas,
-        de forma que todos tengan la misma cantidad de rebanas.
-        ¿Cuantas rebanadas de pizza son para cada quien? Escribe tu respuesta en forma de fraccion.
+    <h2 class="titulo">¿Que es una fraccion?</h2>
+    <p class="Text">Una fraccion es la division de una unidad, consta de un numerador y un denominador,
+        el numerador es la parte de arriba, es la parte que nos dice cuantas partes de la division tenemos,
+        y el denominador es la parte de abajo, es la parte que nos dice cuantas partes hay en total, en cuantas partes 
+        se dividio la unidad.
     </p>
 
-    <div class="frac2">
-        <div class="arriba2">
-            <input type="number" class="contenido3" id="input1" >
+    <p class="Text"> Imagina que tienes un delicioso pastel de cumpleaños. Puedes elegir el sabor y el tamaño que más te guste.
+        Decides partirlo en 8 partes iguales para ti y tus 7 amigos, porque quieren compartirlo en la fiesta. 
+        Esas 8 partes representan el total de rebanadas en las que dividiste el pastel, lo que llamaremos el denominador. 
+        El denominador nos dice en cuántas partes se ha dividido el pastel completo.
+
+    </p>
+
+    <p class="Text">Pero cuando llega la hora de la fiesta, dos de tus amigos no pueden asistir.
+        Sin embargo, el pastel ya está partido en 8 rebanadas, así que decides guardar las partes de tus amigos que faltaron. 
+        Al final, repartes solo 6 rebanadas, y esas 6 representan el numerador en una fracción. 
+        El numerador nos dice cuántas partes del total estamos usando.
         
-        </div>
-
-        <img src="resta.png" alt="resta" width="170">
-    
-        <div class="abajo">
-            <input type="number" class="contenido3" id="input2" >
-            
-        </div>
-
-    </div>
-
-    </div>
-
-    <div id= "contBoton">
-
-        <button onclick="validar()" id= "boton" >Comprobar</button>
-
-    </div>
-
-    <div id="botonExtra" class="boton-extra-container">
-        <button id="nextButton" disabled>
-            <a id="nextLink" href="fraccion3.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
-        </button>
-    </div>
-    
-    <p class = "enlaceTema">¿Tienes dificultades?  
-        <a class = "enlacePrimos" href="fracciones.html"> !Haz cick aqui¡
-        </a>
+        Entonces, si representamos esta situación con una fracción, tendríamos 6/8, donde:
+        
+        6 es el numerador: las partes del pastel que repartiste.
+        8 es el denominador: las partes en las que dividiste el pastel.
+        De esta forma, una fracción como 6/8 nos da una idea clara de cuántas partes del total estamos considerando o usando en cada situación. 
+        ¡Así de sencillo es entender las fracciones!
     </p>
 
-    <audio id="sonidoError" preload="auto">
-        <source src="incorrecto.wav" type="audio/mpeg">
-        Tu navegador no soporta la etiqueta de audio.
-    </audio>
+    <img class = "pastel" src="pastel.png" alt="pastel" width="300">
 
-    <audio id="sonidoCorrecto" preload="auto">
-        <source src="correcto.wav" type="audio/wav">
-        Tu navegador no soporta la etiqueta de audio.
-    </audio>
+    
 
     
     <script>
@@ -117,44 +100,6 @@
                 div.style.display = "none";
             }
         });
-
-        const botonExtra = document.getElementById("botonExtra");
-        const input1 = document.getElementById('input1');
-        const input2 = document.getElementById('input2');
-        const pasarNivel = document.getElementById('pasarNivel');
-        const sonidoError = document.getElementById('sonidoError');
-        const sonidoCorrecto = document.getElementById('sonidoCorrecto');
-        const nextLink = document.getElementById('nextLink'); // Botón "Siguiente"
-        const nextButton = document.getElementById("nextButton");
-        
-        
-        const botonCorrecto = 'boton2';
-        let sonidoEnReproduccion = false;
-
-        // Ocultamos el botón "Siguiente" al inicio
-        
-        botonExtra.style.display = 'none';
-
-        function validar(){
-            if (parseInt(input1.value) === 2 && parseInt(input2.value) === 8) {
-            sonidoCorrecto.play().catch(error => {
-                console.error("Error al reproducir el sonido correcto:", error);
-            });
-            botonExtra.style.display = "flex";
-            nextButton.disabled = false;
-            nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
-            } else {
-
-            sonidoError.play().catch(error => {
-                console.error("Error al reproducir el sonido correcto:", error);
-            });
-    
-            
-            nextButton.disabled = true;
-            nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
-            }   
-
-        }
 
     </script>
 
