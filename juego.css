@@ -245,6 +245,25 @@ body{
         width: 300px;
         height: 400px;
     }
+
+    .frac3 {
+    
+        border-radius: 15px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        height: 200px;
+        width: 75px;
+    }
+
+    .contfrac {
+        margin: 30px auto;
+        width: 300px;
+        height: 200px;
+        border-radius: 15px;
+    }
 }
 
 .contfrac {
@@ -270,4 +289,9 @@ body{
     display: flex;
     flex-direction: column;
     margin: 20px auto;
+}
+
+@media(max-width: 1000px) {
+
+
 }
