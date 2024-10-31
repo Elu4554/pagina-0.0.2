@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otra Página</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+    <nav>
+        <h1 class="logo"><a href="index.html"><img class="imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id="trofeo" src="line-md--calendar.png" alt="racha">
+            <span id="contadorRacha">0</span>
+        </div>
+        <!-- otros elementos del nav -->
+    </nav>
+
+    <div>
+        <h2>Contenido de la página</h2>
+    </div>
+
+    <script>
+        // Función para actualizar el contador de racha en la página
+        function actualizarRacha() {
+            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
+            document.getElementById("contadorRacha").innerText = `${contadorRacha} días`;
+        }
+
+        // Ejecutar la función al cargar la página
+        window.onload = actualizarRacha;
+    </script>
+</body>
+</html>

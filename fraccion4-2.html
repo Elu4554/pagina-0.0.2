@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
     <nav> 
-        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
         <div class="trofeo">
-            <img id = "trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
             <span id="valor" class="textos">0</span>
         </div>
-        <button id = "mas" class="mas"><img class = "menu" src="ic--round-menu.png" alt="menu"></button>
+        <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
         
     </nav>
 </head>
@@ -180,6 +180,7 @@
         function verificarNivel() {
             if (parejasEncontradas === parejasCorrectas.length) {
                 pasarNivel.style.display = 'block';
+                nextButton.style.display = "flex";
                 sonidoCorrecto.play().catch(error => {
                     console.error("Error al reproducir el sonido correcto:", error);
                 });
@@ -300,11 +301,11 @@
 
     <div class="contactos">
         <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
-            <img class="imgEmail" src="Vector-Email-Icon-Transparent.png" alt="email">
+            <img class="imgEmail" src="imagenes/Vector-Email-Icon-Transparent.png" alt="email">
         </a>
         
         <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
-            <img class = "IG" src="instagram_white_28dp.png" alt="IG">
+            <img class = "IG" src="imagenes/instagram_white_28dp.png" alt="IG">
         </a>
 
     </div>

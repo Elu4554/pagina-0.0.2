@@ -9,14 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
     <nav> 
-        <h1 class="logo"><a href="index.html"><img class="imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <h1 class="logo"><a href="index.html"><img class="imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
         <div class="trofeo">
-            <img id="trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <img id="trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
             <span id="valor" class="textos">0</span>
         </div>
-        <button id="mas" class="mas"><img class="menu" src="ic--round-menu.png" alt="menu"></button>
+        <div class="trofeo">
+            <img id = "trofeo" src="imagenes/line-md--calendar.png" alt="racha">
+            <span id="contadorRacha">0</span>
+
+        </div>
+        <button id="mas" class="mas"><img class="menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
     </nav>
 </head>
 
@@ -38,7 +43,7 @@
         </div>
         
         <div id="cont-boton">
-            <button id="regreso3">
+            <button id="regreso3" onclick="comprobarRacha()">
                 <a href="prueba1.html" id="link-act3">Regresar</a>
             </button>
         </div>
@@ -106,6 +111,36 @@
                 actualizarValor();
             }
         });
+
+        function iniciarRacha() {
+            // Revisar si ya existe la racha y la última fecha en el almacenamiento local
+            const ultimaFecha = localStorage.getItem("ultimaFecha");
+            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
+            
+            // Mostrar el contador actual de racha
+            document.getElementById("contadorRacha").innerText = `Racha actual: ${contadorRacha} días`;
+        }
+
+        // Función para comprobar si es el primer clic del día
+        function comprobarRacha() {
+            const hoy = new Date().toLocaleDateString();
+            const ultimaFecha = localStorage.getItem("ultimaFecha");
+            let contadorRacha = parseInt(localStorage.getItem("contadorRacha") || "0");
+
+            // Si es el primer clic del día
+            if (ultimaFecha !== hoy) {
+                contadorRacha++;
+                localStorage.setItem("contadorRacha", contadorRacha);
+                localStorage.setItem("ultimaFecha", hoy);
+                document.getElementById("contadorRacha").innerText = `Racha actual: ${contadorRacha} días`;
+                alert("¡Racha incrementada!");
+            } else {
+                alert("Ya presionaste el botón hoy.");
+            }
+        }
+
+        // Ejecutar la función iniciarRacha al cargar la página
+        iniciarRacha();
     </script>
 </body>
 </html>

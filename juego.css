@@ -372,3 +372,26 @@ body{
 .corr{
     color: rgb(96, 212, 96);
 }
+
+.incorr{
+    color: rgb(196, 10, 10);
+}
+
+.entrada {
+    width: 50px;
+    justify-content: center;
+}
+
+.boton-extra-container{
+    display: none;
+}
+
+#nextButton{
+    display: none;
+}
+
+#inputs{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
