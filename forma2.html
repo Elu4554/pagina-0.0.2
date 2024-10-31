@@ -120,6 +120,7 @@
 
             if (botonPresionado === botonCorrecto) {
                 // Mostrar el botón "Siguiente"
+                document.getElementById("boton3").classList.add("contcorrecto");
                 nextButton.disabled = false;
                 botonExtra.style.display = 'flex';
                 nextLink.style.pointerEvents = "auto";

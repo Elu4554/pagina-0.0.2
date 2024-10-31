@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPCL</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-prob.css">
     <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="juego.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
@@ -35,18 +36,44 @@
 
     </div>
 
-    <section>
-        <h1>ESTAS SON LAS ACTIVIDADES</h1>
 
+    <div class = "Cont" >
+        <p id = "problema">
+            Calcula el perímetro de la figura, suponiendo que a base mide 8cm y la altura es 6cm.
+            
+        </p>
+        <img class = "centro" src="ic--sharp-rectangle.svg" alt="rec" width= "200">
 
-    </section>
-    <div class="Actividades">
-        <a class = "imagenes" href="sudoku.html"><img src="sudoku-logo.png" alt="sudoku" width="100" height="100">Jugar sudoku <br></a>
-        <a class = "imagenes" href="prueba1.html"><img src="mat.png" alt="aritmetica" width="100" height="100">Niveles Matematicos <br></a>
-        <a class = "imagenes" href="cruci.html"><img src="crucilogo.png" alt="crucigrama" width="100" height="100">Prueba crucigrama <br></a>
-        <a class = "imagenes" href="racha.html">Prueba racha</a>
+        <p id = "resolucion">
+            <input type="number" id="simbolo1" size="2">
+        </p>
+
+        <div id= "contBoton">
+
+            <button onclick="validar()" id= "boton" >Comprobar</button>
+
+        </div>
+
+        <p id="mensaje" class="resultado"></p>
+
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="problema1-1-2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
         
+
     </div>
+
+    <audio id="sonidoError" preload="auto">
+        <source src="incorrecto.wav" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <audio id="sonidoCorrecto" preload="auto">
+        <source src="correcto.wav" type="audio/wav">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
     
     <script>
         document.getElementById("mas").addEventListener("click", function() {
@@ -57,7 +84,41 @@
                 div.style.display = "none";
             }
         });
-        
+
+        function validar() {
+    const simbolo1 = parseInt(document.getElementById("simbolo1").value, 10); // Convertir a número
+    const mensaje = document.getElementById("mensaje");
+    const botonExtra = document.getElementById("botonExtra");
+    const nextButton = document.getElementById("nextButton");
+    const nextLink = document.getElementById("nextLink");
+    
+    // Comprobar si el símbolo es el correcto
+    if (simbolo1 === 28) {
+        mensaje.textContent = "¡Correcto! El perímetro de un rectangulo de 8 cm de base y 6 cm de altura es 28 cm.";
+        document.getElementById("sonidoCorrecto").play().catch(error => {
+            console.error("Error al reproducir el sonido correcto:", error);
+        });
+        mensaje.classList.remove("incorrecto");
+        mensaje.classList.add("corr");
+
+        botonExtra.style.display = "flex";
+        nextButton.disabled = false;
+        nextLink.style.pointerEvents = "auto";
+    } else {
+        mensaje.textContent = "Incorrecto, intenta de nuevo.";
+        document.getElementById("sonidoError").play().catch(error => {
+            console.error("Error al reproducir el sonido de error:", error);
+        });
+        mensaje.classList.add("incorrecto");
+        mensaje.classList.remove("correcto");
+
+        botonExtra.style.display = "none"; // Esconder el botón extra hasta que sea correcto
+        nextButton.disabled = true;
+        nextLink.style.pointerEvents = "none";
+    }
+}
+
+
         ///////
 
         // Inicializamos el valor de localStorage si no existe
@@ -92,10 +153,9 @@
                 actualizarValor();
             }
         });
-        
     </script>
-</body>
 
+</body>
 <footer>
 
     <div class="info">

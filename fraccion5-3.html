@@ -37,42 +37,70 @@
     </div>
 
 
-    <p id="problema">¿Cual de estos signos aritmeticos es el de la multiplicacion?</p>
+    <p id="problema">Busca las igualdades y emparejalas</p>
 
-    <div class="arriba">
-        <button class="contenido" id="boton1">
-            <img src="mingcute--plus-fill.svg" alt="cuadro" width="80">
-    
-        </button>
-    
-        <button class="contenido der" id="boton2">
-            <img src="fa-solid--divide.svg" alt="cuadro" width="70">
-    
-        </button>
+    <div class="contenedor">
+        <div class="operacion">
+            
+            
+            <button id="boton1" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-3.png" alt="5" width="40">
+                </div>
+                    <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-6.png" alt="4" width="40">
+                </div>
+            </button>
+            <button id="boton3" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-3.png" alt="5" width="40">
+                </div>
+                    <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-4.png" alt="4" width="40">
+                </div>
+            </button>
+            
+        </div>
+        
+        <div class="respuesta">
+            <button id="boton2" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-1.png" alt="5" width="40">
+                </div>
+                    <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-2.png" alt="4" width="40">
+                </div>
+            </button>
+            
+            
+            <button id="boton4" class="boton">
+                <div class="arriba2">
+                    <img src="ri--number-2.png" alt="2" width="40">
+                </div>
+                <img src="resta.png" alt="resta" width="60">
+                <div class="abajo">
+                    <img src="ri--number-3.png" alt="4" width="40">
+                </div>
+            </button>
+
+        </div>
+        
 
     </div>
 
-    <div class="abajo">
-        <button class="contenido" id="boton3">
-            <img src="subway--subtraction-1.svg" alt="cuadro" width="80">
-    
-        </button>
-    
-        <button class="contenido der" id="boton4">
-            <img src="mdi--multiply-bold.svg" alt="cuadro" width="80">
-    
-        </button>
-
-    </div>
-
-    </div>
-
-    <div id="botonExtra" class="boton-extra-container">
-        <button id="nextButton" disabled>
-            <a id="nextLink" href="problema1-2-1.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
-        </button>
+    <div class="siguiente">
+        <a id="nextLink" href="felicitaciones6.html" style="text-decoration: none; color: black;">
+            <button id="pasarNivel" class="boton">Siguiente</button>
+        </a>
     </div>
     
+    <p class = "enlaceTema">¿Tienes dificultades?  
+        <a class = "enlacePrimos" href="fracciones.html"> !Haz cick aqui¡
+        </a>
+    </p>
 
     <audio id="sonidoError" preload="auto">
         <source src="incorrecto.wav" type="audio/mpeg">
@@ -86,27 +114,6 @@
 
     
     <script>
-        // Inicializamos el valor de localStorage si no existe
-        if (!localStorage.getItem('contador')) {
-            localStorage.setItem('contador', 0);
-        }
-
-        // Función para actualizar el valor en el HTML
-        function actualizarValor() {
-            const valor = localStorage.getItem('contador');
-            document.getElementById('valor').textContent = valor;
-        }
-
-        // Actualizamos el valor al cargar la página
-        actualizarValor();
-
-        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'contador') {
-                actualizarValor();
-            }
-        });
-
         document.getElementById("mas").addEventListener("click", function() {
             var div = document.getElementById("op");
             if (div.style.display === "none" || div.style.display === "") {
@@ -128,24 +135,19 @@
         const nextButton = document.getElementById("nextButton");
         
         
-        const botonCorrecto = 'boton4';
-        let sonidoEnReproduccion = false;
-
-        // Ocultamos el botón "Siguiente" al inicio
-        
-        botonExtra.style.display = 'none';
+        // Establecer la variable que indica qué botón es el correcto
+        const botonCorrecto = 'boton3'; // Por ejemplo, el botón con ID "boton3" es el correcto
 
         // Función para manejar los clics en los botones
         function verificarRespuesta(event) {
-            const botonPresionado = event.target.closest("button").id;
+            const botonPresionado = event.target.id;
 
             if (botonPresionado === botonCorrecto) {
                 // Mostrar el botón "Siguiente"
-                document.getElementById("boton4").classList.add("contcorrecto");
+                document.getElementById("boton3").classList.add("contcorrecto");
                 nextButton.disabled = false;
                 botonExtra.style.display = 'flex';
                 nextLink.style.pointerEvents = "auto";
-                
 
                 // Reproducir sonido correcto si no está ya en reproducción
                 if (!sonidoEnReproduccion) {
@@ -168,6 +170,7 @@
     
 
     </script>
+
 
 </body>
 <footer>

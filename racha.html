@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racha Diaria</title>
+</head>
+<body>
+    <h1>¡Mantén tu racha diaria!</h1>
+    <button id="botonRacha" onclick="comprobarRacha()">Presionar</button>
+    <p id="contadorRacha">Racha actual: 0 días</p>
+
+    <script>
+        // Inicializar la racha
+        function iniciarRacha() {
+            // Revisar si ya existe la racha y la última fecha en el almacenamiento local
+            const ultimaFecha = localStorage.getItem("ultimaFecha");
+            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
+            
+            // Mostrar el contador actual de racha
+            document.getElementById("contadorRacha").innerText = `Racha actual: ${contadorRacha} días`;
+        }
+
+        // Función para comprobar si es el primer clic del día
+        function comprobarRacha() {
+            const hoy = new Date().toLocaleDateString();
+            const ultimaFecha = localStorage.getItem("ultimaFecha");
+            let contadorRacha = parseInt(localStorage.getItem("contadorRacha") || "0");
+
+            // Si es el primer clic del día
+            if (ultimaFecha !== hoy) {
+                contadorRacha++;
+                localStorage.setItem("contadorRacha", contadorRacha);
+                localStorage.setItem("ultimaFecha", hoy);
+                document.getElementById("contadorRacha").innerText = `Racha actual: ${contadorRacha} días`;
+                alert("¡Racha incrementada!");
+            } else {
+                alert("Ya presionaste el botón hoy.");
+            }
+        }
+
+        // Ejecutar la función iniciarRacha al cargar la página
+        iniciarRacha();
+    </script>
+</body>
+</html>
