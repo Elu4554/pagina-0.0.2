@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego con Input Desplegable</title>
+</head>
+<body>
+
+    <h1>Juego con Input Desplegable</h1>
+
+    <!-- Input con menú desplegable -->
+    <label for="opcion">Selecciona una opción:</label>
+    <input list="opciones" id="opcion" name="opcion" placeholder="Elige una opción">
+
+    <!-- Opciones del menú desplegable -->
+    <datalist id="opciones">
+        <option value="Opción 1">
+        <option value="Opción 2">
+        <option value="Opción 3">
+    </datalist>
+
+    <!-- Botón para ver la selección -->
+    <button onclick="mostrarSeleccion()">Seleccionar</button>
+
+    <!-- Elemento donde se mostrará la selección -->
+    <p id="resultado"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
