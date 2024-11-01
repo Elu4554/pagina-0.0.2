@@ -66,34 +66,23 @@
             localStorage.setItem('contador', 0);
         }
         
+        
+
         if (!localStorage.getItem('contadorRacha')) {
-            localStorage.setItem('contadorRacha', 0);
-        }
+    localStorage.setItem('contadorRacha', 0);
+}
 
-        // Función para actualizar el valor en el HTML
-        function actualizarValor() {
-            const valor = localStorage.getItem('contador');
-            document.getElementById('valor').textContent = valor;
-        }
+// Función para actualizar el contador de racha en la página
+function actualizarRacha() {
+    const contadorRacha = localStorage.getItem("contadorRacha") || 0;
+    document.getElementById("contadorRacha").innerText = `${contadorRacha} días`;
+}
 
-        // Actualizamos el valor al cargar la página
-        actualizarValor();
+// Ejecutar la función al cargar la página
+window.onload = actualizarRacha;
 
-        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'contador') {
-                actualizarValor();
-            }
-        });
-
-        // Función para actualizar el contador de racha en la página
-        function actualizarRacha() {
-            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
-            document.getElementById("contadorRacha").innerText = `${contadorRacha} días`;
-        }
-
-        // Ejecutar la función al cargar la página
-        window.onload = actualizarRacha;
+// Llama a la función para actualizar el contador inmediatamente
+actualizarRacha();
 
     </script>
     

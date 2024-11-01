@@ -66,9 +66,7 @@
             localStorage.setItem('contador', 0);
         }
         
-        if (!localStorage.getItem('contadorRacha')) {
-            localStorage.setItem('contadorRacha', 0);
-        }
+        
 
         // Función para actualizar el valor en el HTML
         function actualizarValor() {
@@ -85,6 +83,10 @@
                 actualizarValor();
             }
         });
+
+        if (!localStorage.getItem('contadorRacha')) {
+            localStorage.setItem('contadorRacha', 0);
+        }
 
         // Función para actualizar el contador de racha en la página
         function actualizarRacha() {

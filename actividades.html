@@ -16,6 +16,10 @@
             <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
             <span id="valor" class="textos">0</span>
         </div>
+        <div class="trofeo">
+            <img id = "trofeo" src="imagenes/line-md--calendar.png" alt="racha">
+            <span id="contadorRacha">0</span>
+        </div>
         <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
         
     </nav>
@@ -57,13 +61,13 @@
                 div.style.display = "none";
             }
         });
-        
-        ///////
 
         // Inicializamos el valor de localStorage si no existe
         if (!localStorage.getItem('contador')) {
             localStorage.setItem('contador', 0);
         }
+        
+        
 
         // Función para actualizar el valor en el HTML
         function actualizarValor() {
@@ -74,25 +78,25 @@
         // Actualizamos el valor al cargar la página
         actualizarValor();
 
-        // Evento para el botón que suma 30, pero solo una vez
-        document.getElementById('regreso').addEventListener('click', () => {
-            // Verificamos si ya se sumaron los puntos una vez
-            if (localStorage.getItem('botonPresionado') !== 'true') {
-                let valorActual = parseInt(localStorage.getItem('contador'));
-                valorActual += 30;
-                localStorage.setItem('contador', valorActual);
-                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
-                actualizarValor();
-            }
-        });
-
         // Escuchamos cambios en el localStorage para sincronizar entre pestañas
         window.addEventListener('storage', (event) => {
             if (event.key === 'contador') {
                 actualizarValor();
             }
         });
-        
+
+        if (!localStorage.getItem('contadorRacha')) {
+            localStorage.setItem('contadorRacha', 0);
+        }
+
+        // Función para actualizar el contador de racha en la página
+        function actualizarRacha() {
+            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
+            document.getElementById("contadorRacha").innerText = `${contadorRacha} días`;
+        }
+
+        // Ejecutar la función al cargar la página
+        window.onload = actualizarRacha;
     </script>
 </body>
 
