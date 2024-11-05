@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figura Geométrica</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Contenedor para centrar la figura */
+.figure-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Estilo general para la figura */
+.figure {
+  position: relative;
+  background-color: #8ac6d1; /* Color de fondo de la figura */
+}
+
+/* Tamaño de la figura en específico para el cuadrado */
+.square {
+  width: 150px; /* Cambia este valor para ajustar la base */
+  height: 150px; /* Cambia este valor para ajustar la altura */
+}
+
+/* Estilos para las etiquetas de base y altura */
+.label {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+/* Etiqueta de base */
+.base {
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Etiqueta de altura */
+.height {
+  top: 50%;
+  right: -40px;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+  </style>
+</head>
+<body>
+  <div class="figure-container">
+    <div class="figure square">
+      <span class="label base">Base: 4cm</span>
+      <span class="label height">Altura: 4cm</span>
+    </div>
+  </div>
+</body>
+</html>

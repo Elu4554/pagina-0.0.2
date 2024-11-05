@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCL</title>
+    <link rel="stylesheet" href="style-prob.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="juego.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
+        
+    </nav>
+    <style>
+       
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    
+        .button:hover {
+          background-color: #0056b3;
+        }
+    
+        .toolbar, #drawing-board {
+          display: none; /* Ocultos por defecto */
+        }
+    
+        #drawing-board {
+          border: 2px solid #333;
+          background-color: #fff;
+          cursor: crosshair;
+        }
+
+      </style>
+</head>
+
+<body>
+    <div id = "op" class="op">
+        <div class = "opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+
+    <p id="problema">Problema: si Julian rompe un papel en 10 pedazos, su hermano menor toma algunos y los rompe en
+        diez pedazos mas pequeños. Si al final hay 46 pedazos, ¿Cuantos pedazos rompio el hermano de Julian?
+        (Usa la herramienta de pizarra para ayudarte en tus operaciones)
+    </p>
+
+    <div class="centro" id="inputs">
+        
+        <input type="number" id="input3" class="entrada">
+
+        <button id="toggleButton" class="button" onclick="toggleBoard()">Pizarra</button>
+
+        <div class="toolbar">
+            <button class="button" onclick="clearBoard()">Limpiar</button>
+        </div>
+        <canvas id="drawing-board" width="400" height="400"></canvas>
+
+    </div>
+
+    
+
+    <div id= "contBoton">
+
+        <button onclick="validar()" id= "boton" >Comprobar</button>
+
+    </div>
+
+    <p id="mensaje"></p> <!-- Agrega esta línea para mostrar los mensajes -->
+
+    <div id="botonExtra" class="boton-extra-container">
+        <button id="nextButton" disabled>
+            <a id="nextLink" href="problema1-1-1.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+        </button>
+    </div>
+    
+
+    <audio id="sonidoError" preload="auto">
+        <source src="incorrecto.wav" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <audio id="sonidoCorrecto" preload="auto">
+        <source src="correcto.wav" type="audio/wav">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    
+    <script>
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
+
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        function validar() {
+            
+            const input3 = parseInt(document.getElementById("input3").value, 10); // Convertir a número
+            const mensaje = document.getElementById("mensaje");
+            const botonExtra = document.getElementById("botonExtra");
+            const nextButton = document.getElementById("nextButton");
+            const nextLink = document.getElementById("nextLink");
+            
+            // Comprobar si el símbolo es el correcto
+            if ( input3 === 4) {
+                mensaje.textContent = "¡Correcto!, el hermano pequeño de Julian rompio 4 pedazos, esto se sabe por que cada vez que se rompe un pedazo se agregan 10 pedazos grandes y se elimina uno grande, entonces se incrementa en 9, 46 = 10 + 4x9";
+                document.getElementById("sonidoCorrecto").play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
+                mensaje.classList.remove("incorrecto");
+                mensaje.classList.add("corr");
+
+                botonExtra.style.display = "flex";
+                nextButton.style.display = "flex";
+                nextButton.disabled = false;
+                nextLink.style.pointerEvents = "auto";
+            } else {
+                mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                document.getElementById("sonidoError").play().catch(error => {
+                    console.error("Error al reproducir el sonido de error:", error);
+                });
+                mensaje.classList.add("incorrecto");
+                mensaje.classList.remove("correcto");
+
+                botonExtra.style.display = "none"; // Esconder el botón extra hasta que sea correcto
+                nextButton.disabled = true;
+                nextLink.style.pointerEvents = "none";
+            }
+        }
+
+        const canvas = document.getElementById("drawing-board");
+    const ctx = canvas.getContext("2d");
+    const toolbar = document.querySelector(".toolbar");
+    const toggleButton = document.getElementById("toggleButton");
+    let isDrawing = false;
+
+    // Configuración del estilo de dibujo
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#000000";
+
+    // Función para mostrar/ocultar la pizarra y el botón de limpiar
+    function toggleBoard() {
+      const isVisible = canvas.style.display === "block";
+      canvas.style.display = isVisible ? "none" : "block";
+      toolbar.style.display = isVisible ? "none" : "flex";
+      toggleButton.textContent = isVisible ? "Pizarra" : "Cerrar Pizarra"; // Cambia el texto del botón
+    }
+
+    // Eventos de dibujo en la pizarra
+    canvas.addEventListener("mousedown", (e) => {
+      isDrawing = true;
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    });
+
+    canvas.addEventListener("mousemove", (e) => {
+      if (isDrawing) {
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      isDrawing = false;
+    });
+
+    canvas.addEventListener("mouseleave", () => {
+      isDrawing = false;
+    });
+
+    // Función para limpiar la pizarra
+    function clearBoard() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    </script>
+
+</body>
+<footer>
+
+    <div class="info">
+        <h2>DPCL</h2>
+        <p>Contactanos en:</p>
+        
+        
+    </div>
+
+    <div class="contactos">
+        <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
+            <img class="imgEmail" src="imagenes/Vector-Email-Icon-Transparent.png" alt="email">
+        </a>
+        
+        <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class = "IG" src="imagenes/instagram_white_28dp.png" alt="IG">
+        </a>
+
+    </div>
+    
+    
+</footer>
+</html>
