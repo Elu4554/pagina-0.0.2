@@ -16,10 +16,6 @@
             <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
             <span id="valor" class="textos">0</span>
         </div>
-        <div class="trofeo">
-            <img id = "trofeo" src="imagenes/line-md--calendar.png" alt="racha">
-            <span id="contadorRacha">0</span>
-        </div>
         <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
         
     </nav>
@@ -39,18 +35,38 @@
 
     </div>
 
-    <section>
-        <h1>ESTAS SON LAS ACTIVIDADES</h1>
 
+    <div class = "Cont" >
+        <p id = "problema">
+            Toma en cuenta el enunciado y escoge que harias en la situacion presente. Si tengo frio, entonces...
+        </p>
 
-    </section>
-    <div class="Actividades">
-        <a class = "imagenes" href="sudoku.html"><img src="imagenes/sudoku-logo.png" alt="sudoku" width="100" height="100">Jugar sudoku <br></a>
-        <a class = "imagenes" href="prueba1.html"><img src="imagenes/mat.png" alt="aritmetica" width="100" height="100">Niveles Matematicos <br></a>
-        <a class = "imagenes" href="cruci.html"><img src="imagenes/crucilogo.png" alt="crucigrama" width="100" height="100">Prueba crucigrama <br></a>
-        <a class = "imagenes" href="caminologica.html"><img src="imagenes/mdi--head-thinking.png" alt="crucigrama" width="100" height="100">Prueba crucigrama <br></a>
+        <div class="centro">
+            <button id="boton1pipi" onclick="pasar()">Me abrigo</button>
+            <button id="boton1pipi" onclick="naonao()">Salgo afuera</button>
+            <button id="boton1pipi" onclick="naonao()">Entro al refrigerador</button>
+        </div>
+
+        <p id="mensaje" class="resultado"></p>
+
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="logica5.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
+        
 
     </div>
+
+    <audio id="sonidoError" preload="auto">
+        <source src="incorrecto.wav" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <audio id="sonidoCorrecto" preload="auto">
+        <source src="correcto.wav" type="audio/wav">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
     
     <script>
         document.getElementById("mas").addEventListener("click", function() {
@@ -62,12 +78,46 @@
             }
         });
 
+        function pasar(){
+            mensaje.textContent = "¡Correcto! Si tengo frio, entonces me abrigo";
+            sonidoCorrecto.play().catch(error => {
+                console.error("Error al reproducir el sonido correcto:", error);
+            });
+            
+            mensaje.classList.remove("incorrecto"); // Elimina la clase de error
+            mensaje.classList.add("BIEN"); // Añade la clase de éxito
+            
+            botonExtra.style.display = "flex";
+            nextButton.style.display = "flex";
+            nextButton.disabled = false;
+            nextLink.style.pointerEvents = "auto";
+        }
+
+        function naonao(){
+            mensaje.textContent = "Incorrecto. Intenta de nuevo.";
+            sonidoError.play().catch(error => {
+                console.error("Error al reproducir el sonido incorrecto:", error);
+            });
+        
+            mensaje.classList.remove("BIEN"); // Elimina la clase de éxito si existe
+            mensaje.classList.add("incorrecto"); // Añade la clase de error
+
+            botonExtra.style.display = "flex";
+            nextButton.disabled = true;
+            nextLink.style.pointerEvents = "none";
+        }
+
+        
+
+    // Comprobar si el símbolo es el correcto
+    
+
+        ///////
+
         // Inicializamos el valor de localStorage si no existe
         if (!localStorage.getItem('contador')) {
             localStorage.setItem('contador', 0);
         }
-        
-        
 
         // Función para actualizar el valor en el HTML
         function actualizarValor() {
@@ -78,28 +128,27 @@
         // Actualizamos el valor al cargar la página
         actualizarValor();
 
+        // Evento para el botón que suma 30, pero solo una vez
+        document.getElementById('regreso').addEventListener('click', () => {
+            // Verificamos si ya se sumaron los puntos una vez
+            if (localStorage.getItem('botonPresionado') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
+                actualizarValor();
+            }
+        });
+
         // Escuchamos cambios en el localStorage para sincronizar entre pestañas
         window.addEventListener('storage', (event) => {
             if (event.key === 'contador') {
                 actualizarValor();
             }
         });
-
-        if (!localStorage.getItem('contadorRacha')) {
-            localStorage.setItem('contadorRacha', 0);
-        }
-
-        // Función para actualizar el contador de racha en la página
-        function actualizarRacha() {
-            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
-            document.getElementById("contadorRacha").innerText = `${contadorRacha} días`;
-        }
-
-        // Ejecutar la función al cargar la página
-        window.onload = actualizarRacha;
     </script>
-</body>
 
+</body>
 <footer>
 
     <div class="info">

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCL</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class="logo"><a href="index.html"><img class="imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id="trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <div class="trofeo">
+            <img id = "trofeo" src="imagenes/line-md--calendar.png" alt="racha">
+            <span id="contadorRacha">0</span>
+
+        </div>
+        <button id="mas" class="mas"><img class="menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
+    </nav>
+</head>
+
+<body>
+    <div id="op" class="op">
+        <div class="opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="con">
+        <div id="contenedor">
+            <p id="feliz"> Bravo, ¡Sigue asi! </p>
+        </div>
+        
+        <div id="cont-boton">
+            <button id="regresoL" onclick="comprobarRacha()">
+                <a href="caminologica.html" id="link-act6">Regresar</a>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        // Sumar puntos al contador cuando el botón regreso2 es presionado
+        document.getElementById("regresoL").addEventListener("click", function() {
+            // Marca el nivel como completado
+            localStorage.setItem("nivel1CompletadoL", "true");
+            alert("¡Nivel completado!");
+
+            // Sumar puntos al contador
+            if (localStorage.getItem('botonPresionadoL') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionadoL', 'true'); // Registramos que ya se sumó
+                actualizarValor(); // Actualiza el valor en el HTML
+            }
+        });
+
+        const colors = ['#FF0B00', '#FF5C00', '#FFC400', '#00FF1E', '#00D4FF', '#0038FF', '#A100FF'];
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw'; // Cambia a 100vw para abarcar toda la ventana
+            confetti.style.top = Math.random() * 100 + 'vh'; // Cambia a 100vh para iniciar en cualquier parte de la pantalla
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 700); // Eliminar confeti después de 0.7s
+        }
+
+        window.onload = () => {
+            for (let i = 0; i < 200; i++) setTimeout(createConfetti, i * 30); // Menor retraso entre confetis
+        };
+
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
+
+        function iniciarRacha() {
+            // Revisar si ya existe la racha y la última fecha en el almacenamiento local
+            const ultimaFecha = localStorage.getItem("ultimaFecha");
+            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
+            
+            // Mostrar el contador actual de racha
+            document.getElementById("contadorRacha").innerText = `Racha actual: ${contadorRacha} días`;
+        }
+
+        // Función para comprobar si es el primer clic del día
+        function comprobarRacha() {
+            const hoy = new Date().toLocaleDateString();
+            const ultimaFecha = localStorage.getItem("ultimaFecha");
+            let contadorRacha = parseInt(localStorage.getItem("contadorRacha") || "0");
+
+            // Si es el primer clic del día
+            if (ultimaFecha !== hoy) {
+                contadorRacha++;
+                localStorage.setItem("contadorRacha", contadorRacha);
+                localStorage.setItem("ultimaFecha", hoy);
+                document.getElementById("contadorRacha").innerText = `Racha actual: ${contadorRacha} días`;
+                alert("¡Racha incrementada!");
+            } else {
+                alert("Ya presionaste el botón hoy.");
+            }
+        }
+
+        // Ejecutar la función iniciarRacha al cargar la página
+        iniciarRacha();
+
+    </script>
+</body>
+</html>
