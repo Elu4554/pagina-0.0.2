@@ -461,3 +461,26 @@ footer {
         flex-direction: column;
     }
 }
+
+.parte-abajo{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.der{
+    margin-left: 10px;
+}
+
+.parte-arriba{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
