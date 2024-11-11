@@ -520,3 +520,14 @@ footer {
     margin-top: 20px;
     width: 120px;
 }
+
+@media (max-width: 800px){
+    #menu{
+        width: 400px;
+    }
+
+    #nota,#notaGuardada{
+        width: 200px;
+    }
+}
+
