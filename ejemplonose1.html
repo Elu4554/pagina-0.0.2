@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DPCL</title>
+  <link rel="stylesheet" href="style-prob.css">
+  <link rel="stylesheet" href="nav.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
+  <nav> 
+    <h1 class="logo"><a href="index.html"><img class="imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
+    <div class="trofeo">
+      <img id="trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
+      <span id="valor" class="textos">0</span>
+    </div>
+    <button id="mas" class="mas"><img class="menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
+  </nav>
+</head>
+<body>
+
+  <div class="menuGrande">
+    <h2>Ver respuesta a preguntas</h2>
+    <button id="mostrarMenu">Act emoción 1</button>
+
+    <!-- Menú que se despliega -->
+    <div id="menu" style="display: none;">
+      <p id="problem">Problema: Llegas a tu casa después de la escuela y en la mesa está tu comida favorita, preparada especialmente para ti.
+        ¿Qué emoción sentirías?</p>
+      <p id="textoMenu"></p>
+
+      <!-- Input para la nota -->
+      <label for="nota">Escribe una nota:</label>
+      <input type="text" id="nota" placeholder="Escribe tu nota aquí">
+      <button id="guardarNota">Guardar Nota</button>
+
+      <!-- Mostrar nota guardada -->
+      <p id="notaGuardada"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('mostrarMenu').addEventListener('click', () => {
+      const menu = document.getElementById('menu');
+      const textoMenu = document.getElementById('textoMenu');
+      const texto = document.getElementById('problem');
+
+      // Obtener el valor almacenado en localStorage
+      const opcionSeleccionada = localStorage.getItem('opcion');
+
+      // Alternar visibilidad del menú
+      if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'flex';
+
+        if (opcionSeleccionada) {
+          texto.style.display = 'block';
+          textoMenu.textContent = `Has seleccionado: ${opcionSeleccionada}`;
+        } else {
+          texto.style.display = 'block';
+          textoMenu.textContent = 'No has seleccionado ninguna opción todavía.';
+        }
+
+        // Cargar y mostrar la nota guardada si existe
+        const notaGuardada = localStorage.getItem('nota');
+        document.getElementById('notaGuardada').textContent = notaGuardada ? `Nota guardada: ${notaGuardada}` : 'No hay notas guardadas.';
+      }
+    });
+
+    // Guardar nota en localStorage
+    document.getElementById('guardarNota').addEventListener('click', () => {
+      const nota = document.getElementById('nota').value;
+      localStorage.setItem('nota', nota); // Guardar en localStorage
+      document.getElementById('notaGuardada').textContent = `Nota guardada: ${nota}`;
+      document.getElementById('nota').value = ''; // Limpiar el campo de entrada
+    });
+
+    // Cargar la nota al cargar la página, si existe
+    window.addEventListener('load', () => {
+      const notaGuardada = localStorage.getItem('nota');
+      if (notaGuardada) {
+        document.getElementById('notaGuardada').textContent = `Nota guardada: ${notaGuardada}`;
+      }
+    });
+  </script>
+
+</body>
+</html>

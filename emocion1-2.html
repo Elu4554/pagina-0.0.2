@@ -44,14 +44,14 @@
 
         <div class="centro">
             <div class="parte-arriba">
-                <button class = "column" id="boton2pipi" onclick="pasar('enojo')" ><img src="imagenes/mdi--emoji-angry-outline.png" alt="enojado" width="80">Enojo</button>
-                <button class = "column der" id="boton2pipi" onclick="pasar('felicidad')"><img src="imagenes/line-md--emoji-smile.png" alt="enojado" width="80">Felicidad</button>
+                <button class = "column enojo" id="boton1" onclick="pasar('enojo')" ><img src="imagenes/mdi--emoji-angry-outline.png" alt="enojado" width="80">Enojo</button>
+                <button class = "column der felicidad" id="boton2" onclick="pasar('felicidad')"><img src="imagenes/line-md--emoji-smile.png" alt="enojado" width="80">Felicidad</button>
                 
             </div>
 
             <div class="parte-abajo">
-                <button class = "column" id="boton2pipi" onclick="pasar('tristeza')" ><img src="imagenes/line-md--emoji-frown.png" alt="enojado" width="80">Tristeza</button>
-                <button class = "column der" id="boton2pipi" onclick="pasar('miedo')" ><img src="imagenes/mdi--emoji-frown-outline.png" alt="enojado" width="80">Miedo</button>
+                <button class = "column tristeza" id="boton3" onclick="pasar('tristeza')" ><img src="imagenes/line-md--emoji-frown.png" alt="enojado" width="80">Tristeza</button>
+                <button class = "column der miedo" id="boton4" onclick="pasar('miedo')" ><img src="imagenes/mdi--emoji-frown-outline.png" alt="enojado" width="80">Miedo</button>
 
             </div>
             
@@ -90,7 +90,7 @@
             }
         });
 
-        function pasar(emocion){
+        function pasar(){
             mensaje.textContent = "¡Correcto! Sentirias felicidad";
             sonidoCorrecto.play().catch(error => {
                 console.error("Error al reproducir el sonido correcto:", error);
@@ -103,10 +103,28 @@
             nextButton.style.display = "flex";
             nextButton.disabled = false;
             nextLink.style.pointerEvents = "auto";
-            localStorage.setItem('emocionSeleccionada', emocion);
+            
         }
+    
+        document.getElementById('boton1').addEventListener('click', () => {
+            localStorage.setItem('opcion', 'enojo');
+            alert('Opción 1 guardada en LocalStorage');
+        });
+            
+        document.getElementById('boton2').addEventListener('click', () => {
+            localStorage.setItem('opcion', 'felicidad');
+            alert('Opción 2 guardada en LocalStorage');
+        });
+            
+        document.getElementById('boton3').addEventListener('click', () => {
+            localStorage.setItem('opcion', 'tristeza');
+            alert('Opción 3 guardada en LocalStorage');
+        });
 
-        
+        document.getElementById('boton4').addEventListener('click', () => {
+            localStorage.setItem('opcion', 'miedo');
+            alert('Opción 3 guardada en LocalStorage');
+        });
 
         function naonao(){
             mensaje.textContent = "Incorrecto. Intenta de nuevo.";

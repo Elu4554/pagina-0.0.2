@@ -484,3 +484,39 @@ footer {
     text-align: center;
     align-items: center;
 }
+
+#problem{
+    display: none;
+}
+
+#disAnswer{
+    display: none;
+}
+
+#menu{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 700px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menuGrande{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+
+}
+
+#nota,#notaGuardada{
+    margin-top: 20px;
+    width: 300px;
+    justify-content: center;
+}
+
+#guardarNota{
+    margin-top: 20px;
+    width: 120px;
+}

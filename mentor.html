@@ -38,23 +38,25 @@
 
     <div class = "Cont" >
         <p id = "problema">
-            Llegas a tu casa despues de la escuela y en la mesa esta tu comida favorita, preparada especialmente para ti.
-            ¿Qué emocion sentirias?
+            
         </p>
 
-        <div class="centro">
-            <div class="parte-arriba">
-                <button class = "column" id="boton2pipi" onclick="pasar('enojo')" ><img src="imagenes/mdi--emoji-angry-outline.png" alt="enojado" width="80">Enojo</button>
-                <button class = "column der" id="boton2pipi" onclick="pasar('felicidad')"><img src="imagenes/line-md--emoji-smile.png" alt="enojado" width="80">Felicidad</button>
+        <button class="desplegable" id="boton" onclick="showContent()">actividad 1</button>
+
+        <div class="show">
+            <p id="problem">Problema: Llegas a tu casa despues de la escuela y en la mesa esta tu comida favorita, preparada especialmente para ti.
+                ¿Qué emocion sentirias?</p>
+            <div id="disAnswer">
                 
-            </div>
-
-            <div class="parte-abajo">
-                <button class = "column" id="boton2pipi" onclick="pasar('tristeza')" ><img src="imagenes/line-md--emoji-frown.png" alt="enojado" width="80">Tristeza</button>
-                <button class = "column der" id="boton2pipi" onclick="pasar('miedo')" ><img src="imagenes/mdi--emoji-frown-outline.png" alt="enojado" width="80">Miedo</button>
-
-            </div>
+                <button class = "column  " id="enojo" ><img src="imagenes/mdi--emoji-angry-outline.png" alt="enojado" width="80">Enojo</button>
+                <button class = "column der " id="felicidad "><img src="imagenes/line-md--emoji-smile.png" alt="enojado" width="80">Felicidad</button>
             
+                <button class = "column " id="tristeza" ><img src="imagenes/line-md--emoji-frown.png" alt="enojado" width="80">Tristeza</button>
+                <button class = "column der " id="miedo" ><img src="imagenes/mdi--emoji-frown-outline.png" alt="enojado" width="80">Miedo</button>
+    
+                
+
+            </div>
         </div>
 
         <p id="mensaje" class="resultado"></p>
@@ -79,8 +81,6 @@
     </audio>
     
     <script>
-        
-
         document.getElementById("mas").addEventListener("click", function() {
             var div = document.getElementById("op");
             if (div.style.display === "none" || div.style.display === "") {
@@ -90,42 +90,51 @@
             }
         });
 
-        function pasar(emocion){
-            mensaje.textContent = "¡Correcto! Sentirias felicidad";
-            sonidoCorrecto.play().catch(error => {
-                console.error("Error al reproducir el sonido correcto:", error);
-            });
+        // Función para mostrar contenido según el valor guardado en localStorage
+        let showed = false;
+
+        function showContent() {
+            // Leer el valor guardado en localStorage
+            const problem = document.getElementById('problem');
+            const emocionSeleccionada = localStorage.getItem('emocionSeleccionada');
+            const enojo = document.getElementById('enojo');
+            const felicidad = document.getElementById('felicidad');
+            const tristeza = document.getElementById('tristeza');  
+            const miedo = document.getElementById('miedo');
+
+            if (showed === false) {
+                problem.style.display = 'flex';
+                showed = true;
+            } else {
+                problem.style.display = 'none';
+                showed = false;
+            }
+
+            if (emocionSeleccionada === 'enojo') {
+                enojo.style.display = 'flex';
+                felicidad.style.display = 'none';
+                tristeza.style.display = 'none';
+                miedo.style.display = 'none';
+            } else if (emocionSeleccionada === 'felicidad') {
+                enojo.style.display = 'none';
+                felicidad.style.display = 'flex';
+                tristeza.style.display = 'none';
+                miedo.style.display = 'none';
+            } else if (emocionSeleccionada === 'tristeza') {
+                enojo.style.display = 'none';
+                felicidad.style.display = 'none';
+                tristeza.style.display = 'flex';
+                miedo.style.display = 'none';
+            } else if (emocionSeleccionada === 'miedo') {
+                enojo.style.display = 'none';
+                felicidad.style.display = 'none';
+                tristeza.style.display = 'none';
+                miedo.style.display = 'flex';
+            }
             
-            mensaje.classList.remove("incorrecto"); // Elimina la clase de error
-            mensaje.classList.add("BIEN"); // Añade la clase de éxito
-            
-            botonExtra.style.display = "flex";
-            nextButton.style.display = "flex";
-            nextButton.disabled = false;
-            nextLink.style.pointerEvents = "auto";
-            localStorage.setItem('emocionSeleccionada', emocion);
         }
 
         
-
-        function naonao(){
-            mensaje.textContent = "Incorrecto. Intenta de nuevo.";
-            sonidoError.play().catch(error => {
-                console.error("Error al reproducir el sonido incorrecto:", error);
-            });
-        
-            mensaje.classList.remove("BIEN"); // Elimina la clase de éxito si existe
-            mensaje.classList.add("incorrecto"); // Añade la clase de error
-
-            botonExtra.style.display = "flex";
-            nextButton.disabled = true;
-            nextLink.style.pointerEvents = "none";
-        }
-
-        function guardarEmocion(emocion) {
-            // Guarda la emoción en localStorage con el nombre 'emocionSeleccionada'
-            
-        }
 
     // Comprobar si el símbolo es el correcto
     

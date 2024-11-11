@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCL</title>
+    <link rel="stylesheet" href="style-prob.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
+        
+    </nav>
+  <style>
+    
+  </style>
+</head>
+<body>
+
+  
+  
+  <div class="menuGrande">
+    <h2>Ver respuesta a preguntas</h2>
+    <button id="mostrarMenu">Act emocion 1</button>
+
+    <!-- Menú que se despliega -->
+    <div id="menu">
+      <p id="problem">Problema: Llegas a tu casa despues de la escuela y en la mesa esta tu comida favorita, preparada especialmente para ti.
+        ¿Qué emocion sentirias?</p>
+      <p id="textoMenu"></p>
+    </div>
+    
+  </div>
+  
+
+  <script>
+    document.getElementById('mostrarMenu').addEventListener('click', () => {
+      const menu = document.getElementById('menu');
+      const textoMenu = document.getElementById('textoMenu');
+
+      // Obtener el valor almacenado en localStorage
+      const opcionSeleccionada = localStorage.getItem('opcion');
+      const texto = document.getElementById('problem');
+
+      if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+
+      } else {
+
+        menu.style.display = 'flex';
+
+        if (opcionSeleccionada) {
+        texto.style.display = 'flex';
+        textoMenu.textContent = `Has seleccionado: ${opcionSeleccionada}`;
+      } else {
+        texto.style.display = 'flex';
+        textoMenu.textContent = 'No has seleccionado ninguna opción todavía.';
+      }
+      }
+
+      // Comprobar el valor y cambiar el texto
+      
+
+    
+    });
+  </script>
+
+</body>
+</html>
