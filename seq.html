@@ -5,33 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordenar la Secuencia</title>
     <link rel="stylesheet" href="seq.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
+        
+    </nav>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-            height: 100vh;
-        }
+        
         .container {
             max-width: 400px;
             margin: 20px;
         }
-        .draggable-list {
-            display: flex;
-            flex-direction: column;
-            list-style-type: none;
-            padding: 0;
-        }
-        .draggable-list li {
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #e3f2fd;
-            border: 1px solid #90caf9;
-            cursor: move;
+        .select-container {
+            margin: 10px 0;
         }
         .button {
             padding: 10px 15px;
@@ -48,82 +43,122 @@
 </head>
 <body>
 
-<div class="container">
-    <h2>Ordena las frases para que tengan sentido:</h2>
-    <ul id="draggable-list" class="draggable-list">
-        <li draggable="true">a) El perro encontró una pelota en el parque.</li>
-        <li draggable="true">b) El perro estaba jugando felizmente.</li>
-        <li draggable="true">c) El perro salió a pasear con su dueño.</li>
-        <li draggable="true">d) El perro saltó para atrapar la pelota.</li>
-    </ul>
-    <button class="button" onclick="verificarOrden()">Verificar</button>
-    <p id="resultado"></p>
+<div class="column">
+    <div class="container">
+        <h2>Ordena las frases para que tengan sentido:</h2>
+        <div class="select-container">
+            <label for="select1">Paso 1:</label>
+            <select id="select1">
+                <option value="">Selecciona...</option>
+                <option value="a">a) El perro encontró una pelota en el parque.</option>
+                <option value="b">b) El perro estaba jugando felizmente.</option>
+                <option value="c">c) El perro salió a pasear con su dueño.</option>
+                <option value="d">d) El perro saltó para atrapar la pelota.</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="select2">Paso 2:</label>
+            <select id="select2">
+                <option value="">Selecciona...</option>
+                <option value="a">a) El perro encontró una pelota en el parque.</option>
+                <option value="b">b) El perro estaba jugando felizmente.</option>
+                <option value="c">c) El perro salió a pasear con su dueño.</option>
+                <option value="d">d) El perro saltó para atrapar la pelota.</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="select3">Paso 3:</label>
+            <select id="select3">
+                <option value="">Selecciona...</option>
+                <option value="a">a) El perro encontró una pelota en el parque.</option>
+                <option value="b">b) El perro estaba jugando felizmente.</option>
+                <option value="c">c) El perro salió a pasear con su dueño.</option>
+                <option value="d">d) El perro saltó para atrapar la pelota.</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <label for="select4">Paso 4:</label>
+            <select id="select4">
+                <option value="">Selecciona...</option>
+                <option value="a">a) El perro encontró una pelota en el parque.</option>
+                <option value="b">b) El perro estaba jugando felizmente.</option>
+                <option value="c">c) El perro salió a pasear con su dueño.</option>
+                <option value="d">d) El perro saltó para atrapar la pelota.</option>
+            </select>
+        </div>
+        <button class="button" onclick="verificarOrden()">Verificar</button>
+        <p id="resultado"></p>
+    </div>
+
 </div>
+
+
+
+<audio id="sonidoError" preload="auto">
+    <source src="incorrecto.wav" type="audio/mpeg">
+    Tu navegador no soporta la etiqueta de audio.
+</audio>
+
+<audio id="sonidoCorrecto" preload="auto">
+    <source src="correcto.wav" type="audio/wav">
+    Tu navegador no soporta la etiqueta de audio.
+</audio>
 
 <script>
     // Orden correcto
-    const ordenCorrecto = [
-        "c) El perro salió a pasear con su dueño.",
-        "a) El perro encontró una pelota en el parque.",
-        "d) El perro saltó para atrapar la pelota.",
-        "b) El perro estaba jugando felizmente."
-    ];
+    const ordenCorrecto = ["c", "a", "d", "b"];
 
-    // Variables para manejo de arrastrar y soltar
-    const listItems = document.querySelectorAll("#draggable-list li");
-    let dragSrcEl = null;
-
-    // Funciones de arrastrar y soltar
-    function handleDragStart(e) {
-        dragSrcEl = this;
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.innerHTML);
-    }
-
-    function handleDragOver(e) {
-        if (e.preventDefault) e.preventDefault();
-        return false;
-    }
-
-    function handleDrop(e) {
-        if (e.stopPropagation) e.stopPropagation();
-        if (dragSrcEl !== this) {
-            dragSrcEl.innerHTML = this.innerHTML;
-            this.innerHTML = e.dataTransfer.getData('text/html');
-        }
-        return false;
-    }
-
-    function handleDragEnd() {
-        listItems.forEach(item => {
-            item.classList.remove('over');
-        });
-    }
-
-    listItems.forEach(item => {
-        item.addEventListener('dragstart', handleDragStart);
-        item.addEventListener('dragover', handleDragOver);
-        item.addEventListener('drop', handleDrop);
-        item.addEventListener('dragend', handleDragEnd);
-    });
-
-    // Función para verificar el orden
     function verificarOrden() {
-        const ordenActual = Array.from(document.querySelectorAll("#draggable-list li"))
-                                .map(li => li.textContent.trim());
+        // Obtener los valores seleccionados
+        const respuestaUsuario = [
+            document.getElementById("select1").value,
+            document.getElementById("select2").value,
+            document.getElementById("select3").value,
+            document.getElementById("select4").value
+        ];
 
-        const esCorrecto = ordenActual.every((frase, index) => frase === ordenCorrecto[index]);
         const resultado = document.getElementById("resultado");
+
+        // Comparar la respuesta del usuario con el orden correcto
+        const esCorrecto = respuestaUsuario.every((respuesta, index) => respuesta === ordenCorrecto[index]);
 
         if (esCorrecto) {
             resultado.textContent = "¡Correcto! Has ordenado las frases en el orden adecuado.";
             resultado.style.color = "green";
+            sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
         } else {
             resultado.textContent = "El orden no es correcto. Inténtalo de nuevo.";
             resultado.style.color = "red";
+            sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
         }
     }
 </script>
 
 </body>
+<footer>
+
+    <div class="info">
+        <h2>DPCL</h2>
+        <p>Contactanos en:</p>
+        
+        
+    </div>
+
+    <div class="contactos">
+        <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
+            <img class="imgEmail" src="imagenes/Vector-Email-Icon-Transparent.png" alt="email">
+        </a>
+        
+        <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class = "IG" src="imagenes/instagram_white_28dp.png" alt="IG">
+        </a>
+
+    </div>
+    
+    
+</footer>
 </html>
