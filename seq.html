@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenar la Secuencia</title>
+    <link rel="stylesheet" href="seq.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            margin: 20px;
+        }
+        .draggable-list {
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            padding: 0;
+        }
+        .draggable-list li {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #e3f2fd;
+            border: 1px solid #90caf9;
+            cursor: move;
+        }
+        .button {
+            padding: 10px 15px;
+            background-color: #42a5f5;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Ordena las frases para que tengan sentido:</h2>
+    <ul id="draggable-list" class="draggable-list">
+        <li draggable="true">a) El perro encontró una pelota en el parque.</li>
+        <li draggable="true">b) El perro estaba jugando felizmente.</li>
+        <li draggable="true">c) El perro salió a pasear con su dueño.</li>
+        <li draggable="true">d) El perro saltó para atrapar la pelota.</li>
+    </ul>
+    <button class="button" onclick="verificarOrden()">Verificar</button>
+    <p id="resultado"></p>
+</div>
+
+<script>
+    // Orden correcto
+    const ordenCorrecto = [
+        "c) El perro salió a pasear con su dueño.",
+        "a) El perro encontró una pelota en el parque.",
+        "d) El perro saltó para atrapar la pelota.",
+        "b) El perro estaba jugando felizmente."
+    ];
+
+    // Variables para manejo de arrastrar y soltar
+    const listItems = document.querySelectorAll("#draggable-list li");
+    let dragSrcEl = null;
+
+    // Funciones de arrastrar y soltar
+    function handleDragStart(e) {
+        dragSrcEl = this;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+
+    function handleDragOver(e) {
+        if (e.preventDefault) e.preventDefault();
+        return false;
+    }
+
+    function handleDrop(e) {
+        if (e.stopPropagation) e.stopPropagation();
+        if (dragSrcEl !== this) {
+            dragSrcEl.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData('text/html');
+        }
+        return false;
+    }
+
+    function handleDragEnd() {
+        listItems.forEach(item => {
+            item.classList.remove('over');
+        });
+    }
+
+    listItems.forEach(item => {
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragover', handleDragOver);
+        item.addEventListener('drop', handleDrop);
+        item.addEventListener('dragend', handleDragEnd);
+    });
+
+    // Función para verificar el orden
+    function verificarOrden() {
+        const ordenActual = Array.from(document.querySelectorAll("#draggable-list li"))
+                                .map(li => li.textContent.trim());
+
+        const esCorrecto = ordenActual.every((frase, index) => frase === ordenCorrecto[index]);
+        const resultado = document.getElementById("resultado");
+
+        if (esCorrecto) {
+            resultado.textContent = "¡Correcto! Has ordenado las frases en el orden adecuado.";
+            resultado.style.color = "green";
+        } else {
+            resultado.textContent = "El orden no es correcto. Inténtalo de nuevo.";
+            resultado.style.color = "red";
+        }
+    }
+</script>
+
+</body>
+</html>
