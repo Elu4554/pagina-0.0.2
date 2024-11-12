@@ -140,6 +140,7 @@ document.getElementById("mas").addEventListener("click", function() {
                 sonidoCorrecto.play().catch(error => {
                     console.error("Error al reproducir el sonido correcto:", error);
                 });
+                botonCompletar.style.display = "flex";
                 resultado.style.color = "green";
                 nextButton.style.display = "flex";
                 botonCompletar.style.display = "block"; // Mostrar el botón
