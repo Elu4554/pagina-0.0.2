@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPCL</title>
+    <link rel="stylesheet" href="style-prob.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
+    <nav> 
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <div class="trofeo">
+            <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
+            <span id="valor" class="textos">0</span>
+        </div>
+        <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
+        
+    </nav>
+</head>
+
+<body>
+    <div id = "op" class="op">
+        <div class = "opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class = "Cont" >
+        <p id = "problemaLOGIC">
+            Toño es un niño muy bueno que va a la escuela a estudiar el quinto año y jamás falta.
+
+            Toño dice que su maestra Queta es muy bonita y come mucha piña.
+
+            Queta sueña en casarse con el señor Fausto, una persona muy fina y fuerte.
+
+            Toño no desea que su maestra se case por que cree que se ira a vivir a Baja California
+
+        </p>
+
+        <p id="problemaLOGIC2">¿Cual seria el titulo del texto?</p>
+
+        <div class="centro">
+            
+            <button id="boton1pipi" onclick="naonao()">La escuela</button>
+            <button id="boton1pipi" onclick="pasar()">Toño</button>
+            <button id="boton1pipi" onclick="naonao()">La maestra</button>
+        </div>
+
+        
+
+        <p id="mensaje" class="resultado"></p>
+
+        <div id="ex2">
+            <p id="problemaLOGIC2">En base en el texto, contesta si el siguiente enunciado es verdadero o falso,
+                Toño va en tercer año</p>
+
+            <div class="centro">
+                <button id="boton1pipi" onclick="naonao2()">Verdadero</button>
+                <button id="boton1pipi" onclick="pasar2()">Falso</button>
+                
+            </div>
+
+        </div>
+
+        <p id="mensaje2" class="resultado"></p>
+
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="seq.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
+
+        
+        
+
+    </div>
+
+    <audio id="sonidoError" preload="auto">
+        <source src="incorrecto.wav" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <audio id="sonidoCorrecto" preload="auto">
+        <source src="correcto.wav" type="audio/wav">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    
+    <script>
+        document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        function pasar(){
+            const ex2 = document.getElementById("ex2");
+            mensaje.textContent = "¡Correcto! El titulo del texto es, Toño.";
+            sonidoCorrecto.play().catch(error => {
+                console.error("Error al reproducir el sonido correcto:", error);
+            });
+            
+            mensaje.classList.remove("incorrecto"); // Elimina la clase de error
+            mensaje.classList.add("BIEN"); // Añade la clase de éxito
+
+            ex2.style.display = "flex";
+            
+            
+        }
+
+        function pasar2(){
+            const ex2 = document.getElementById("ex2");
+            mensaje2.textContent = "¡Correcto! Toño no va en tercer año, el esta en quinto.";
+            sonidoCorrecto.play().catch(error => {
+                console.error("Error al reproducir el sonido correcto:", error);
+            });
+            
+            mensaje2.classList.remove("incorrecto"); // Elimina la clase de error
+            mensaje2.classList.add("BIEN"); // Añade la clase de éxito
+
+            
+            
+            botonExtra.style.display = "flex";
+            nextButton.style.display = "flex";
+            nextButton.disabled = false;
+            nextLink.style.pointerEvents = "auto";
+        }
+
+
+        function naonao2(){
+            mensaje2.textContent = "Incorrecto. Intenta de nuevo.";
+            sonidoError.play().catch(error => {
+                console.error("Error al reproducir el sonido incorrecto:", error);
+            });
+        
+            mensaje2.classList.remove("BIEN"); // Elimina la clase de éxito si existe
+            mensaje2.classList.add("incorrecto"); // Añade la clase de error
+
+            botonExtra.style.display = "flex";
+            nextButton.disabled = true;
+            nextLink.style.pointerEvents = "none";
+        }
+
+        function naonao(){
+            mensaje.textContent = "Incorrecto. Intenta de nuevo.";
+            sonidoError.play().catch(error => {
+                console.error("Error al reproducir el sonido incorrecto:", error);
+            });
+        
+            mensaje.classList.remove("BIEN"); // Elimina la clase de éxito si existe
+            mensaje.classList.add("incorrecto"); // Añade la clase de error
+
+            botonExtra.style.display = "flex";
+            nextButton.disabled = true;
+            nextLink.style.pointerEvents = "none";
+        }
+
+    // Comprobar si el símbolo es el correcto
+    
+
+        ///////
+
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+
+        // Función para actualizar el valor en el HTML
+        function actualizarValor() {
+            const valor = localStorage.getItem('contador');
+            document.getElementById('valor').textContent = valor;
+        }
+
+        // Actualizamos el valor al cargar la página
+        actualizarValor();
+
+        // Evento para el botón que suma 30, pero solo una vez
+        document.getElementById('regreso').addEventListener('click', () => {
+            // Verificamos si ya se sumaron los puntos una vez
+            if (localStorage.getItem('botonPresionado') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
+                actualizarValor();
+            }
+        });
+
+        // Escuchamos cambios en el localStorage para sincronizar entre pestañas
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'contador') {
+                actualizarValor();
+            }
+        });
+    </script>
+
+</body>
+<footer>
+
+    <div class="info">
+        <h2>DPCL</h2>
+        <p>Contactanos en:</p>
+        
+        
+    </div>
+
+    <div class="contactos">
+        <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
+            <img class="imgEmail" src="imagenes/Vector-Email-Icon-Transparent.png" alt="email">
+        </a>
+        
+        <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
+            <img class = "IG" src="imagenes/instagram_white_28dp.png" alt="IG">
+        </a>
+
+    </div>
+    
+    
+</footer>
+</html>

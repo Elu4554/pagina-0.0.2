@@ -282,6 +282,10 @@ footer {
 }
 
 @media(prefers-color-scheme: dark){
+    label{
+        color: white;
+    }
+
     body {
         background-color: #312531;
         color: white;
@@ -416,4 +420,8 @@ footer {
 
 h2 {
     color: white;
+}
+
+#botonExtra{
+    display: none;
 }

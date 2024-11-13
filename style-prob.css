@@ -483,6 +483,10 @@ footer {
 }
 
 @media (max-width: 800px){
+    .imagenes{
+        margin-top: 10px;
+    }
+
     .Actividades{
         flex-direction: column;
     }
@@ -563,4 +567,22 @@ footer {
     text-align: center;
     align-items: center;
     flex-direction: column;
+}
+
+#ex3{
+    display: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#escuela{
+    margin-top: 10px;
+    
+}
+
+#continueButton{
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
