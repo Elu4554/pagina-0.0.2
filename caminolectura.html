@@ -44,8 +44,8 @@
     <ul id="botones">
 
         <li><a href="lectura1.html"><button class = "niveles">1</button></a></li>
-        <li><a href=""><button class = "niveles" id = "nivel2" disabled>2</button></a></li>
-        <li><a href=""><button class = "niveles" id = "nivel3" disabled>3</button></a></li>
+        <li><a href="lectura2.html"><button class = "niveles" id = "nivel2" disabled>2</button></a></li>
+        <li><a href="logica8.html"><button class = "niveles" id = "nivel3" disabled>3</button></a></li>
         <li><a href=""><button class = "niveles" id = "nivel4" disabled>4</button></a></li>
         <li><a href=""><button class = "niveles" id = "nivel5" disabled>5</button></a></li>
         <li><a href=""><button class = "niveles" id = "nivel6" disabled>6</button></a></li>
@@ -107,15 +107,15 @@
         });
             
 
-        if (localStorage.getItem("nivel1CompletadoL")) {
+        if (localStorage.getItem("nivel1CompletadoLec")) {
             document.getElementById("nivel2").disabled = false; // Habilita el botón del nivel 1
         }
         
-        if (localStorage.getItem("nivel2CompletadoL")) {
+        if (localStorage.getItem("nivel2CompletadoLec")) {
             document.getElementById("nivel3").disabled = false; // Habilita el botón del nivel 1
         }
 
-        if (localStorage.getItem("nivel3CompletadoL")) {
+        if (localStorage.getItem("nivel3CompletadoLec")) {
     document.getElementById("nivel4").disabled = false; // Habilita el botón del nivel 3
 }
         

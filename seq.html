@@ -43,6 +43,19 @@
 </head>
 <body>
 
+    <div id = "op" class="op">
+        <div class = "opciones">
+            <ul class="opc">
+                <li><a class="textos" href="index.html">Inicio</a></li>
+                <li><a class="textos" href="actividades.html">Actividades</a></li>
+                <li><a class="textos" href="info.html">Info</a></li>
+                <li><a class="textos" href="comentarios.html">Comentarios</a></li>
+                
+            </ul>
+        </div>
+
+    </div>
+
 <div class="column">
     <div class="container">
         <h2>Ordena las frases para que tengan sentido:</h2>
@@ -92,7 +105,7 @@
 
     <div id="botonExtra" class="boton-extra-container">
         <button id="nextButton" disabled>
-            <a id="nextLink" href="seq.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            <a id="nextLink" href="felLec.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
         </button>
     </div>
 
@@ -151,6 +164,39 @@
                 });
         }
     }
+
+    document.getElementById("mas").addEventListener("click", function() {
+            var div = document.getElementById("op");
+            if (div.style.display === "none" || div.style.display === "") {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+        });
+
+        // Inicializamos el valor de localStorage si no existe
+        if (!localStorage.getItem('contador')) {
+            localStorage.setItem('contador', 0);
+        }
+        
+        
+
+        if (!localStorage.getItem('contadorRacha')) {
+            localStorage.setItem('contadorRacha', 0);
+        }
+
+        // Función para actualizar el contador de racha en la página
+        function actualizarRacha() {
+            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
+            document.getElementById("contadorRacha").innerText = `${contadorRacha} días`;
+        }
+
+        // Ejecutar la función al cargar la página
+        window.onload = actualizarRacha;
+
+        // Llama a la función para actualizar el contador inmediatamente
+        actualizarRacha();
+
 </script>
 
 </body>
