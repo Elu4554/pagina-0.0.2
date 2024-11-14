@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPCL</title>
+    <link rel="stylesheet" href="style-prob.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +25,14 @@
         <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
         
     </nav>
+    <style>
+        @media(prefers-color-scheme: dark){
+            .imagenes{
+                color: white;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -40,16 +49,15 @@
 
     </div>
 
-    <section class="espacio">
-        <h1 >aqui veras infomracion</h1>
+    <h1 >aqui veras infomracion</h1>
+    <div class="Actividades">
+        
 
-        <a class = "temas" href="temaPCL.html"><p>Logica y pensamiento critico</p></a>
-
-        <a class = "temas" href="primos.html"><p>Numero primos</p></a>
-
-        <a class = "temas" href="fracciones.html"><p>Fracciones</p></a>
-
-    </section>
+        <a class = "imagenes" href="temaPCL.html"><img src="imagenes/streamline--brain.png" alt="logica" width="100" height="100">Logica <br></a>
+        <a class = "imagenes" href="primos.html"><img src="imagenes/fluent-emoji-high-contrast--input-numbers.png" alt="numeros-primos" width="100" height="100">Numeros primos<br></a>
+        <a class = "imagenes" href="fracciones.html"><img src="imagenes/mdi--fraction-one-half.png" alt="fracciones" width="100" height="100">Fracciones <br></a>
+        <a class = "imagenes" href="COMOO.html"><img src="imagenes/arcticons--minds.png" alt="mnemotecnia" width="100" height="100">mnemotecnia <br></a>
+    </div>
 
     <script>
         document.getElementById("mas").addEventListener("click", function() {
