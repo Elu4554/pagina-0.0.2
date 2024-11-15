@@ -234,3 +234,64 @@ footer {
     }
 
 }
+
+.imagen-overlay1{
+    position: absolute; /* Esto mantiene la posición relativa a la pantalla */
+    top: 350px; /* Ajusta la distancia desde la parte superior de la pantalla */
+    right: 79%; /* Ajusta la distancia desde el borde izquierdo de la página */
+    width: 100px; /* Ocupa todo el ancho de la página */
+    height: auto; /* Deja que la altura se ajuste automáticamente */
+    z-index: 9999; /* Asegura que quede por encima del resto del contenido */
+}
+
+.imagen-overlay2{
+    position: absolute; /* Esto mantiene la posición relativa a la pantalla */
+    top: 700px; /* Ajusta la distancia desde la parte superior de la pantalla */
+    left: 70%; /* Ajusta la distancia desde el borde izquierdo de la página */
+    width: 100px; /* Ocupa todo el ancho de la página */
+    height: auto; /* Deja que la altura se ajuste automáticamente */
+    z-index: 9999; /* Asegura que quede por encima del resto del contenido */
+}
+
+.imagen-overlay3{
+    position: absolute; /* Esto mantiene la posición relativa a la pantalla */
+    top: 1050px; /* Ajusta la distancia desde la parte superior de la pantalla */
+    right: 79%; /* Ajusta la distancia desde el borde izquierdo de la página */
+    width: 100px; /* Ocupa todo el ancho de la página */
+    height: auto; /* Deja que la altura se ajuste automáticamente */
+    z-index: 9999; /* Asegura que quede por encima del resto del contenido */
+}
+
+
+@media (max-width: 800px) {
+    .imagen-overlay1{
+        width: 50px;
+    }
+
+    .imagen1{
+        width: 90px;
+    }
+
+    .imagen2{
+        width: 90px;
+    }
+
+    .imagen3{
+        width: 90px;
+    }
+
+    .niveles {
+        font-size: 24px;
+        margin-top: 30px;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        
+    }
+
+    .imagen-overlay3{
+        
+        right: 69%; /* Ajusta la distancia desde el borde izquierdo de la página */
+        
+    }
+}
