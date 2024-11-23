@@ -36,21 +36,20 @@
     </div>
 
     <div class = "Cont" >
-        <p id = "problema">Intercala signos aritméticos entre los números 3, 5 y 7 para obtener 38.
+        <p id = "problema">Intercala un signo aritmético entre los números 41 y 7 para obtener 34.
             
         </p>
 
         
 
         <p id = "resolucion">
-            3 <input list="opciones" type="text" id="simbolo1" size="1">  5 <input list="opciones" type="text" id="simbolo2" size="1"> 7 = 38
+            41 <input list="opciones" type="text" id="simbolo1" size="1"> 7 = 34
         </p>
 
         <datalist id="opciones">
             <option value="+">
             <option value="-">
-            <option value="x">
-            <option value="÷">
+            
         </datalist>
 
         <div id= "contBoton">
@@ -63,7 +62,7 @@
 
         <div id="botonExtra" class="boton-extra-container">
             <button id="nextButton" disabled>
-                <a id="nextLink" href="problema1-2-2.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+                <a id="nextLink" href="fel3.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
             </button>
         </div>
         
@@ -93,15 +92,14 @@
         function validar() {
             // Obtener el valor ingresado por el usuario
             const simbolo1 = document.getElementById("simbolo1").value;
-            const simbolo2 = document.getElementById("simbolo2").value;
             const mensaje = document.getElementById("mensaje");
             const botonExtra = document.getElementById("botonExtra");
             const nextButton = document.getElementById("nextButton");
             const nextLink = document.getElementById("nextLink");
     
             // Comprobar si el símbolo es el correcto
-            if (simbolo1 === "+"  && (simbolo2 === "*" || simbolo2 === "x" || simbolo2 === "X")) {
-                mensaje.textContent = "¡Correcto! 3 + 5 * 7 = 38";
+            if (simbolo1 === "-") {
+                mensaje.textContent = "¡Correcto! 41 - 7 = 34";
                 sonidoCorrecto.play().catch(error => {
                     console.error("Error al reproducir el sonido correcto:", error);
                 });

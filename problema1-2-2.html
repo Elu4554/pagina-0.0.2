@@ -35,14 +35,13 @@
 
     </div>
 
-    <p id = "problema">Encuentra un símbolo aritmetico que al ser puesto entre las dos fracciones,
-        haga que efectivamente dé como resultado 2/8 </p>
+    <p id = "problema">Intercala un signo aritmetico para que la operacion de efectivamente, 56</p>
 
     <div class = "Cont" >
         
 
         <p id = "resolucion">
-            2/4 <input list="opciones" type="text" id="simbolo1" size="1">  1/4 = 2/8 
+            8 <input list="opciones" type="text" id="simbolo1" size="1">  7 = 56 
         </p>
 
         <datalist id="opciones">
@@ -62,7 +61,7 @@
 
         <div id="botonExtra" class="boton-extra-container">
             <button id="nextButton" disabled>
-                <a id="nextLink" href="felicitaciones.html" style="text-decoration: none; color: black;"> Completar </a>
+                <a id="nextLink" href="problema1-2-5.html" style="text-decoration: none; color: black;"> Completar </a>
             </button>
         </div>
         
@@ -98,8 +97,8 @@
             const nextLink = document.getElementById("nextLink");
     
             // Comprobar si el símbolo es el correcto
-            if (simbolo1 === "-" ) {
-                mensaje.textContent = "¡Correcto! 2/4 - 1/4 = 2/8 ";
+            if (simbolo1 === "*" || simbolo1 === "x" || simbolo1 === "X") {
+                mensaje.textContent = "¡Correcto! 8 x 7 = 56";
                 sonidoCorrecto.play().catch(error => {
                     console.error("Error al reproducir el sonido correcto:", error);
                 });
