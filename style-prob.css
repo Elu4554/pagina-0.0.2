@@ -590,3 +590,33 @@ footer {
 #botonExtra{
     display: none;
 }
+
+#boton3pipi{
+    margin-top: 10px;
+    background-color: rgb(214, 181, 245);
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    border-color: rgb(196, 155, 235);
+    border-radius: 5%;
+    
+    height: 50px;
+    text-align: center;
+    align-items: center; /* Asegura que el texto esté centrado dentro del botón */
+}
+
+#problemapipi{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+
+#pipis{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: justify;
+    text-align: justify;
+}

@@ -38,18 +38,34 @@
 
     <div class = "Cont" >
         <p id = "problema">
-            Toma en cuenta la siguiente lista de objetos y escribe en el recuadro de abajo cual no comparte la caracterisitca principal de la lista. "Refrigerador, Microondas, Cafetera, Zapato"
+            Enumera cada paso para que tengan sentido y orden.
+            
         </p>
 
-        <p id = "resolucion">
-            <input list="opciones" type="text" id="simbolo1" size="10">
-        </p>
+        <ul id = "problemapipi">
+            <div id="pipis">
+                <li><input list="opciones" type="text" id="simbolo1" size="1">El oso descansa, por que esta lleno</li>
+                <li><input list="opciones" type="text" id="simbolo2" size="1">El oso camina por el bosque</li>
+                <li><input list="opciones" type="text" id="simbolo3" size="1">El oso come la miel del panal</li>
+                <li><input list="opciones" type="text" id="simbolo4" size="1">El oso encuentra un panal en el bosque</li>
+
+            </div>
+            
+
+        </ul>
 
         <datalist id="opciones">
-            <option value="Microondas">
-            <option value="Refrigerador">
-            <option value="Cafetera">
-            <option value="Zapato">
+            <option value="1">
+            <option value="2">
+            <option value="3">
+            <option value="4">
+        </datalist>
+
+        
+
+        <datalist id="opciones">
+            <option value="+">
+            <option value="-">
             
         </datalist>
 
@@ -63,7 +79,7 @@
 
         <div id="botonExtra" class="boton-extra-container">
             <button id="nextButton" disabled>
-                <a id="nextLink" href="VoF4.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+                <a id="nextLink" href="felLogica5.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
             </button>
         </div>
         
@@ -91,42 +107,40 @@
         });
 
         function validar() {
-    // Obtener el valor ingresado por el usuario
-    const simbolo1 = document.getElementById("simbolo1").value;
+            // Obtener el valor ingresado por el usuario
+            const simbolo1 = document.getElementById("simbolo1").value;
+            const simbolo2 = document.getElementById("simbolo2").value;
+            const simbolo3 = document.getElementById("simbolo3").value;
+            const simbolo4 = document.getElementById("simbolo4").value;
+            const mensaje = document.getElementById("mensaje");
+            const botonExtra = document.getElementById("botonExtra");
+            const nextButton = document.getElementById("nextButton");
+            const nextLink = document.getElementById("nextLink");
     
-    const mensaje = document.getElementById("mensaje");
-    const botonExtra = document.getElementById("botonExtra");
-    const nextButton = document.getElementById("nextButton");
-    const nextLink = document.getElementById("nextLink");
-
-    // Comprobar si el símbolo es el correcto
-    if (simbolo1 === "Zapatos" || simbolo1 === "zapatos" || simbolo1 === "zapato" || simbolo1 === "Zapato" ) {
-        mensaje.textContent = "¡Correcto! El zapato no pertenece a la lista, los demas objetos tienen en comun ser electrodomesticos, en cambio este no comparte caracteristicas.";
-        sonidoCorrecto.play().catch(error => {
-            console.error("Error al reproducir el sonido correcto:", error);
-        });
-        
-        mensaje.classList.remove("incorrecto"); // Elimina la clase de error
-        mensaje.classList.add("BIEN"); // Añade la clase de éxito
-        
-        botonExtra.style.display = "flex";
-        nextButton.style.display = "flex";
-        nextButton.disabled = false;
-        nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
-    } else {
-        mensaje.textContent = "Incorrecto. Intenta de nuevo.";
-        sonidoError.play().catch(error => {
-            console.error("Error al reproducir el sonido incorrecto:", error);
-        });
-        
-        mensaje.classList.remove("BIEN"); // Elimina la clase de éxito si existe
-        mensaje.classList.add("incorrecto"); // Añade la clase de error
-
-        botonExtra.style.display = "flex";
-        nextButton.disabled = true;
-        nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
-    }
-}
+            // Comprobar si el símbolo es el correcto
+            if (simbolo1 === "4" && simbolo2 === "1" && simbolo3 === "3" && simbolo4 === "2" ) {
+                mensaje.textContent = "¡Correcto! Muy bien";
+                sonidoCorrecto.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
+                mensaje.classList.remove("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.style.display = "flex";
+                nextButton.disabled = false;
+                nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
+            } else {
+                mensaje.textContent = "Incorrecto, intenta de nuevo.";
+                sonidoError.play().catch(error => {
+                    console.error("Error al reproducir el sonido correcto:", error);
+                });
+                mensaje.classList.add("incorrecto");
+    
+                botonExtra.style.display = "flex";
+                nextButton.disabled = true;
+                nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
+            }
+        }
 
         ///////
 

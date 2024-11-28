@@ -38,32 +38,26 @@
 
     <div class = "Cont" >
         <p id = "problema">
-            Toma en cuenta la siguiente lista de objetos y escribe en el recuadro de abajo cual no comparte la caracterisitca principal de la lista. "Refrigerador, Microondas, Cafetera, Zapato"
-        </p>
-
-        <p id = "resolucion">
-            <input list="opciones" type="text" id="simbolo1" size="10">
-        </p>
-
-        <datalist id="opciones">
-            <option value="Microondas">
-            <option value="Refrigerador">
-            <option value="Cafetera">
-            <option value="Zapato">
+            Toma en cuenta el enunciado y escoge cual de las opciones pertenece a la conclucion. 
+            “Los gatos son ágiles y astutos, Max es un compañero de mi escuela ágil y astuto. Max es un gato”
             
-        </datalist>
 
-        <div id= "contBoton">
+        </p>
 
-            <button onclick="validar()" id= "boton" >Comprobar</button>
-
+        <div class="centro">
+            <button id="boton3pipi" onclick="naonao()">Los gatos son ágiles y astutos</button>
+            <button id="boton3pipi" onclick="pasar()">Max es un gato
+            </button>
+            <button id="boton3pipi" onclick="naonao()">Max es un compañero de mi escuela ágil y astuto
+            </button>
+            
         </div>
 
         <p id="mensaje" class="resultado"></p>
 
         <div id="botonExtra" class="boton-extra-container">
             <button id="nextButton" disabled>
-                <a id="nextLink" href="VoF4.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+                <a id="nextLink" href="logica9.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
             </button>
         </div>
         
@@ -90,43 +84,39 @@
             }
         });
 
-        function validar() {
-    // Obtener el valor ingresado por el usuario
-    const simbolo1 = document.getElementById("simbolo1").value;
-    
-    const mensaje = document.getElementById("mensaje");
-    const botonExtra = document.getElementById("botonExtra");
-    const nextButton = document.getElementById("nextButton");
-    const nextLink = document.getElementById("nextLink");
+        function pasar(){
+            mensaje.textContent = "¡Correcto! La conclusion del argumento es que Max es un gato.";
+            sonidoCorrecto.play().catch(error => {
+                console.error("Error al reproducir el sonido correcto:", error);
+            });
+            
+            mensaje.classList.remove("incorrecto"); // Elimina la clase de error
+            mensaje.classList.add("BIEN"); // Añade la clase de éxito
+            
+            botonExtra.style.display = "flex";
+            nextButton.style.display = "flex";
+            nextButton.disabled = false;
+            nextLink.style.pointerEvents = "auto";
+        }
+
+        function naonao(){
+            mensaje.textContent = "Incorrecto. Intenta de nuevo.";
+            sonidoError.play().catch(error => {
+                console.error("Error al reproducir el sonido incorrecto:", error);
+            });
+        
+            mensaje.classList.remove("BIEN"); // Elimina la clase de éxito si existe
+            mensaje.classList.add("incorrecto"); // Añade la clase de error
+
+            botonExtra.style.display = "flex";
+            nextButton.disabled = true;
+            nextLink.style.pointerEvents = "none";
+        }
+
+        
 
     // Comprobar si el símbolo es el correcto
-    if (simbolo1 === "Zapatos" || simbolo1 === "zapatos" || simbolo1 === "zapato" || simbolo1 === "Zapato" ) {
-        mensaje.textContent = "¡Correcto! El zapato no pertenece a la lista, los demas objetos tienen en comun ser electrodomesticos, en cambio este no comparte caracteristicas.";
-        sonidoCorrecto.play().catch(error => {
-            console.error("Error al reproducir el sonido correcto:", error);
-        });
-        
-        mensaje.classList.remove("incorrecto"); // Elimina la clase de error
-        mensaje.classList.add("BIEN"); // Añade la clase de éxito
-        
-        botonExtra.style.display = "flex";
-        nextButton.style.display = "flex";
-        nextButton.disabled = false;
-        nextLink.style.pointerEvents = "auto"; // Habilitar el enlace cuando el botón no está deshabilitado
-    } else {
-        mensaje.textContent = "Incorrecto. Intenta de nuevo.";
-        sonidoError.play().catch(error => {
-            console.error("Error al reproducir el sonido incorrecto:", error);
-        });
-        
-        mensaje.classList.remove("BIEN"); // Elimina la clase de éxito si existe
-        mensaje.classList.add("incorrecto"); // Añade la clase de error
-
-        botonExtra.style.display = "flex";
-        nextButton.disabled = true;
-        nextLink.style.pointerEvents = "none"; // Desactivar el enlace cuando el botón está deshabilitado
-    }
-}
+    
 
         ///////
 

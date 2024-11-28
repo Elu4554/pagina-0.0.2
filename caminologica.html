@@ -51,18 +51,34 @@
         <img class="imagen3" src="imagenes/fluent--thinking-24-regular.png" alt="Pensamiento" width="200">
     </div>
 
-    <h1>Logica y pensamiento critico.</h1>
+    <h1>Logica y pensamiento critico Etapa 1</h1>
 
     <ul id="botones">
 
-        <li><a href="VoF.html"><button class = "niveles">1</button></a></li>
-        <li><a href="VoF4.html"><button class = "niveles" id = "nivel2" disabled>2</button></a></li>
-        <li><a href=""><button class = "niveles" id = "nivel3" disabled>3</button></a></li>
-        <li><a href=""><button class = "niveles" id = "nivel4" disabled>4</button></a></li>
-        <li><a href=""><button class = "niveles" id = "nivel5" disabled>5</button></a></li>
-        <li><a href=""><button class = "niveles" id = "nivel6" disabled>6</button></a></li>
+        <li><a href="Logica2.html"><button class = "niveles">1</button></a></li>
+        <li><a href="logica3.html"><button class = "niveles" id = "nivel2" disabled>2</button></a></li>
+
+    </ul>
+
+    <h1>Logica y pensamiento critico Etapa 2</h1>
+
+    <ul id="botones">
+
+        <li><a href="VoF.html"><button class = "niveles" id = "nivel3" disabled>3</button></a></li>
+        <li><a href="VoF2.html"><button class = "niveles" id = "nivel4" disabled>4</button></a></li>
+        
+
+    </ul>
+
+    <h1>Logica y pensamiento critico Etapa 3</h1>
+
+    <ul id="botones">
+
+        
+        <li><a href="logica15.html"><button class = "niveles" id = "nivel5" disabled>5</button></a></li>
+        <li><a href="logica14.html"><button class = "niveles" id = "nivel6" disabled>6</button></a></li>
         <li><button class = "niveles" id = "nivel7" disabled>7</button></li>
-        <li><button class = "niveles" disabled>8</button></li>
+        <li><button class = "niveles" id = "nivel7" disabled>8</button></li>
         <li><button class = "niveles" disabled>9</button></li>
         <li><button class = "niveles" disabled>10</button></li>
         <li><button class = "niveles" disabled>11</button></li>
@@ -119,19 +135,29 @@
         });
             
 
-        if (localStorage.getItem("nivel1CompletadoL")) {
+        if (localStorage.getItem("nivel1CompletadoLOG")) {
             document.getElementById("nivel2").disabled = false; // Habilita el botón del nivel 1
         }
         
-        if (localStorage.getItem("nivel2CompletadoL")) {
+        if (localStorage.getItem("nivel2CompletadoLOG")) {
             document.getElementById("nivel3").disabled = false; // Habilita el botón del nivel 1
         }
 
-        if (localStorage.getItem("nivel3CompletadoL")) {
-    document.getElementById("nivel4").disabled = false; // Habilita el botón del nivel 3
-}
+        if (localStorage.getItem("nivel3CompletadoLOG")) {
+            document.getElementById("nivel4").disabled = false; // Habilita el botón del nivel 3
+        }
         
-        
+        if (localStorage.getItem("nivel4CompletadoLOG")) {
+            document.getElementById("nivel5").disabled = false; // Habilita el botón del nivel 3
+        }
+
+        if (localStorage.getItem("nivel5CompletadoLOG")) {
+            document.getElementById("nivel6").disabled = false; // Habilita el botón del nivel 3
+        }
+
+        if (localStorage.getItem("nivel6CompletadoLOG")) {
+            document.getElementById("nivel7").disabled = false; // Habilita el botón del nivel 3
+        }
 
 
     </script>
