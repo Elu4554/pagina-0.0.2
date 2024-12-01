@@ -36,35 +36,40 @@
 
     </div>
 
+    <div class="Cont">
+        <p id="problema">¿Cuantas centenas, decenas y unidades tiene el numero "526"?</p>
 
-    <p id="problema">¿Cuantas centenas, decenas y unidades tiene el numero "526"?</p>
+        <div class="centro" id="inputs">
+            
+            <p>Centenas</p>
+            <input type="number" id="input3" class="entrada">
+            
+            <p>Decenas</p>
+            <input type="number" id="input2" class="entrada">
 
-    <div class="centro" id="inputs">
-        
-        <p>Centenas</p>
-        <input type="number" id="input3" class="entrada">
-        
-        <p>Decenas</p>
-        <input type="number" id="input2" class="entrada">
+            <p>Unidades</p>
+            <input type="number" id="input" class="entrada">
 
-        <p>Unidades</p>
-        <input type="number" id="input" class="entrada">
+        </div>
+
+        <div id= "contBoton">
+
+            <button onclick="validar()" id= "boton" >Comprobar</button>
+
+        </div>
+
+        <p id="mensaje"></p> <!-- Agrega esta línea para mostrar los mensajes -->
+
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="aritmetica11.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
+    
 
     </div>
 
-    <div id= "contBoton">
 
-        <button onclick="validar()" id= "boton" >Comprobar</button>
-
-    </div>
-
-    <p id="mensaje"></p> <!-- Agrega esta línea para mostrar los mensajes -->
-
-    <div id="botonExtra" class="boton-extra-container">
-        <button id="nextButton" disabled>
-            <a id="nextLink" href="aritmetica11.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
-        </button>
-    </div>
     
 
     <audio id="sonidoError" preload="auto">

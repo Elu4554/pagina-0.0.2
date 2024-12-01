@@ -65,40 +65,45 @@
 
     </div>
 
-
-    <p id="problema">Problema: si Julian rompe un papel en 10 pedazos, su hermano menor toma algunos y los rompe en
-        diez pedazos mas pequeños. Si al final hay 46 pedazos, ¿Cuantos pedazos rompio el hermano de Julian?
-        (Usa la herramienta de pizarra para ayudarte en tus operaciones)
-    </p>
-
-    <div class="centro" id="inputs">
-        
-        <input type="number" id="input3" class="entrada">
-
-        <button id="toggleButton" class="button" onclick="toggleBoard()">Pizarra</button>
-
-        <div class="toolbar">
-            <button class="button" onclick="clearBoard()">Limpiar</button>
-        </div>
-        <canvas id="drawing-board" width="400" height="400"></canvas>
-
-    </div>
-
+    <div class="Cont">
+        <p id="problema">Problema: si Julian rompe un papel en 10 pedazos, su hermano menor toma algunos y los rompe en
+            diez pedazos mas pequeños. Si al final hay 46 pedazos, ¿Cuantos pedazos rompio el hermano de Julian?
+            (Usa la herramienta de pizarra para ayudarte en tus operaciones)
+        </p>
     
-
-    <div id= "contBoton">
-
-        <button onclick="validar()" id= "boton" >Comprobar</button>
+        <div class="centro" id="inputs">
+            
+            <input type="number" id="input3" class="entrada">
+    
+            <button id="toggleButton" class="button" onclick="toggleBoard()">Pizarra</button>
+    
+            <div class="toolbar">
+                <button class="button" onclick="clearBoard()">Limpiar</button>
+            </div>
+            <canvas id="drawing-board" width="400" height="400"></canvas>
+    
+        </div>
+    
+        
+    
+        <div id= "contBoton">
+    
+            <button onclick="validar()" id= "boton" >Comprobar</button>
+    
+        </div>
+    
+        <p id="mensaje"></p> <!-- Agrega esta línea para mostrar los mensajes -->
+    
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="problema1-1-1.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
+        
 
     </div>
 
-    <p id="mensaje"></p> <!-- Agrega esta línea para mostrar los mensajes -->
 
-    <div id="botonExtra" class="boton-extra-container">
-        <button id="nextButton" disabled>
-            <a id="nextLink" href="problema1-1-1.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
-        </button>
-    </div>
     
 
     <audio id="sonidoError" preload="auto">

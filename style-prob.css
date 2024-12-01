@@ -622,7 +622,11 @@ footer {
 }
 
 @media (max-width: 800px){
-    #botonExtra{
+    .Cont{
+        margin-bottom: 400px;
+    }
+
+    .abajo{
         margin-bottom: 400px;
     }
 }

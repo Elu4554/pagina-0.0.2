@@ -36,27 +36,31 @@
 
     </div>
 
+    <div class="Cont">
+        <p id="problema">¿Cuantas decenas tiene el numero "15"?</p>
 
-    <p id="problema">¿Cuantas decenas tiene el numero "15"?</p>
+        <div class="centro">
+            <input type="number" id="input" class="entrada">
 
-    <div class="centro">
-        <input type="number" id="input" class="entrada">
+        </div>
+
+        <div id= "contBoton">
+
+            <button onclick="validar()" id= "boton" >Comprobar</button>
+
+        </div>
+
+        <p id="mensaje"></p> <!-- Agrega esta línea para mostrar los mensajes -->
+
+        <div id="botonExtra" class="boton-extra-container">
+            <button id="nextButton" disabled>
+                <a id="nextLink" href="aritmetica7.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
+            </button>
+        </div>
 
     </div>
 
-    <div id= "contBoton">
-
-        <button onclick="validar()" id= "boton" >Comprobar</button>
-
-    </div>
-
-    <p id="mensaje"></p> <!-- Agrega esta línea para mostrar los mensajes -->
-
-    <div id="botonExtra" class="boton-extra-container">
-        <button id="nextButton" disabled>
-            <a id="nextLink" href="aritmetica7.html" style="text-decoration: none; color: black;">Siguiente Desafío</a>
-        </button>
-    </div>
+    
     
 
     <audio id="sonidoError" preload="auto">
