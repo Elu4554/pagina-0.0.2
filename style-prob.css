@@ -620,3 +620,9 @@ footer {
     align-items: justify;
     text-align: justify;
 }
+
+@media (max-width: 800px){
+    #botonExtra{
+        margin-bottom: 400px;
+    }
+}
