@@ -63,7 +63,7 @@
         document.getElementById("regresoLec3").addEventListener("click", function() {
             // Marca el nivel como completado
             localStorage.setItem("nivel3CompletadoLec", "true");
-            alert("¡Nivel completado!");
+        
 
             // Sumar puntos al contador
             if (localStorage.getItem('botonPresionadoLec3') !== 'true') {
@@ -133,7 +133,7 @@
                 localStorage.setItem("contadorRacha", contadorRacha);
                 localStorage.setItem("ultimaFecha", hoy);
                 document.getElementById("contadorRacha").innerText = `Racha actual: ${contadorRacha} días`;
-                alert("¡Racha incrementada!");
+            
             } else {
                 alert("Ya presionaste el botón hoy.");
             }
