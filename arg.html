@@ -3,38 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DPCL</title>
-    <link rel="stylesheet" href="style-prob.css">
+    <link rel="stylesheet" href="temaPCL.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
-    <link rel="shortcut icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
-
     <nav> 
         <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
         <div class="trofeo">
             <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
             <span id="valor" class="textos">0</span>
         </div>
-        <div class="trofeo">
-            <img id = "trofeo" src="imagenes/line-md--calendar.png" alt="racha">
-            <span id="contadorRacha">0</span>
-        </div>
         <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
         
     </nav>
-    <style>
-        @media(prefers-color-scheme: dark){
-            .imagenes{
-                color: white;
-            }
-        }
+    <title>Argumentos</title>
 
-    </style>
 </head>
-
 <body>
     <div id = "op" class="op">
         <div class = "opciones">
@@ -49,19 +35,68 @@
 
     </div>
 
-    <section>
-        <h1>ESTAS SON LAS ACTIVIDADES</h1>
 
+    <p class="t">¿Qué es un arguemento?</p>
 
-    </section>
-    <div class="Actividades">
-        <a class = "imagenes" href="sudoku.html"><img src="imagenes/sudoku-logo.png" alt="sudoku" width="100" height="100">Jugar sudoku <br></a>
-        <a class = "imagenes" href="caminoMat.html"><img src="imagenes/mat.png" alt="aritmetica" width="100" height="100">Niveles Matematicos <br></a>
+    <div class="primero">
+
+        <div class="contenedor">
+            <p class="texto">
+                Un argumento es como contar una pequeña historia para convencer a alguien de algo. 
+                Tiene dos partes importantes:
+
+            </p>
+            
+            
+            <p class="texto">
+                <strong>&bull;Premisas:</strong> Son las ideas o razones que usamos para explicar.
+                <br>
+                <strong>&bull;Conclusión:</strong> Es lo que queremos demostrar o lo que creemos al final.
+                <br>
+                
+            </p>
+
+            
+            <br>
+
+            <p class="t">"¿Cómo funcionan las premisas y la conclusión?
+            </p>
+
+            <p class="texto">
+                &bull; Las <strong>premisas</strong> son frases que nos dan información. Pueden ser hechos o ideas.<br>
+                &bull; La <strong>conclusión</strong> es el resultado o la respuesta que queremos probar. La conclusión depende de las premisas, 
+                así que es importante que las premisas tengan sentido. <br>
+                
+
+            </p>
+
+            <p class="t">Ejemplo: <br></p>
+
+            <p class="texto">
+                
+                <br><strong>&bull;Premisa 1:</strong> Los gatos son mortales.<br>
+                <strong>&bull;Premisa 2:</strong> Tomas es mortal.<br>
+                <strong>&bull;Conclusión:</strong> Tomas es un gato<br><br>
+                
+                <br>
+            </p>
         
-        <a class = "imagenes" href="caminologica.html"><img src="imagenes/mdi--head-thinking.png" alt="logica" width="100" height="100">Niveles lógicos<br></a>
-        <a class = "imagenes" href="caminolectura.html"><img src="imagenes/tabler--book.png" alt="lectura" width="100" height="100">Niveles lectura<br></a>
+            <p class="t">¿Qué significa esto?
+                <br></p>
+
+
+            <p class="texto" >
+                <br>La primera frase, "Todos los gatos son mortales", es una <strong>premisa</strong> 
+                porque nos dice algo sobre los gatos.<br>
+                La segunda frase, "Tomás es mortal", también es una <strong>premisa</strong> 
+                porque nos da más información.<br>
+                La última frase, "Tomás es un gato", es la <strong>conclusión</strong>. Usa las dos ideas anteriores para intentar 
+                convencernos, pero si lo pensamos bien, ¡algo no cuadra! La conclusión no es correcta, porque solo 
+                porque Tomás sea mortal, no significa que sea un gato.
+            </p>
+
+        </div>
     </div>
-    
     <script>
         document.getElementById("mas").addEventListener("click", function() {
             var div = document.getElementById("op");
@@ -71,13 +106,13 @@
                 div.style.display = "none";
             }
         });
+        
+        ///////
 
         // Inicializamos el valor de localStorage si no existe
         if (!localStorage.getItem('contador')) {
             localStorage.setItem('contador', 0);
         }
-        
-        
 
         // Función para actualizar el valor en el HTML
         function actualizarValor() {
@@ -88,30 +123,29 @@
         // Actualizamos el valor al cargar la página
         actualizarValor();
 
+        // Evento para el botón que suma 30, pero solo una vez
+        document.getElementById('regreso').addEventListener('click', () => {
+            // Verificamos si ya se sumaron los puntos una vez
+            if (localStorage.getItem('botonPresionado') !== 'true') {
+                let valorActual = parseInt(localStorage.getItem('contador'));
+                valorActual += 30;
+                localStorage.setItem('contador', valorActual);
+                localStorage.setItem('botonPresionado', 'true');  // Registramos que ya se sumó
+                actualizarValor();
+            }
+        });
+
         // Escuchamos cambios en el localStorage para sincronizar entre pestañas
         window.addEventListener('storage', (event) => {
             if (event.key === 'contador') {
                 actualizarValor();
             }
         });
-
-        if (!localStorage.getItem('contadorRacha')) {
-            localStorage.setItem('contadorRacha', 0);
-        }
-
-        // Función para actualizar el contador de racha en la página
-        function actualizarRacha() {
-            const contadorRacha = localStorage.getItem("contadorRacha") || 0;
-            document.getElementById("contadorRacha").innerText = `${contadorRacha} días`;
-        }
-
-        // Ejecutar la función al cargar la página
-        window.onload = actualizarRacha;
+    
     </script>
 </body>
 
 <footer>
-
     <div class="info">
         <h2>DPCL</h2>
         <p>Contactanos en:</p>

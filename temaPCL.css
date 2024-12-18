@@ -265,3 +265,7 @@ footer {
     text-align: center;
     align-items: center;
 }
+
+footer{
+    width: 100%;
+}
