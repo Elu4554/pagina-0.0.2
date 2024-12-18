@@ -9,14 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="Icono DPCL (1).png" type="image/x-icon">
+    <link rel="icon" href="imagenes/Icono DPCL (1).png" type="image/x-icon">
     <nav> 
-        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="Icono DPCL (1).png" alt="DPCL"></a></h1>
+        <h1 class = "logo"><a href="index.html"><img class = "imgDPCL" src="imagenes/Icono DPCL (1).png" alt="DPCL"></a></h1>
         <div class="trofeo">
-            <img id = "trofeo" src="stash--trophy-solid.png" alt="trofeo">
+            <img id = "trofeo" src="imagenes/stash--trophy-solid.png" alt="trofeo">
             <span id="valor" class="textos">0</span>
         </div>
-        <button id = "mas" class="mas"><img class = "menu" src="ic--round-menu.png" alt="menu"></button>
+        <button id = "mas" class="mas"><img class = "menu" src="imagenes/ic--round-menu.png" alt="menu"></button>
         
     </nav>
 </head>
@@ -34,24 +34,29 @@
 
     </div>
 
-    <h1>Ejercicio Matemático</h1>
-    <div id="timeSelection">
-        <h2>Selecciona el tiempo:</h2>
-        <button onclick="startGame(15)">15 segundos</button>
-        <button onclick="startGame(30)">30 segundos</button>
-        <button onclick="startGame(60)">1 minuto</button>
+    <div class="jiji">
+        <h1>Ejercicio Matemático</h1>
+        <div id="timeSelection">
+            <h2>Selecciona el tiempo:</h2>
+            <button onclick="startGame(15)">15 segundos</button>
+            <button onclick="startGame(30)">30 segundos</button>
+            <button onclick="startGame(60)">1 minuto</button>
+        </div>
+        <p id="operation"></p>
+        <input type="number" id="userAnswer" placeholder="Respuesta" min="0" />
+        <button id="checkButton" onclick="checkAnswer()" style="display: none;">Comprobar</button> <!-- Botón oculto -->
+        <p id="resultMessage"></p>
+        <button id="nextButton" onclick="generateOperation()">Siguiente Ejercicio</button>
+        <p id="timer"></p>
+        <div id="results">
+            <h3>Resultados</h3>
+            <p id="totalSolved"></p>
+            <button onclick="resetGame()">Jugar de nuevo</button> <!-- Botón para reiniciar el juego -->
+        </div>
+
     </div>
-    <p id="operation"></p>
-    <input type="number" id="userAnswer" placeholder="Respuesta" min="0" />
-    <button id="checkButton" onclick="checkAnswer()" style="display: none;">Comprobar</button> <!-- Botón oculto -->
-    <p id="resultMessage"></p>
-    <button id="nextButton" onclick="generateOperation()">Siguiente Ejercicio</button>
-    <p id="timer"></p>
-    <div id="results">
-        <h3>Resultados</h3>
-        <p id="totalSolved"></p>
-        <button onclick="resetGame()">Jugar de nuevo</button> <!-- Botón para reiniciar el juego -->
-    </div>
+
+    
 
     <script>
         document.getElementById("mas").addEventListener("click", function() {
@@ -151,16 +156,22 @@
         }
 
         function checkAnswer() {
-            const userAnswer = parseFloat(document.getElementById('userAnswer').value).toFixed(2);
-            if (userAnswer == correctAnswer) { // Usar == para comparación
-                document.getElementById('resultMessage').innerText = '¡Correcto! Bien hecho.';
-                totalSolved++; // Incrementar el total de respuestas correctas
-                document.getElementById('nextButton').style.display = 'inline'; // Mostrar el botón de siguiente
-            } else {
-                document.getElementById('resultMessage').innerText = `Incorrecto. La respuesta correcta es ${correctAnswer}.`;
-                document.getElementById('nextButton').style.display = 'none'; // Ocultar el botón de siguiente si es incorrecto
-            }
-        }
+    const userAnswer = parseFloat(document.getElementById('userAnswer').value).toFixed(2);
+    if (userAnswer == correctAnswer) { // Usar == para comparación
+        document.getElementById('resultMessage').innerText = '¡Correcto! Bien hecho.';
+        document.getElementById('resultMessage').style.color = 'green';
+        totalSolved++; // Incrementar el total de respuestas correctas
+
+        // Esperar 1 segundo y luego generar la siguiente operación
+        setTimeout(() => {
+            generateOperation(); // Generar la siguiente operación automáticamente
+        }, 1000); // 1000 milisegundos = 1 segundo
+    } else {
+        document.getElementById('resultMessage').innerText = `Incorrecto.`;
+        document.getElementById('resultMessage').style.color = 'red';
+    }
+}
+
 
         function resetGame() {
             totalSolved = 0; // Reiniciar el contador
@@ -221,11 +232,11 @@
 
     <div class="contactos">
         <a class= "Enlace"href="mailto:contactodpcl@gmail.com"> 
-            <img class="imgEmail" src="Vector-Email-Icon-Transparent.png" alt="email">
+            <img class="imgEmail" src="imagenes/Vector-Email-Icon-Transparent.png" alt="email">
         </a>
         
         <a  href="https://www.instagram.com/dpcl_web/?utm_source=ig_web_button_share_sheet">
-            <img class = "IG" src="instagram_white_28dp.png" alt="IG">
+            <img class = "IG" src="imagenes/instagram_white_28dp.png" alt="IG">
         </a>
 
     </div>
